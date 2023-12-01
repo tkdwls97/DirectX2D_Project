@@ -21,8 +21,8 @@ void CEngine::Init(HWND _hwnd, Vec2 _vResolution)
 	m_vResolution = _vResolution;
 
 	RECT rt = { 0, 0, (int)m_vResolution.x, (int)m_vResolution.y };
-	::AdjustTokenGroups(&rt, WS_OVERLAPPEDWINDOW, false);
-	::SetWindowPos(m_hMainWnd, nullptr, 10.0f, 10.0f, rt.right - rt.left, rt.bottom - rt.top, 0);
+	::AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
+	::SetWindowPos(m_hMainWnd, nullptr, 10.f, 10.f, rt.right - rt.left, rt.bottom - rt.top, 0);
 
 	
 }
