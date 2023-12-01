@@ -7,6 +7,21 @@
     <Filter Include="01. Engine">
       <UniqueIdentifier>{f4faa795-6283-49e5-a43d-3ee08170fd1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Module">
+      <UniqueIdentifier>{fca186a7-f74d-41c3-9f28-434781a34167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{5dd1f11b-f4b4-40d0-a6df-75e0ea298d48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Device">
+      <UniqueIdentifier>{049790ba-1aa4-47bb-8115-c8132e3b40fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Entity">
+      <UniqueIdentifier>{e99c2af6-c4c5-4e61-8e1f-61ee25417edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Level">
+      <UniqueIdentifier>{84e5d32c-db85-4d53-8866-256c47e8ea92}</UniqueIdentifier>
+    </Filter>
     <Filter Include="00. Header">
       <UniqueIdentifier>{b623700f-6888-44be-a874-7bb1fcd557c6}</UniqueIdentifier>
     </Filter>
@@ -21,8 +36,29 @@
     <ClInclude Include="Engine.h">
       <Filter>01. Engine</Filter>
     </ClInclude>
-    <ClInclude Include="singleton.h">
+    <ClInclude Include="Singleton.h">
       <Filter>00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleMath.h">
+      <Filter>Module</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>02. Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>04. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Device.h">
+      <Filter>03. Device</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -32,5 +68,24 @@
     <ClCompile Include="Engine.cpp">
       <Filter>01. Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>02. Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>04. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Device.cpp">
+      <Filter>03. Device</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimpleMath.inl">
+      <Filter>Module</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="std2d.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

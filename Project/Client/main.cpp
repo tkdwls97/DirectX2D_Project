@@ -4,6 +4,15 @@
 #include "framework.h"
 #include "Client.h"
 
+#include <Engine\global.h>
+#include <Engine\Engine.h>
+
+#ifdef _DEBUG
+#pragma comment(lib, "Engine\\Engine_d.lib")
+#else
+#pragma comment(lib, "Engine\\Eigine.lib")
+#endif
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -33,6 +42,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
+
+    CEngine::GetInst()->Init();
     // 기본 메시지 루프입니다:
     while (true)
     {
