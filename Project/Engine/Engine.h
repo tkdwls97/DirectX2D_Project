@@ -6,7 +6,7 @@ class CEngine : public CSingleton<CEngine>
 	SINGLE(CEngine); // ΩÃ±€≈Ê ∏≈≈©∑Œ
 
 public:
-	void Init(HWND _hwnd, Vec2 _vResolution);
+	int Init(HWND _hwnd, Vec2 _vResolution);
 	void Progress();
 
 private:
