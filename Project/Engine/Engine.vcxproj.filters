@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Default">
-      <UniqueIdentifier>{0a81c01a-c2be-43db-91a2-113fcabded7b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Engine">
       <UniqueIdentifier>{f4faa795-6283-49e5-a43d-3ee08170fd1f}</UniqueIdentifier>
     </Filter>
@@ -19,16 +16,31 @@
     <Filter Include="02. Entity">
       <UniqueIdentifier>{e99c2af6-c4c5-4e61-8e1f-61ee25417edb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Level">
-      <UniqueIdentifier>{84e5d32c-db85-4d53-8866-256c47e8ea92}</UniqueIdentifier>
-    </Filter>
     <Filter Include="00. Header">
       <UniqueIdentifier>{b623700f-6888-44be-a874-7bb1fcd557c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Level">
+      <UniqueIdentifier>{84e5d32c-db85-4d53-8866-256c47e8ea92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Manager">
+      <UniqueIdentifier>{88c331d9-3c16-429b-83bd-19a4ae5378d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Manager\PathMgr">
+      <UniqueIdentifier>{132188c9-7196-4ffc-8d17-7a091c38226f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Manager\TimeMgr">
+      <UniqueIdentifier>{7f87168c-d5df-4928-a22c-71fa25b1f948}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Manager\KeyMgr">
+      <UniqueIdentifier>{dd205d2e-b9e4-4cdd-b369-1461e09adf76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Default">
+      <UniqueIdentifier>{0a81c01a-c2be-43db-91a2-113fcabded7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
-      <Filter>Default</Filter>
+      <Filter>99. Default</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>01. Engine</Filter>
@@ -52,7 +64,7 @@
       <Filter>02. Entity</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
-      <Filter>04. Level</Filter>
+      <Filter>05. Level</Filter>
     </ClInclude>
     <ClInclude Include="Device.h">
       <Filter>03. Device</Filter>
@@ -61,10 +73,19 @@
       <Filter>00. Header</Filter>
     </ClInclude>
     <ClInclude Include="Test.h" />
+    <ClInclude Include="KeyMgr.h">
+      <Filter>04. Manager\KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="PathMgr.h">
+      <Filter>04. Manager\PathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeMgr.h">
+      <Filter>04. Manager\TimeMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
-      <Filter>Default</Filter>
+      <Filter>99. Default</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>01. Engine</Filter>
@@ -73,12 +94,21 @@
       <Filter>02. Entity</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
-      <Filter>04. Level</Filter>
+      <Filter>05. Level</Filter>
     </ClCompile>
     <ClCompile Include="Device.cpp">
       <Filter>03. Device</Filter>
     </ClCompile>
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>04. Manager\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="PathMgr.cpp">
+      <Filter>04. Manager\PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeMgr.cpp">
+      <Filter>04. Manager\TimeMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">

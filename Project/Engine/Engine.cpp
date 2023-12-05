@@ -1,6 +1,11 @@
 ﻿#include "pch.h"
 #include "Engine.h"
 #include "Device.h"
+
+#include "TimeMgr.h"
+#include "KeyMgr.h"
+#include "PathMgr.h"
+
 #include "Test.h"
 
 CEngine::CEngine()
@@ -16,9 +21,9 @@ CEngine::~CEngine()
 	
 }
 
-int CEngine::Init(HWND _hwnd, Vec2 _vResolution)
+int CEngine::Init(HWND _hWnd, Vec2 _vResolution)
 {
-	m_hMainWnd = _hwnd;
+	m_hMainWnd = _hWnd;
 	m_vResolution = _vResolution;
 
 	RECT rt = { 0, 0, (int)m_vResolution.x, (int)m_vResolution.y };
@@ -31,6 +36,13 @@ int CEngine::Init(HWND _hwnd, Vec2 _vResolution)
 		return E_FAIL;
 	}
 
+	// Manager 초기화
+	CPathMgr::Init();
+	CTimeMgr::GetInst()->Init();
+	CKeyMgr::GetInst()->Init();
+
+
+	// 테스트 초기화
 	if (FAILED(TestInit()))
 	{
 		return E_FAIL;
@@ -41,5 +53,16 @@ int CEngine::Init(HWND _hwnd, Vec2 _vResolution)
 
 void CEngine::Progress()
 {
+	// Manager Update
+	CTimeMgr::GetInst()->tick();
+	CKeyMgr::GetInst()->tick();
+
+	// Test Update
 	TestProgress();
+}
+
+
+HWND CEngine::GetMainWind()
+{
+	return m_hMainWnd;
 }

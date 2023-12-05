@@ -163,6 +163,9 @@ call EngineCopy.bat</Command>
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="PathMgr.h" />
+    <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="Engine.h" />
@@ -177,6 +180,9 @@ call EngineCopy.bat</Command>
     <ClInclude Include="Test.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="PathMgr.cpp" />
+    <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
