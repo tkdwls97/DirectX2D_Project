@@ -7,7 +7,7 @@ wchar_t CPathMgr::g_szContent[255] = {};
 void CPathMgr::Init()
 {
 	// 실행파일 경로
-	GetCurrentDirectory(255, g_szContent);
+	::GetCurrentDirectory(255, g_szContent);
 
 	size_t Len = wcslen(g_szContent);
 
