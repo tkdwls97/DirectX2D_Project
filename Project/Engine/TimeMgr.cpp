@@ -25,7 +25,7 @@ void CTimeMgr::Init()
 	QueryPerformanceCounter(&m_PrevCount);
 }
 
-void CTimeMgr::tick()
+void CTimeMgr::Tick()
 {
 	QueryPerformanceCounter(&m_CurCount);
 

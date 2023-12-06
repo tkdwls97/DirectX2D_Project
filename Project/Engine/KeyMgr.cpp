@@ -97,7 +97,7 @@ void CKeyMgr::Init()
 	}
 }
 
-void CKeyMgr::tick()
+void CKeyMgr::Tick()
 {
 	if (nullptr == GetFocus())
 	{

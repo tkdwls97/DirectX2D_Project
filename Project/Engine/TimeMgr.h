@@ -7,7 +7,7 @@ class CTimeMgr
 
 public:
 	void Init();
-	void tick();
+	void Tick();
 
 public:
 	float GetDeltaTime();

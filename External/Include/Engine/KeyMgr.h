@@ -97,7 +97,7 @@ class CKeyMgr
 
 public:
 	void Init();
-	void tick();
+	void Tick();
 
 public:
 	KEY_STATE GetKeyState(KEY _Key);

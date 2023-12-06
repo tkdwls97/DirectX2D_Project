@@ -54,8 +54,8 @@ int CEngine::Init(HWND _hWnd, Vec2 _vResolution)
 void CEngine::Progress()
 {
 	// Manager Update
-	CTimeMgr::GetInst()->tick();
-	CKeyMgr::GetInst()->tick();
+	CTimeMgr::GetInst()->Tick();
+	CKeyMgr::GetInst()->Tick();
 
 	// Test Update
 	TestProgress();
