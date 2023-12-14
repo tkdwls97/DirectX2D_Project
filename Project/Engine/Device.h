@@ -1,5 +1,8 @@
 #pragma once
 
+
+class CConstBuffer;
+
 // Direct11 扁霖 GPU 力绢
 class CDevice : public CSingleton<CDevice>
 {
@@ -13,9 +16,12 @@ public:
 	ID3D11Device* GetDevice();
 	ID3D11DeviceContext* GetContext();
 
+	CConstBuffer* GetConstBuffer(CB_TYPE _type);
+
 private:
 	int CreateSwapChain();
 	int CreateTargetView();
+	int CreateConstBuffer();
 
 private:
 	ComPtr<ID3D11Device>			m_Device;		// GPU 皋葛府 包府, 按眉 积己, 滚欺 积己
@@ -32,5 +38,7 @@ private:
 
 	HWND							m_hRenderWnd;
 	Vec2							m_vRenderResolution;
+
+	CConstBuffer*					m_arrCB[(UINT)CB_TYPE::END];
 };
 
