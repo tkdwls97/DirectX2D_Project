@@ -3,7 +3,7 @@
 template<typename T, UINT SIZE>
 void Delete_Array(T* (&Arr)[SIZE])
 {
-	for (int i = i = 0; i < SIZE; ++i)
+	for (int i = 0; i < SIZE; ++i)
 	{
 		if (nullptr != Arr[i])
 		{
