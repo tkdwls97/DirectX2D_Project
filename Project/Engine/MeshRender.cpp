@@ -26,12 +26,12 @@ void CMeshRender::UpdateData()
 	GetOwner()->Transform()->UpdateData();
 }
 
-void CMeshRender::render()
+void CMeshRender::Render()
 {
 	if (nullptr == GetMesh() || nullptr == GetShader())
 		return;
 
 	UpdateData();
 
-	GetMesh()->render();
+	GetMesh()->Render();
 }

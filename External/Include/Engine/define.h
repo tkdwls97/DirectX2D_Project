@@ -17,59 +17,8 @@
 #define KEY_RELEASED(Key) KEY_CHECK(Key, RELEASED)
 #define KEY_NONE(Key) KEY_CHECK(Key, NONE)
 
-enum class DIR_TYPE
-{
-	RIGHT,
-	UP,
-	FRONT,
-};
+#define LAYER_MAX 32
 
+#define GET_COMPONENT(Type, TYPE) class C##Type* Type() { return (C##Type*)m_arrCom[(UINT)COMPONENT_TYPE::##TYPE]; }
+#define GET_OTHER_COMPONENT(Type) C##Type* Type() { return m_Owner->Type(); }
 
-enum class ASSET_TYPE
-{
-	MESH,
-	MESHDATA,
-	TEXTURE,
-	MATERIAL,
-	SOUND,
-	COMPUTE_SHADER,
-	GRAPHICS_SHADER,
-};
-
-enum class COMPONENT_TYPE
-{
-	TRANSFORM,	// 오브젝트의 위치,크기,회전
-
-	COLLIDER2D,	// 2차원 충돌체
-	COLLIDER3D, // 3차원 충돌체
-
-	ANIMATOR2D,	// 스프라이트 Animation
-	ANIMATOR3D,	// Bone Skinning Animation
-
-	LIGHT2D,	// 2차원 광원
-	LIGHT3D,	// 3차원 광원
-
-	CAMERA,		// 카메라 기능
-
-	// Render Component
-	MESHRENDER,
-	TILEMAP,
-	PARTICLESYSTEM,
-	SKYBOX,
-	DECAL,
-	LANDSCAPE,
-
-	END,
-};
-
-
-// 상수버퍼 종류
-enum class CB_TYPE
-{
-	TRANSFORM,
-	MATERIAL_CONST,
-	GLOBAL_DATA,
-	ANIMATION,
-
-	END,
-};

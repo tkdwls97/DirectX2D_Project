@@ -8,7 +8,7 @@ public:
 
 public:
 	virtual void UpdateData() override;
-	virtual void render() override;
+	virtual void Render() override;
 
 };
 

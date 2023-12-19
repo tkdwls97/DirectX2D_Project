@@ -12,9 +12,9 @@ public:
     ~CRenderComponent();
 
 public:
-    virtual void finaltick() {};
+    virtual void Finaltick() {};
     virtual void UpdateData() = 0;
-    virtual void render() = 0;
+    virtual void Render() = 0;
 
 public:
     CMesh* GetMesh() { return m_Mesh; }

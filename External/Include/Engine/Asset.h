@@ -28,7 +28,5 @@ private:
 	wstring             m_RelativePath;
 	int                 m_RefCount;
 	const ASSET_TYPE    m_Type;
-
-
 };
 

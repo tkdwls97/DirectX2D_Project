@@ -88,6 +88,27 @@
     <Filter Include="03. Device\ConstBuffer">
       <UniqueIdentifier>{320e9b30-9652-4a90-a1fd-ae5774affa3c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Manager\AssetMgr">
+      <UniqueIdentifier>{2d5a93a5-e647-488e-90e5-ddc08e429b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Manager\LevelMgr">
+      <UniqueIdentifier>{69d5c240-e9be-4c46-8999-087d175a1f31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{301351cc-383a-4117-ba47-d767532eb4b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Level\Layer">
+      <UniqueIdentifier>{3bff0fb5-36c9-4238-a477-8d142431859a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\09.Script">
+      <UniqueIdentifier>{4a357669-8081-4f0f-af55-d6ec8070429b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\01. Camera">
+      <UniqueIdentifier>{c301c7ac-3417-4b35-8e40-bcd26d190ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\00. Player">
+      <UniqueIdentifier>{29b893ff-2d23-4edc-9bf0-ff446d75689a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -123,7 +144,6 @@
     <ClInclude Include="pch.h">
       <Filter>00. Header</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h" />
     <ClInclude Include="KeyMgr.h">
       <Filter>04. Manager\KeyMgr</Filter>
     </ClInclude>
@@ -166,6 +186,33 @@
     <ClInclude Include="ConstBuffer.h">
       <Filter>03. Device\ConstBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>08. Component\08. Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetMgr.h">
+      <Filter>04. Manager\AssetMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="components.h">
+      <Filter>00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelMgr.h">
+      <Filter>04. Manager\LevelMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>05. Level\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="enums.h">
+      <Filter>00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Script.h">
+      <Filter>08. Component\09.Script</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerScript.h">
+      <Filter>Script\00. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraMoveScript.h">
+      <Filter>Script\01. Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -183,7 +230,6 @@
     <ClCompile Include="Device.cpp">
       <Filter>03. Device</Filter>
     </ClCompile>
-    <ClCompile Include="Test.cpp" />
     <ClCompile Include="KeyMgr.cpp">
       <Filter>04. Manager\KeyMgr</Filter>
     </ClCompile>
@@ -222,6 +268,30 @@
     </ClCompile>
     <ClCompile Include="ConstBuffer.cpp">
       <Filter>03. Device\ConstBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>08. Component\08. Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="exturn.cpp">
+      <Filter>00. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetMgr.cpp">
+      <Filter>04. Manager\AssetMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelMgr.cpp">
+      <Filter>04. Manager\LevelMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>05. Level\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="Script.cpp">
+      <Filter>08. Component\09.Script</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerScript.cpp">
+      <Filter>Script\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraMoveScript.cpp">
+      <Filter>Script\01. Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

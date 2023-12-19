@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "GraphicsShader.h"
 
-
 #include "Device.h"
 #include "PathMgr.h"
 
@@ -9,24 +8,12 @@ CGraphicsShader::CGraphicsShader()
 	: CShader(ASSET_TYPE::GRAPHICS_SHADER)
 	, m_Topology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
 {
-
 }
 
 CGraphicsShader::~CGraphicsShader()
 {
 }
 
-void CGraphicsShader::UpdateData()
-{
-	CONTEXT->IASetInputLayout(m_Layout.Get());
-	CONTEXT->IASetPrimitiveTopology(m_Topology);
-
-	CONTEXT->VSSetShader(m_VS.Get(), nullptr, 0);
-	CONTEXT->HSSetShader(m_HS.Get(), nullptr, 0);
-	CONTEXT->DSSetShader(m_DS.Get(), nullptr, 0);
-	CONTEXT->GSSetShader(m_GS.Get(), nullptr, 0);
-	CONTEXT->PSSetShader(m_PS.Get(), nullptr, 0);
-}
 
 int CGraphicsShader::CreateVertexShader(const wstring& _strRelativePath, const string& _strFuncName)
 {
@@ -92,11 +79,7 @@ int CGraphicsShader::CreateVertexShader(const wstring& _strRelativePath, const s
 
 int CGraphicsShader::CreateHullShader()
 {
-	return 0;
-}
 
-int CGraphicsShader::CreateDomainShader()
-{
 	return 0;
 }
 
@@ -131,4 +114,16 @@ int CGraphicsShader::CreatePixelShader(const wstring& _strRelativePath, const st
 		, m_PS.GetAddressOf());
 
 	return S_OK;
+}
+
+void CGraphicsShader::UpdateData()
+{
+	CONTEXT->IASetInputLayout(m_Layout.Get());
+	CONTEXT->IASetPrimitiveTopology(m_Topology);
+
+	CONTEXT->VSSetShader(m_VS.Get(), nullptr, 0);
+	CONTEXT->HSSetShader(m_HS.Get(), nullptr, 0);
+	CONTEXT->DSSetShader(m_DS.Get(), nullptr, 0);
+	CONTEXT->GSSetShader(m_GS.Get(), nullptr, 0);
+	CONTEXT->PSSetShader(m_PS.Get(), nullptr, 0);
 }

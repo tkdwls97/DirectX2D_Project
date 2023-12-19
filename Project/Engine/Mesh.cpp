@@ -39,7 +39,8 @@ int CMesh::Create(void* _Vtx, UINT _VtxCount, void* _Idx, UINT _IdxCount)
 	// g_Vtx 배열의 데이터를 초기 데이터로 설정
 	D3D11_SUBRESOURCE_DATA tSubData = {};
 	tSubData.pSysMem = _Vtx;
-
+	
+	
 	// 버텍스 버퍼 생성
 	if (FAILED(DEVICE->CreateBuffer(&m_VBDesc, &tSubData, m_VB.GetAddressOf())))
 	{
@@ -88,7 +89,7 @@ void CMesh::UpdateData()
 	CONTEXT->IASetIndexBuffer(m_IB.Get(), DXGI_FORMAT_R32_UINT, 0);
 }
 
-void CMesh::render()
+void CMesh::Render()
 {
 	UpdateData();
 

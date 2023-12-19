@@ -83,20 +83,6 @@ void CDevice::Present()
 	m_SwapChain->Present(0, 0);
 }
 
-ID3D11Device* CDevice::GetDevice()
-{
-	return m_Device.Get();
-}
-
-ID3D11DeviceContext* CDevice::GetContext()
-{
-	return m_Context.Get();
-}
-
-CConstBuffer* CDevice::GetConstBuffer(CB_TYPE _type)
-{
-	return m_arrCB[(UINT)_type];
-}
 
 int CDevice::CreateSwapChain()
 {

@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <stdlib.h>
 #include <Windows.h>
 #include <string>
@@ -43,10 +42,9 @@ typedef Vector3 Vec3;
 typedef Vector4 Vec4;
 
 
-
-
 // 엔진 헤더 참조
 #include "singleton.h"
 #include "define.h"
 #include "struct.h"
 #include "func.h"
+#include "enums.h"

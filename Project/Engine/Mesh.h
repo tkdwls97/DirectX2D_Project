@@ -9,7 +9,7 @@ public:
 
 public:
     int Create(void* _Vtx, UINT _VtxCount, void* _Idx, UINT _IdxCount);
-    void render();
+    void Render();
 
 private:
     void UpdateData();

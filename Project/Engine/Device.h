@@ -1,6 +1,5 @@
 #pragma once
 
-
 class CConstBuffer;
 
 // Direct11 扁霖 GPU 力绢
@@ -8,20 +7,20 @@ class CDevice : public CSingleton<CDevice>
 {
 	SINGLE(CDevice);
 
+private:
+	int CreateSwapChain();
+	int CreateTargetView();
+	int CreateConstBuffer();
+
 public:
 	int Init(HWND _hWnd, Vec2 _vResolution);
 	void ClearRenderTarget(float(&Color)[4]);
 	void Present();
 
-	ID3D11Device* GetDevice();
-	ID3D11DeviceContext* GetContext();
-
-	CConstBuffer* GetConstBuffer(CB_TYPE _type);
-
-private:
-	int CreateSwapChain();
-	int CreateTargetView();
-	int CreateConstBuffer();
+	ID3D11Device* GetDevice() { return m_Device.Get(); }
+	ID3D11DeviceContext* GetContext() { return m_Context.Get(); }
+	CConstBuffer* GetConstBuffer(CB_TYPE _type) { return m_arrCB[(UINT)_type]; }
+	Vec2 GetRenderResolution() { return m_vRenderResolution; }
 
 private:
 	ComPtr<ID3D11Device>			m_Device;		// GPU 皋葛府 包府, 按眉 积己, 滚欺 积己

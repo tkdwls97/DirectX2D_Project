@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+
 class CTransform : public CComponent
 {
 public:
@@ -7,7 +8,7 @@ public:
     ~CTransform();
 
 public:
-    virtual void finaltick() override;
+    virtual void Finaltick() override;
     virtual void UpdateData() override;
 
 public:

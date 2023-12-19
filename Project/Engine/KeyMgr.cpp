@@ -74,7 +74,6 @@ int g_KeySync[KEY::KEY_END] =
 	VK_RBUTTON,
 };
 
-
 CKeyMgr::CKeyMgr()
 {
 }
@@ -155,19 +154,14 @@ void CKeyMgr::Tick()
 		}
 
 		// 마우스 좌표 계산
+		m_vMousePrevPos = m_vMousePos;
+
 		POINT pt = {};
 		GetCursorPos(&pt);
 		ScreenToClient(CEngine::GetInst()->GetMainWind(), &pt);
 		m_vMousePos = Vec2((float)pt.x, (float)pt.y);
+
+		// 마우스 이동 방향
+		m_vMouseDrag = m_vMousePos - m_vMousePrevPos;
 	}
-}
-
-KEY_STATE CKeyMgr::GetKeyState(KEY _Key)
-{
-	return m_vecKeyData[_Key].eState;
-}
-
-Vec2 CKeyMgr::GetMousePos()
-{
-	return m_vMousePos;
 }

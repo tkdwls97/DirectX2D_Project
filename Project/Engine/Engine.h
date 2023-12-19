@@ -10,7 +10,7 @@ public:
 	void Progress();
 
 public:
-	HWND GetMainWind();
+	HWND GetMainWind() { return m_hMainWnd; }
 
 private:
 	HWND	m_hMainWnd;		// 메인 윈도우 핸들
