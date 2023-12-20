@@ -44,6 +44,7 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
 {
     //return float4(0.f, 0.f, 1.f, 1.f);
     
+    _in.vColor.a = 0.5f;
     
     return _in.vColor;
 }
