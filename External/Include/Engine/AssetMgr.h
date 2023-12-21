@@ -99,7 +99,6 @@ inline T* CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePat
 
 	pAsset->SetKey(_strKey);
 	pAsset->SetRelativePath(_strRelativePath);
-	wstring str = pAsset->GetRelativePath();
 	AddAsset<T>(_strKey, (T*)pAsset);
 
 	return (T*)pAsset;
