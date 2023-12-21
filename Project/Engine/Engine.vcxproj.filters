@@ -109,6 +109,18 @@
     <Filter Include="Script\00. Player">
       <UniqueIdentifier>{29b893ff-2d23-4edc-9bf0-ff446d75689a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="06. Asset\Material">
+      <UniqueIdentifier>{7b9e1790-7e1d-4447-8c80-607d4aa18006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. Asset\MeshData">
+      <UniqueIdentifier>{0f912ef6-0e8f-480b-9498-ace11908898e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. Asset\Sound">
+      <UniqueIdentifier>{3f1c0ee6-da6b-469c-8d04-c8ff94984ad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. Asset\Texture">
+      <UniqueIdentifier>{95fd2099-de2c-4b83-8871-1349bc5c9f26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -213,6 +225,9 @@
     <ClInclude Include="CameraMoveScript.h">
       <Filter>Script\01. Camera</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>06. Asset\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -292,6 +307,9 @@
     </ClCompile>
     <ClCompile Include="CameraMoveScript.cpp">
       <Filter>Script\01. Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>06. Asset\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

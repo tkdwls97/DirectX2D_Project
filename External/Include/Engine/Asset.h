@@ -3,6 +3,7 @@
 
 class CAsset : public CEntity
 {
+	friend class CAssetMgr;
 public:
 	CAsset(ASSET_TYPE _Type);
 	~CAsset();
@@ -22,6 +23,7 @@ private:
 
 	ASSET_TYPE GetType() { return m_Type; }
 
+	virtual int Load(const wstring& _strFilePath) { return E_FAIL; }
 
 private:
 	wstring             m_Key;

@@ -9,6 +9,7 @@ CTimeMgr::CTimeMgr()
 	, m_CurCount{}
 	, m_fTime(0.f)
 	, m_DeltaTime(0.f)
+	, m_iCall(0)
 {	
 
 }
@@ -19,7 +20,7 @@ CTimeMgr::~CTimeMgr()
 
 void CTimeMgr::Init()
 {
-	// Ï¥àÎãπ ÎπàÎèÑ
+	// √ ¥Á ∫Ûµµ
 	QueryPerformanceFrequency(&m_Frequency);
 
 	QueryPerformanceCounter(&m_PrevCount);
@@ -33,12 +34,12 @@ void CTimeMgr::Tick()
 
 	m_PrevCount = m_CurCount;
 
-	// DT Î≥¥Ï†ï
+	// DT ∫∏¡§
 	if ((1.f / 60.f) < m_DeltaTime)
 		m_DeltaTime = (1.f / 60.f);
 
 
-	// ÏãúÍ∞Ñ ÎàÑÏ†Å ==> 1Ï¥àÎßàÎã§ if Íµ¨Î¨∏ Ïã§Ìñâ
+	// Ω√∞£ ¥©¿˚ ==> 1√ ∏∂¥Ÿ if ±∏πÆ Ω««‡
 	m_fTime += m_DeltaTime;
 	if (1.f <= m_fTime)
 	{

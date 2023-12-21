@@ -40,7 +40,6 @@ int CMesh::Create(void* _Vtx, UINT _VtxCount, void* _Idx, UINT _IdxCount)
 	D3D11_SUBRESOURCE_DATA tSubData = {};
 	tSubData.pSysMem = _Vtx;
 	
-	
 	// 버텍스 버퍼 생성
 	if (FAILED(DEVICE->CreateBuffer(&m_VBDesc, &tSubData, m_VB.GetAddressOf())))
 	{
