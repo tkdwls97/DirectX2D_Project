@@ -6,7 +6,7 @@ wchar_t CPathMgr::g_szContent[255] = {};
 
 void CPathMgr::Init()
 {
-	// ì‹¤í–‰íŒŒì¼ ê²½ë¡œ
+	// ½ÇÇàÆÄÀÏ °æ·Î
 	::GetCurrentDirectory(255, g_szContent);
 
 	size_t Len = wcslen(g_szContent);
