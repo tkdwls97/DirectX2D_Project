@@ -1,5 +1,4 @@
 #pragma once
-#include "singleton.h"
 
 class CLevel;
 
@@ -12,6 +11,9 @@ public:
     void Init();
     void Tick();
     void Render();
+
+public:
+    CLevel* GetCurrentLevel() { return m_CurLevel; }
 
 private:
     CLevel* m_CurLevel;

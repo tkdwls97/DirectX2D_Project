@@ -9,6 +9,7 @@ class CCamera;
 
 class CGameObject : public CEntity
 {
+    friend class CLayer;
 public:
     CGameObject();
     ~CGameObject();
@@ -22,6 +23,8 @@ public:
 public:
     void AddComponent(CComponent* _Comonent);
     void DisconnectWithParent();
+    void DisconnectWithLayer();
+
     void AddChild(CGameObject* _Child);
 
     CComponent* GetComponent(COMPONENT_TYPE _Type) { return m_arrCom[(UINT)_Type]; }
@@ -40,6 +43,8 @@ private:
     vector<CGameObject*>    m_vecChild;
 
     CGameObject*            m_Parent;
+
+    int                     m_LayerIdx;    // 오브젝트가 소속되어있는 Layer 의 Index
 
 };
 

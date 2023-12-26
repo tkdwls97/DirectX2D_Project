@@ -103,12 +103,6 @@
     <Filter Include="08. Component\09.Script">
       <UniqueIdentifier>{4a357669-8081-4f0f-af55-d6ec8070429b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Script\01. Camera">
-      <UniqueIdentifier>{c301c7ac-3417-4b35-8e40-bcd26d190ba5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Script\00. Player">
-      <UniqueIdentifier>{29b893ff-2d23-4edc-9bf0-ff446d75689a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="06. Asset\Material">
       <UniqueIdentifier>{7b9e1790-7e1d-4447-8c80-607d4aa18006}</UniqueIdentifier>
     </Filter>
@@ -120,6 +114,18 @@
     </Filter>
     <Filter Include="06. Asset\Shader\MeshData">
       <UniqueIdentifier>{0f912ef6-0e8f-480b-9498-ace11908898e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Manager\TaskMgr">
+      <UniqueIdentifier>{fc8284a2-1870-4e60-bcb3-54b45280f9a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Player">
+      <UniqueIdentifier>{29b893ff-2d23-4edc-9bf0-ff446d75689a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Camera">
+      <UniqueIdentifier>{c301c7ac-3417-4b35-8e40-bcd26d190ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Missile">
+      <UniqueIdentifier>{5202c81b-623b-4e9f-8b61-f9165ac3f398}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -220,13 +226,19 @@
       <Filter>08. Component\09.Script</Filter>
     </ClInclude>
     <ClInclude Include="PlayerScript.h">
-      <Filter>Script\00. Player</Filter>
+      <Filter>Script\Player</Filter>
     </ClInclude>
     <ClInclude Include="CameraMoveScript.h">
-      <Filter>Script\01. Camera</Filter>
+      <Filter>Script\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>06. Asset\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskMgr.h">
+      <Filter>04. Manager\TaskMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MissileScript.h">
+      <Filter>Script\Missile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -303,13 +315,22 @@
       <Filter>08. Component\09.Script</Filter>
     </ClCompile>
     <ClCompile Include="PlayerScript.cpp">
-      <Filter>Script\00. Player</Filter>
+      <Filter>Script\Player</Filter>
     </ClCompile>
     <ClCompile Include="CameraMoveScript.cpp">
-      <Filter>Script\01. Camera</Filter>
+      <Filter>Script\Camera</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>06. Asset\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskMgr.cpp">
+      <Filter>04. Manager\TaskMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>00. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="MissileScript.cpp">
+      <Filter>Script\Missile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

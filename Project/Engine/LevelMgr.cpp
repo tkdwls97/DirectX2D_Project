@@ -23,7 +23,11 @@ CLevelMgr::CLevelMgr()
 
 CLevelMgr::~CLevelMgr()
 {
-
+	if (nullptr != m_CurLevel)
+	{
+		delete m_CurLevel;
+		m_CurLevel = nullptr;
+	}
 }
 
 void CLevelMgr::Init()
@@ -80,13 +84,16 @@ void CLevelMgr::Init()
 
 	pObj->AddChild(pChildObj);
 
-	m_CurLevel->AddObject(pObj, 0);
+	m_CurLevel->AddObject(pObj, 0, false);
 }
 
 void CLevelMgr::Tick()
 {
 	if (nullptr == m_CurLevel)
 		return;
+
+	// 이전 프레임에 등록된 오브젝트들 clear
+	m_CurLevel->clear();
 
 	m_CurLevel->Tick();
 	m_CurLevel->Finaltick();

@@ -25,10 +25,15 @@ int CGraphicsShader::CreateVertexShader(const wstring& _strRelativePath, const s
 	wstring strContentPath = CPathMgr::GetContentPath();
 	wstring strFilePath = strContentPath + _strRelativePath;
 
-	if (FAILED(D3DCompileFromFile(strFilePath.c_str(), nullptr
+	if (FAILED(D3DCompileFromFile(strFilePath.c_str()
+		, nullptr
 		, D3D_COMPILE_STANDARD_FILE_INCLUDE
-		, _strFuncName.c_str(), "vs_5_0", D3DCOMPILE_DEBUG, 0
-		, m_VSBlob.GetAddressOf(), m_ErrBlob.GetAddressOf())))
+		, _strFuncName.c_str()
+		, "vs_5_0"
+		, D3DCOMPILE_DEBUG
+		, 0
+		, m_VSBlob.GetAddressOf()
+		, m_ErrBlob.GetAddressOf())))
 	{
 		if (nullptr != m_ErrBlob)
 		{

@@ -105,6 +105,25 @@ enum class BS_TYPE
 	END,
 };
 
+// Task
+enum class TASK_TYPE
+{
+	// Param1 : Layer Index, Param2 : Object Adress
+	CREATE_OBJECT,
+
+	// Param1 : Object Adress
+	DELETE_OBJECT,
+
+	// Param1 : LEVEL_TYPE
+	LEVEL_CHANGE,
+
+	// Param1 : Parent Object, Param2 : Child Object
+	ADD_CHILD,
+
+	// Param1 : Parent Object, Param2 : Child Object
+	DISCONNECT_PARENT,
+};
+
 // Key Value
 enum KEY
 {

@@ -17,11 +17,18 @@ private:
 	void Finaltick();
 	void Render();
 
-	void AddObject(CGameObject* _Object) { m_vecParent.push_back(_Object); }
+	void AddObject(CGameObject* _Object, bool _bMove);
 
+public:
+	// 특정 오브젝트를 레이어에서 제거
+	void DetachGameObject(CGameObject* _Object);
+	void RegisterGameObject(CGameObject* _Object) { m_vecObjects.push_back(_Object); }
 
 private:
 	vector<CGameObject*>    m_vecParent;
+	vector<CGameObject*>    m_vecObjects;
+	int                     m_LayerIdx;
+
 
 };
 

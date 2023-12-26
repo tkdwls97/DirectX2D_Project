@@ -8,6 +8,7 @@
 #include "PathMgr.h"
 #include "AssetMgr.h"
 #include "LevelMgr.h"
+#include "TaskMgr.h"
 
 
 CEngine::CEngine()
@@ -56,4 +57,7 @@ void CEngine::Progress()
 	// Level Update
 	CLevelMgr::GetInst()->Tick();
 	CLevelMgr::GetInst()->Render();
+
+	// Task
+	CTaskMgr::GetInst()->Tick();
 }
