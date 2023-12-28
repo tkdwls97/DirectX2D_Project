@@ -177,10 +177,12 @@ call EngineCopy.bat</Command>
     <ClInclude Include="enums.h" />
     <ClInclude Include="func.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GarbageCollector.h" />
     <ClInclude Include="GraphicsShader.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LevelMgr.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshRender.h" />
     <ClInclude Include="MissileScript.h" />
@@ -215,10 +217,12 @@ call EngineCopy.bat</Command>
     <ClCompile Include="exturn.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GarbageCollector.cpp" />
     <ClCompile Include="GraphicsShader.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LevelMgr.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshRender.cpp" />
     <ClCompile Include="MissileScript.cpp" />

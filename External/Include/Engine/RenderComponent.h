@@ -1,8 +1,8 @@
 #pragma once
 #include "Component.h"
 
-class CMesh;
-class CGraphicsShader;
+#include "Mesh.h"
+#include "Material.h"
 
 
 class CRenderComponent : public CComponent
@@ -18,13 +18,13 @@ public:
 
 public:
     CMesh* GetMesh() { return m_Mesh; }
-    CGraphicsShader* GetShader() { return m_Shader; }
+    CMaterial* GetMaterial() { return m_Material; }
 
     void SetMesh(CMesh* _Mesh) { m_Mesh = _Mesh; }
-    void SetShader(CGraphicsShader* _Shader) { m_Shader = _Shader; }
+    void SetMaterial(CMaterial* _Material) { m_Material = _Material; }
 
 private:
-    CMesh* m_Mesh;
-    CGraphicsShader* m_Shader;
+    CMesh*      m_Mesh;
+    CMaterial*  m_Material;
 };
 

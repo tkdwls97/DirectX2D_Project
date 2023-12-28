@@ -2,6 +2,7 @@
 #include "Layer.h"
 
 #include "GameObject.h"
+#include "GarbageCollector.h"
 
 CLayer::CLayer()
 	: m_LayerIdx(-1)
@@ -32,9 +33,21 @@ void CLayer::Tick()
 
 void CLayer::Finaltick()
 {
-	for (size_t i = 0; i < m_vecParent.size(); ++i)
+	vector<CGameObject*>::iterator iter = m_vecParent.begin();
+
+	for (; iter != m_vecParent.end(); )
 	{
-		m_vecParent[i]->Finaltick();
+		(*iter)->Finaltick();
+
+		if ((*iter)->IsDead())
+		{
+			CGarbageCollector::GetInst()->Add(*iter);
+			iter = m_vecParent.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
 	}
 }
 

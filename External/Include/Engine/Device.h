@@ -14,8 +14,10 @@ private:
 	int CreateRasterizerState();
 	int CreateDepthStencilState();
 	int CreateBlendState();
+	int CreateSamplerState();
 
 	int CreateConstBuffer();
+
 
 public:
 	int Init(HWND _hWnd, Vec2 _vResolution);
@@ -30,6 +32,7 @@ public:
 	ComPtr<ID3D11RasterizerState> GetRSState(RS_TYPE _Type) { return m_arrRS[(UINT)_Type]; }
 	ComPtr<ID3D11DepthStencilState> GetDSState(DS_TYPE _Type) { return m_arrDS[(UINT)_Type]; }
 	ComPtr<ID3D11BlendState> GetBSState(BS_TYPE _Type) { return m_arrBS[(UINT)_Type]; }
+
 
 
 private:
@@ -53,5 +56,6 @@ private:
 	ComPtr<ID3D11RasterizerState>	m_arrRS[(UINT)RS_TYPE::END];	// 레스터라이저 타입설정 배열
 	ComPtr<ID3D11DepthStencilState>	m_arrDS[(UINT)DS_TYPE::END];	// 뎁스스텐실 타입설정 배열
 	ComPtr<ID3D11BlendState>		m_arrBS[(UINT)BS_TYPE::END];	// 블렌드스테이드 타입 설정 배열
+	ComPtr<ID3D11SamplerState>		m_arrSampler[2];
 };
 

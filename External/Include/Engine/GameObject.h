@@ -10,6 +10,8 @@ class CCamera;
 class CGameObject : public CEntity
 {
     friend class CLayer;
+    friend class CTaskMgr;
+
 public:
     CGameObject();
     ~CGameObject();
@@ -26,6 +28,7 @@ public:
     void DisconnectWithLayer();
 
     void AddChild(CGameObject* _Child);
+    bool IsDead() { return m_bDead; }
 
     CComponent* GetComponent(COMPONENT_TYPE _Type) { return m_arrCom[(UINT)_Type]; }
     CGameObject* GetParent() { return m_Parent; }
@@ -45,6 +48,6 @@ private:
     CGameObject*            m_Parent;
 
     int                     m_LayerIdx;    // 오브젝트가 소속되어있는 Layer 의 Index
-
+    bool                    m_bDead;
 };
 

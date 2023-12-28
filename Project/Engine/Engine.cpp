@@ -9,6 +9,7 @@
 #include "AssetMgr.h"
 #include "LevelMgr.h"
 #include "TaskMgr.h"
+#include "GarbageCollector.h"
 
 
 CEngine::CEngine()
@@ -58,6 +59,10 @@ void CEngine::Progress()
 	CLevelMgr::GetInst()->Tick();
 	CLevelMgr::GetInst()->Render();
 
+	//GarbageCollector
+	CGarbageCollector::GetInst()->Tick();
+
 	// Task
 	CTaskMgr::GetInst()->Tick();
+
 }

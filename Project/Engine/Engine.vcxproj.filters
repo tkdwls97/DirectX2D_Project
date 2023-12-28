@@ -127,6 +127,9 @@
     <Filter Include="Script\Missile">
       <UniqueIdentifier>{5202c81b-623b-4e9f-8b61-f9165ac3f398}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Manager\GarbageCollector">
+      <UniqueIdentifier>{7bd5ef27-e2ca-42d5-bb93-b329b7196a32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -240,6 +243,12 @@
     <ClInclude Include="MissileScript.h">
       <Filter>Script\Missile</Filter>
     </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>06. Asset\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="GarbageCollector.h">
+      <Filter>04. Manager\GarbageCollector</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -331,6 +340,12 @@
     </ClCompile>
     <ClCompile Include="MissileScript.cpp">
       <Filter>Script\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>06. Asset\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="GarbageCollector.cpp">
+      <Filter>04. Manager\GarbageCollector</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

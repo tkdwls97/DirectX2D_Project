@@ -64,25 +64,26 @@ void CLevelMgr::Init()
 	pObj->AddComponent(new CPlayerScript);
 
 	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
-	pObj->Transform()->SetRelativeScale(Vec3(100.f, 100.f, 1.f));
+	pObj->Transform()->SetRelativeScale(Vec3(1000.f, 1000.f, 1.f));
 
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
-	pObj->MeshRender()->SetShader(CAssetMgr::GetInst()->FindAsset<CGraphicsShader>(L"EffectShader"));
+	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
+	pObj->MeshRender()->GetMaterial()->m_Const.iArr[0] = 1;
 
-	CGameObject* pChildObj = new CGameObject;
-	pChildObj->SetName(L"Child");
+	//CGameObject* pChildObj = new CGameObject;
+	//pChildObj->SetName(L"Child");
 
-	pChildObj->AddComponent(new CTransform);
-	pChildObj->AddComponent(new CMeshRender);
+	//pChildObj->AddComponent(new CTransform);
+	//pChildObj->AddComponent(new CMeshRender);
 
-	pChildObj->Transform()->SetRelativePos(Vec3(200.f, 0.f, 0.f));
-	pChildObj->Transform()->SetRelativeScale(Vec3(150.f, 150.f, 1.f));
-	pChildObj->Transform()->SetAbsolute(true);
+	//pChildObj->Transform()->SetRelativePos(Vec3(200.f, 0.f, 0.f));
+	//pChildObj->Transform()->SetRelativeScale(Vec3(150.f, 150.f, 1.f));
+	//pChildObj->Transform()->SetAbsolute(true);
 
-	pChildObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
-	pChildObj->MeshRender()->SetShader(CAssetMgr::GetInst()->FindAsset<CGraphicsShader>(L"EffectShader"));
+	//pChildObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
+	//pChildObj->MeshRender()->SetShader(CAssetMgr::GetInst()->FindAsset<CGraphicsShader>(L"EffectShader"));
 
-	pObj->AddChild(pChildObj);
+	//pObj->AddChild(pChildObj);
 
 	m_CurLevel->AddObject(pObj, 0, false);
 }

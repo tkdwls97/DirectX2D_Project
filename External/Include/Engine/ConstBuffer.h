@@ -4,13 +4,13 @@
 class CConstBuffer : public CEntity
 {
 public:
-    CConstBuffer();
+    CConstBuffer(CB_TYPE _Type);
     ~CConstBuffer();
 
 public:
     int Create(UINT _ElementSize, UINT _ElementCount);
     void SetData(void* _Src, UINT _ElementCount = 0);
-    void UpdateData(UINT _RegisterNum);
+    void UpdateData();
 
 private:
     D3D11_BUFFER_DESC       m_Desc;
@@ -19,6 +19,7 @@ private:
     UINT                    m_ElementSize;
     UINT                    m_ElementCount;
 
+    CB_TYPE                 m_Type;
 
 };
 

@@ -9,12 +9,14 @@
 #include "LevelMgr.h"
 #include "Level.h"
 #include "Layer.h"
+#include "GarbageCollector.h"
 
 CGameObject::CGameObject()
 	: m_arrCom{}
 	, m_RenderCom(nullptr)
 	, m_Parent(nullptr)
 	, m_LayerIdx(-1) // 어떠한 레벨(레이어) 소속되어있지 않다.
+	, m_bDead(false)
 {
 }
 
@@ -75,9 +77,20 @@ void CGameObject::Finaltick()
 	CLayer* pCurLayer = CLevelMgr::GetInst()->GetCurrentLevel()->GetLayer(m_LayerIdx);
 	pCurLayer->RegisterGameObject(this);
 
-	for (size_t i = 0; i < m_vecChild.size(); ++i)
+	vector<CGameObject*>::iterator iter = m_vecChild.begin();
+	for (; iter != m_vecChild.end();)
 	{
-		m_vecChild[i]->Finaltick();
+		(*iter)->Finaltick();
+
+		if ((*iter)->m_bDead)
+		{
+			CGarbageCollector::GetInst()->Add(*iter);
+			iter = m_vecChild.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
 	}
 }
 
