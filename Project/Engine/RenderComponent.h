@@ -17,14 +17,14 @@ public:
     virtual void Render() = 0;
 
 public:
-    CMesh* GetMesh() { return m_Mesh; }
-    CMaterial* GetMaterial() { return m_Material; }
+    Ptr<CMesh> GetMesh() { return m_Mesh; }
+    Ptr<CMaterial> GetMaterial() { return m_Material; }
 
-    void SetMesh(CMesh* _Mesh) { m_Mesh = _Mesh; }
-    void SetMaterial(CMaterial* _Material) { m_Material = _Material; }
+    void SetMesh(Ptr<CMesh>  _Mesh) { m_Mesh = _Mesh; }
+    void SetMaterial(Ptr<CMaterial> _Material) { m_Material = _Material; }
 
 private:
-    CMesh*      m_Mesh;
-    CMaterial*  m_Material;
+    Ptr<CMesh>      m_Mesh;
+    Ptr<CMaterial>  m_Material;
 };
 

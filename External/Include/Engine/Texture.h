@@ -4,6 +4,7 @@
 
 class CTexture : public CAsset
 {
+    friend class CAssetMgr;
 public:
 	CTexture();
 	~CTexture();
@@ -11,10 +12,11 @@ public:
 
 public:
     void UpdateData(int _RegisterNum);
-
+    static void Clear(int _RegisterNum);
 
 private:
     virtual int Load(const wstring& _strFilePath) override;
+  
 
 private:
     ScratchImage                        m_Image;    // 텍스쳐 로딩 및 시스템메모리 관리

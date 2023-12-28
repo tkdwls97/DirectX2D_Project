@@ -53,6 +53,6 @@ typedef Vector4 Vec4;
 // 엔진 헤더 참조
 #include "singleton.h"
 #include "define.h"
+#include "enums.h"
 #include "struct.h"
 #include "func.h"
-#include "enums.h"

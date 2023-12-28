@@ -35,13 +35,6 @@ void CLevelMgr::Init()
 	// 초기 레벨 구성하기
 	m_CurLevel = new CLevel;
 
-	CTexture* pTex = CAssetMgr::GetInst()->Load<CTexture>(L"PlayerTexture", L"texture\\Effect.png");
-	if (nullptr != pTex)
-	{
-		pTex->UpdateData(0);
-	}
-
-
 	// Camera Object 생성
 	CGameObject* pCamObj = new CGameObject;
 	pCamObj->AddComponent(new CTransform);
@@ -68,22 +61,12 @@ void CLevelMgr::Init()
 
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
-	pObj->MeshRender()->GetMaterial()->m_Const.iArr[0] = 1;
+	pObj->MeshRender()->GetMaterial()->SetScalarParam(FLOAT_0, 0.f);
 
-	//CGameObject* pChildObj = new CGameObject;
-	//pChildObj->SetName(L"Child");
+	Ptr<CTexture> pTex = CAssetMgr::GetInst()->Load<CTexture>(L"PlayerTexture", L"texture\\Effect.png");
+	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_0, pTex);
 
-	//pChildObj->AddComponent(new CTransform);
-	//pChildObj->AddComponent(new CMeshRender);
 
-	//pChildObj->Transform()->SetRelativePos(Vec3(200.f, 0.f, 0.f));
-	//pChildObj->Transform()->SetRelativeScale(Vec3(150.f, 150.f, 1.f));
-	//pChildObj->Transform()->SetAbsolute(true);
-
-	//pChildObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
-	//pChildObj->MeshRender()->SetShader(CAssetMgr::GetInst()->FindAsset<CGraphicsShader>(L"EffectShader"));
-
-	//pObj->AddChild(pChildObj);
 
 	m_CurLevel->AddObject(pObj, 0, false);
 }

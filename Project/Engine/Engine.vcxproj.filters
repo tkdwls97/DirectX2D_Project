@@ -249,6 +249,9 @@
     <ClInclude Include="GarbageCollector.h">
       <Filter>04. Manager\GarbageCollector</Filter>
     </ClInclude>
+    <ClInclude Include="Ptr.h">
+      <Filter>06. Asset</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

@@ -1,9 +1,15 @@
 #pragma once
 #include "Entity.h"
 
+#include "Ptr.h"
+
 class CAsset : public CEntity
 {
 	friend class CAssetMgr;
+
+	template<typename T>
+	friend class Ptr;
+
 public:
 	CAsset(ASSET_TYPE _Type);
 	~CAsset();
@@ -16,8 +22,19 @@ private:
 	void SetKey(const wstring& _Key) { m_Key = _Key; }
 	void SetRelativePath(const wstring& _RelativePath) { m_RelativePath = _RelativePath; }
 
-	void AddRef() { ++m_RefCount; }
-	void SubRef() { --m_RefCount; }
+	void AddRef()
+	{
+		++m_RefCount;
+	}
+
+	void Release()
+	{
+		--m_RefCount;
+		if (0 >= m_RefCount)
+		{
+			delete this;
+		}
+	}
 
 	int GetRefCount() { return m_RefCount; }
 
