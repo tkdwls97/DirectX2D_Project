@@ -189,6 +189,7 @@ call EngineCopy.bat</Command>
     <ClInclude Include="PathMgr.h" />
     <ClInclude Include="PlayerScript.h" />
     <ClInclude Include="RenderComponent.h" />
+    <ClInclude Include="RenderMgr.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="TaskMgr.h" />
@@ -230,6 +231,8 @@ call EngineCopy.bat</Command>
     <ClCompile Include="PathMgr.cpp" />
     <ClCompile Include="PlayerScript.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
+    <ClCompile Include="RenderMgr.cpp" />
+    <ClCompile Include="RenderMgr_Init.cpp" />
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="TaskMgr.cpp" />
@@ -251,10 +254,12 @@ call EngineCopy.bat</Command>
     <None Include="SimpleMath.inl" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="debug.fx" />
     <FxCompile Include="std2d.fx">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">std2d</EntryPointName>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">std2d</EntryPointName>
     </FxCompile>
+    <FxCompile Include="value.fx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

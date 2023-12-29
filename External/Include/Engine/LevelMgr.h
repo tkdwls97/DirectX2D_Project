@@ -10,7 +10,6 @@ class CLevelMgr : public CSingleton<CLevelMgr>
 public:
     void Init();
     void Tick();
-    void Render();
 
 public:
     CLevel* GetCurrentLevel() { return m_CurLevel; }

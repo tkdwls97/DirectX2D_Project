@@ -124,6 +124,16 @@ enum class TASK_TYPE
 	DISCONNECT_PARENT,
 };
 
+// Debug Object
+enum class DEBUG_SHAPE
+{
+	RECT,
+	CIRCLE,
+
+	CUBE,
+	SPHERE,
+};
+
 // ScalarParam
 enum SCALAR_PARAM
 {

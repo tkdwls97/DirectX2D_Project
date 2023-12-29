@@ -51,20 +51,15 @@ void CLayer::Finaltick()
 	}
 }
 
-void CLayer::Render()
-{
-	for (size_t i = 0; i < m_vecObjects.size(); ++i)
-	{
-		m_vecObjects[i]->Render();
-	}
-}
 
 void CLayer::AddObject(CGameObject* _Object, bool _bMove)
 {
 	// _bMove : true  - 레이어에 입력되는 Object가 자식이 있는 경우, 자식까지 모두 해당 레이어로 넘어온다.
-	// _bMove : false - 레이어에 입력되는 Object의 자식은 해당 레이어로 같이 넘어오지 않는다. 단 자식오브젝트가 레이어 소속이 없는 경우(-1)에만 같이 변경한다.      AssortRock
+	/* _bMove : false - 레이어에 입력되는 Object의 자식은 해당 레이어로 같이 넘어오지 않는다.
+	                    단 자식오브젝트가 레이어 소속이 없는 경우(-1)에만 같이 변경한다.
+	*/
 
-	// 최상위 부모 오브젝트였다.
+	// 부모Object가 없음 -> 최상위 부모 오브젝트면
 	if (nullptr == _Object->GetParent())
 	{
 		// 다른 레이어 소속이었다

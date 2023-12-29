@@ -10,6 +10,7 @@
 #include "LevelMgr.h"
 #include "TaskMgr.h"
 #include "GarbageCollector.h"
+#include "RenderMgr.h"
 
 
 CEngine::CEngine()
@@ -44,6 +45,7 @@ int CEngine::Init(HWND _hWnd, Vec2 _vResolution)
 	CTimeMgr::GetInst()->Init();
 	CKeyMgr::GetInst()->Init();
 	CAssetMgr::GetInst()->Init();
+	CRenderMgr::GetInst()->Init();
 	CLevelMgr::GetInst()->Init();
 
 	return S_OK;
@@ -57,9 +59,9 @@ void CEngine::Progress()
 
 	// Level Update
 	CLevelMgr::GetInst()->Tick();
-	CLevelMgr::GetInst()->Render();
+	CRenderMgr::GetInst()->Tick();
 
-	//GarbageCollector
+	// GarbageCollector
 	CGarbageCollector::GetInst()->Tick();
 
 	// Task

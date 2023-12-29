@@ -16,15 +16,17 @@ public:
 	void Begin();
 	void Tick();
 	void Finaltick();
-	void Render();
 
 	void AddObject(CGameObject* _Object, int _LayerIdx, bool _bChildMove = true);
-	CLayer* GetLayer(int _layerIdx) { return m_arrLayer[_layerIdx]; }
+	void AddObject(CGameObject* _Object, const wstring& _strLayerName, bool _bChildMove = true);
+
+	CLayer* GetLayer(int _layerIdx) { return m_ArrLayer[_layerIdx]; }
+	CLayer* GetLayer(const wstring& _strLayerName);
 
 private:
-	void clear();
+	void Clear();
 
 private:
-	CLayer* m_arrLayer[LAYER_MAX];
+	CLayer* m_ArrLayer[LAYER_MAX];
 };
 

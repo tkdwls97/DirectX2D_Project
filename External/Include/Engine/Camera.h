@@ -11,6 +11,7 @@ public:
 
 public:
     virtual void Finaltick() override;
+    void Render();
 
 public:
     PROJ_TYPE GetProjType() { return m_ProjType; }
@@ -21,6 +22,15 @@ public:
 
     float GetFOV() { return m_FOV; }
     void SetFOV(float _FOV) { m_FOV = _FOV; }
+
+    const Matrix& GetViewMat() { return m_matView; }
+    const Matrix& GetProjMat() { return m_matProj; }
+
+    void SetCameraPriority(int _Priority);
+
+    void LayerCheck(UINT _LayerIdx, bool _bCheck);
+    void LayerCheck(const wstring& _strLayerName, bool _bCheck);
+    void LayerCheckAll() { m_LayerCheck = 0xffffffff; }
 
 private:
     PROJ_TYPE   m_ProjType;     // 투영 방식
@@ -37,7 +47,11 @@ private:
     float       m_Far;          // 투영 최대 거리
 
     // 변환 행렬
-    Matrix  m_matView;
-    Matrix  m_matProj;
+    Matrix      m_matView;
+    Matrix      m_matProj;
+
+    // 렌더링 할 LayerCheck
+    UINT        m_LayerCheck;
+
 };
 

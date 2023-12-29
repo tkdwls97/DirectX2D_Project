@@ -24,7 +24,7 @@ public:
 	void UpdateData();
 
 private:
-	tMtrlConst				 m_Const;
+	tMtrlConst				m_Const;
 	Ptr<CTexture>			m_TextureArr[(UINT)TEX_PARAM::END];
 	Ptr<CGraphicsShader>    m_GpShader;
 };

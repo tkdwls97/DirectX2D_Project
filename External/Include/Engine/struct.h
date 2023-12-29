@@ -9,6 +9,20 @@ struct Vtx
 	Vec2 vUV;		 // UV 좌표계 or Texture Coodinate
 };
 
+struct tDebugShapeInfo
+{
+	DEBUG_SHAPE	eShape;
+
+	Vec3		vWorldPos;
+	Vec3		vWorldScale;
+	Vec3		vWorldRot;
+	Matrix		matWorld;
+
+	Vec3		vColor;
+	float		fDuration;
+	bool		bDepthTest;
+};
+
 
 // ==================
 // 상수버퍼 대응 구조체
@@ -38,7 +52,7 @@ struct tMtrlConst
 
 	int	bTex[TEX_PARAM::END];
 
-	int iPadding[2];
+	int iPadding[2]; // 16Byte 단위를 맞추기 위한 패딩바이트
 };
 
 

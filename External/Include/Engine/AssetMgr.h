@@ -30,6 +30,11 @@ public:
 	Ptr<T> Load(const wstring& _strKey, const wstring& _strRelativePath);
 
 private:
+	void CreateDefaultMesh();
+	void CreateDefaultGraphicsShader();
+	void CreateDefaultMaterial();
+
+private:
 	map<wstring, Ptr<CAsset>>   m_mapAsset[(UINT)ASSET_TYPE::END];
 };
 

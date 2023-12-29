@@ -130,6 +130,9 @@
     <Filter Include="04. Manager\GarbageCollector">
       <UniqueIdentifier>{7bd5ef27-e2ca-42d5-bb93-b329b7196a32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Manager\RenderMgr">
+      <UniqueIdentifier>{2e0bac5c-42e4-423c-ae8f-2254ee9a5346}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -252,6 +255,9 @@
     <ClInclude Include="Ptr.h">
       <Filter>06. Asset</Filter>
     </ClInclude>
+    <ClInclude Include="RenderMgr.h">
+      <Filter>04. Manager\RenderMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -350,6 +356,12 @@
     <ClCompile Include="GarbageCollector.cpp">
       <Filter>04. Manager\GarbageCollector</Filter>
     </ClCompile>
+    <ClCompile Include="RenderMgr.cpp">
+      <Filter>04. Manager\RenderMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderMgr_Init.cpp">
+      <Filter>04. Manager\RenderMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -358,6 +370,12 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="std2d.fx">
+      <Filter>ShaderCode</Filter>
+    </FxCompile>
+    <FxCompile Include="value.fx">
+      <Filter>ShaderCode</Filter>
+    </FxCompile>
+    <FxCompile Include="debug.fx">
       <Filter>ShaderCode</Filter>
     </FxCompile>
   </ItemGroup>
