@@ -3,7 +3,7 @@
 
 
 CMissileScript::CMissileScript()
-	: m_fSpeed(1500.f)
+	: m_fSpeed(500.f)
 {
 }
 

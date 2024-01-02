@@ -4,7 +4,7 @@
 #include "MeshRender.h"
 #include "Camera.h"
 
-//#include "Collider2D.h"
+#include "Collider2D.h"
 //#include "Collider3D.h"
 
 //#include "Animator2D.h"

@@ -85,4 +85,21 @@ void CTransform::UpdateData()
 	pCB->UpdateData();
 }
 
+Vec3 CTransform::GetWorldScale()
+{
+	CGameObject* pParent = GetOwner()->GetParent();
+	Vec3 vWorldScale = m_vRelativeScale;
+
+	// 만약 부모 오브젝트가 있다면
+	if (pParent) 
+	{
+		// 부모 오브젝트의 크기를 곱한다
+		vWorldScale *= pParent->Transform()->GetRelativeScale();
+		// 상위 부모 오브젝트를 가리킨다
+		pParent = pParent->GetParent();
+	}
+
+	return vWorldScale;
+}
+
 

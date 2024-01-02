@@ -171,6 +171,7 @@ call EngineCopy.bat</Command>
     <ClInclude Include="AssetMgr.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMoveScript.h" />
+    <ClInclude Include="Collider2D.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="components.h" />
     <ClInclude Include="ConstBuffer.h" />
@@ -214,6 +215,7 @@ call EngineCopy.bat</Command>
     <ClCompile Include="AssetMgr.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraMoveScript.cpp" />
+    <ClCompile Include="Collider2D.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConstBuffer.cpp" />
     <ClCompile Include="exturn.cpp" />

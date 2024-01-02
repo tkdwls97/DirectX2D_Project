@@ -68,13 +68,21 @@ void CPlayerScript::Tick()
 		pObj->AddComponent(new CTransform);
 		pObj->AddComponent(new CMeshRender);
 		pObj->AddComponent(new CMissileScript);
+		pObj->AddComponent(new CCollider2D);
 
 		pObj->Transform()->SetRelativePos(Transform()->GetRelativePos());
 		pObj->Transform()->SetRelativeScale(Vec3(50.f, 50.f, 1.f));
+
+		pObj->Collider2D()->SetAbsolute(false);
+		pObj->Collider2D()->SetOffsetScale(Vec2(1.f, 1.f));
+		pObj->Collider2D()->SetOffsetPos(Vec2(0.f, 0.f));
 
 		pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 		pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
 
 		GamePlayStatic::SpawnGameObject(pObj, 0);
 	}
+
+	GamePlayStatic::DrawDebugRect(Vec3(0.f, 0.f, 0.f), Vec3(200.f, 200.f, 1.f), Vec3(0.f, 0.f, 0.f), Vec3(1.f, 1.f, 1.f), true, 20);
+	GamePlayStatic::DrawDebugCircle(Vec3(0.f, 0.f, 0.f), 200.f, Vec3(0.f, 1.f, 1.f), true);
 }

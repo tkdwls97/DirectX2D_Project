@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "RenderMgr.h"
 
+#include "TimeMgr.h"
 #include "Device.h"
 #include "Camera.h"
 #include "MeshRender.h"
@@ -49,7 +50,7 @@ void CRenderMgr::Render_Debug()
 	g_Transform.matProj = m_vecCam[0]->GetProjMat();
 
 	list<tDebugShapeInfo>::iterator iter = m_DebugShapeInfo.begin();
-	for (; iter != m_DebugShapeInfo.end(); ++iter)
+	for (; iter != m_DebugShapeInfo.end();)
 	{
 		switch ((*iter).eShape)
 		{
@@ -65,15 +66,34 @@ void CRenderMgr::Render_Debug()
 		case DEBUG_SHAPE::SPHERE:
 			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"SphereMesh"));
 			break;
+		case DEBUG_SHAPE::RECT_DEBUG:
+			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh_Debug"));
+			break;
+		case DEBUG_SHAPE::CIRCLE_DEBUG:
+			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"CircleMesh_Debug"));
+			break;
 		default:
 			break;
 		}
 
 		m_pDebugObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"DebugShapeMtrl"));
+		m_pDebugObj->MeshRender()->GetMaterial()->SetScalarParam(VEC4_0, (*iter).vColor);
+
 		m_pDebugObj->Transform()->SetWorldMat((*iter).matWorld);
 		m_pDebugObj->Transform()->UpdateData();
 
 		m_pDebugObj->Render();
+
+		// 설정한 Duration값에 따라서 사라지게 설정
+		(*iter).fLifeTime += DT;
+		if ((*iter).fDuration <= (*iter).fLifeTime)
+		{
+			iter = m_DebugShapeInfo.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
 	}
 }
 

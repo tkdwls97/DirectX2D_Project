@@ -80,9 +80,14 @@ void CLevelMgr::Init()
 	pObj->AddComponent(new CTransform);
 	pObj->AddComponent(new CMeshRender);
 	pObj->AddComponent(new CPlayerScript);
+	pObj->AddComponent(new CCollider2D);
 
 	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
 	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
+
+	pObj->Collider2D()->SetAbsolute(false);
+	pObj->Collider2D()->SetOffsetScale(Vec2(1.f, 1.f));
+	pObj->Collider2D()->SetOffsetPos(Vec2(1.f, 0.f));
 
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
@@ -110,8 +115,6 @@ void CLevelMgr::Init()
 	m_CurLevel->AddObject(pObj, L"UI", false);
 
 
-	// DebugRect √ ±‚»≠
-	GamePlayStatic::DrawDebugRect(Vec3(0.f, 0.f, 0.f), Vec3(200.f, 200.f, 1.f), Vec3(0.f, 0.f, 0.f), Vec3(1.f, 0.f, 1.f), true, 3);
 }
 
 void CLevelMgr::Tick()
