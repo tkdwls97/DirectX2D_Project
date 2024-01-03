@@ -23,7 +23,7 @@ void GamePlayStatic::DestroyGameObject(CGameObject* _Target)
 void GamePlayStatic::DrawDebugRect(const Matrix& _WorldMat, Vec3 _Color, bool _bDepthTest, float _Duration)
 {
 	tDebugShapeInfo info = {};
-	info.eShape = DEBUG_SHAPE::RECT_DEBUG;
+	info.eShape = DEBUG_SHAPE::RECT;
 	info.matWorld = _WorldMat;
 	info.vColor = _Color;
 	info.bDepthTest = _bDepthTest;
@@ -35,7 +35,7 @@ void GamePlayStatic::DrawDebugRect(const Matrix& _WorldMat, Vec3 _Color, bool _b
 void GamePlayStatic::DrawDebugRect(Vec3 _vWorldPos, Vec3 _vWorldScale, Vec3 _vWorldRot, Vec3 _Color, bool _bDepthTest, float _Duration)
 {
 	tDebugShapeInfo info = {};
-	info.eShape = DEBUG_SHAPE::RECT_DEBUG;
+	info.eShape = DEBUG_SHAPE::RECT;
 
 	info.vWorldPos = _vWorldPos;
 	info.vWorldScale = _vWorldScale;
@@ -55,7 +55,7 @@ void GamePlayStatic::DrawDebugRect(Vec3 _vWorldPos, Vec3 _vWorldScale, Vec3 _vWo
 void GamePlayStatic::DrawDebugCircle(Vec3 _vWorldPos, float _fRadius, Vec3 _Color, bool _bDepthTest, float _Duration)
 {
 	tDebugShapeInfo info = {};
-	info.eShape = DEBUG_SHAPE::CIRCLE_DEBUG;
+	info.eShape = DEBUG_SHAPE::CIRCLE;
 
 	info.vWorldPos = _vWorldPos;
 	info.vWorldScale = Vec3(_fRadius, _fRadius, 1.f);

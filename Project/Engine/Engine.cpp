@@ -11,6 +11,8 @@
 #include "TaskMgr.h"
 #include "GarbageCollector.h"
 #include "RenderMgr.h"
+#include "CollisionMgr.h"
+
 
 
 CEngine::CEngine()
@@ -59,6 +61,7 @@ void CEngine::Progress()
 
 	// Level Update
 	CLevelMgr::GetInst()->Tick();
+	CCollisionMgr::GetInst()->Tick();
 	CRenderMgr::GetInst()->Tick();
 
 	// GarbageCollector

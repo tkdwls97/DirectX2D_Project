@@ -55,22 +55,16 @@ void CRenderMgr::Render_Debug()
 		switch ((*iter).eShape)
 		{
 		case DEBUG_SHAPE::RECT:
-			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
+			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh_Debug"));
 			break;
 		case DEBUG_SHAPE::CIRCLE:
-			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"CircleMesh"));
+			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"CircleMesh_Debug"));
 			break;
 		case DEBUG_SHAPE::CUBE:
 			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"CubeMesh"));
 			break;
 		case DEBUG_SHAPE::SPHERE:
 			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"SphereMesh"));
-			break;
-		case DEBUG_SHAPE::RECT_DEBUG:
-			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh_Debug"));
-			break;
-		case DEBUG_SHAPE::CIRCLE_DEBUG:
-			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"CircleMesh_Debug"));
 			break;
 		default:
 			break;

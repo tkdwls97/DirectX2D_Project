@@ -128,11 +128,7 @@ enum class TASK_TYPE
 enum class DEBUG_SHAPE
 {
 	RECT,
-	RECT_DEBUG,
-
 	CIRCLE,
-	CIRCLE_DEBUG,
-
 	CUBE,
 	SPHERE,
 

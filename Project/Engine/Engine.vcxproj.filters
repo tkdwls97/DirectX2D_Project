@@ -133,6 +133,9 @@
     <Filter Include="04. Manager\RenderMgr">
       <UniqueIdentifier>{2e0bac5c-42e4-423c-ae8f-2254ee9a5346}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Manager\CollisionMgr">
+      <UniqueIdentifier>{a31c33e7-ab2d-4a15-a286-79a9f435a5e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -261,6 +264,9 @@
     <ClInclude Include="Collider2D.h">
       <Filter>08. Component\02. Collider2D</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionMgr.h">
+      <Filter>04. Manager\CollisionMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -367,6 +373,9 @@
     </ClCompile>
     <ClCompile Include="Collider2D.cpp">
       <Filter>08. Component\02. Collider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMgr.cpp">
+      <Filter>04. Manager\CollisionMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

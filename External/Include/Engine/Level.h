@@ -27,6 +27,6 @@ private:
 	void Clear();
 
 private:
-	CLayer* m_ArrLayer[LAYER_MAX];
+	CLayer*	 m_ArrLayer[LAYER_MAX];
 };
 
