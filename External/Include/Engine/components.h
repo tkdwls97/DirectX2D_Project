@@ -7,7 +7,7 @@
 #include "Collider2D.h"
 //#include "Collider3D.h"
 
-//#include "Animator2D.h"
+#include "Animator2D.h"
 //#include "Animator3D.h"
 //
 //#include "Light2D.h"

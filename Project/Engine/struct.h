@@ -24,6 +24,14 @@ struct tDebugShapeInfo
 	bool		bDepthTest;
 };
 
+struct tAnimData2D
+{
+	Vec2 vLeftTop;
+	Vec2 vSlizeSize;
+	Vec2 vOffset;
+	int  UseAnim2D;
+	int	 iPadding;
+};
 
 // ==================
 // 상수버퍼 대응 구조체

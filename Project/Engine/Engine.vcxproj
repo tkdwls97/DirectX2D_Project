@@ -167,10 +167,12 @@ call EngineCopy.bat</Command>
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animator2D.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetMgr.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMoveScript.h" />
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Collider2D.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Component.h" />
@@ -212,10 +214,12 @@ call EngineCopy.bat</Command>
     <ClInclude Include="Ptr.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animator2D.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetMgr.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraMoveScript.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Collider2D.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Component.cpp" />

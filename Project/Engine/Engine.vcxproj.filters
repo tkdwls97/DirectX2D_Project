@@ -136,6 +136,9 @@
     <Filter Include="04. Manager\CollisionMgr">
       <UniqueIdentifier>{a31c33e7-ab2d-4a15-a286-79a9f435a5e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="08. Component\04. Animator2D\Animation">
+      <UniqueIdentifier>{ca57936d-fd67-498d-9580-df0759b6802b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -267,6 +270,12 @@
     <ClInclude Include="CollisionMgr.h">
       <Filter>04. Manager\CollisionMgr</Filter>
     </ClInclude>
+    <ClInclude Include="Animator2D.h">
+      <Filter>08. Component\04. Animator2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>08. Component\04. Animator2D\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -376,6 +385,12 @@
     </ClCompile>
     <ClCompile Include="CollisionMgr.cpp">
       <Filter>04. Manager\CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator2D.cpp">
+      <Filter>08. Component\04. Animator2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>08. Component\04. Animator2D\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

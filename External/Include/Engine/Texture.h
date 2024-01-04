@@ -9,10 +9,13 @@ public:
 	CTexture();
 	~CTexture();
 
-
 public:
     void UpdateData(int _RegisterNum);
     static void Clear(int _RegisterNum);
+
+public:
+    UINT GetWidth() { return m_Desc.Width; }
+    UINT GetHeight() { return m_Desc.Height; }
 
 private:
     virtual int Load(const wstring& _strFilePath) override;
