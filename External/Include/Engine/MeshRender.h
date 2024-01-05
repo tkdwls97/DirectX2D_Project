@@ -8,6 +8,7 @@ public:
 
 public:
 	virtual void UpdateData() override;
+	virtual void Finaltick() override;
 	virtual void Render() override;
 
 };

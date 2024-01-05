@@ -6,19 +6,6 @@ class CConstBuffer;
 class CDevice : public CSingleton<CDevice>
 {
 	SINGLE(CDevice);
-
-private:
-	int CreateSwapChain();
-	int CreateTargetView();
-
-	int CreateRasterizerState();
-	int CreateDepthStencilState();
-	int CreateBlendState();
-	int CreateSamplerState();
-
-	int CreateConstBuffer();
-
-
 public:
 	int Init(HWND _hWnd, Vec2 _vResolution);
 	void ClearRenderTarget(float(&Color)[4]);
@@ -33,7 +20,16 @@ public:
 	ComPtr<ID3D11DepthStencilState> GetDSState(DS_TYPE _Type) { return m_arrDS[(UINT)_Type]; }
 	ComPtr<ID3D11BlendState> GetBSState(BS_TYPE _Type) { return m_arrBS[(UINT)_Type]; }
 
+private:
+	int CreateSwapChain();
+	int CreateTargetView();
 
+	int CreateRasterizerState();
+	int CreateDepthStencilState();
+	int CreateBlendState();
+	int CreateSamplerState();
+
+	int CreateConstBuffer();
 
 private:
 	ComPtr<ID3D11Device>			m_Device;		// GPU 皋葛府 包府, 按眉 积己, 滚欺 积己

@@ -10,38 +10,39 @@ class CAnimator2D;
 
 struct tAnimFrm
 {
-    Vec2    vLeftTop;
-    Vec2    vSlice;
-    Vec2    vOffset;
-    float   fDuration;
+	Vec2    vLeftTop;
+	Vec2    vSlice;
+	Vec2    vOffset;
+	Vec2    vBackground;
+	float   fDuration;
 };
 
 
 class CAnimation : public CEntity
 {
 public:
-    CAnimation();
-    ~CAnimation();
+	CAnimation();
+	~CAnimation();
 
 public:
-    void Finaltick();
-    void UpdateData();
-    static void Clear();
+	void Finaltick();
+	void UpdateData();
+	static void Clear();
 
 public:
-    void Create(CAnimator2D* _Animator, Ptr<CTexture> _Atlas, Vec2 _vLeftTop
-        , Vec2 _vSliceSize, Vec2 _vOffset, int _FrmCount, float _FPS);
+	void Create(CAnimator2D* _Animator, Ptr<CTexture> _Atlas, Vec2 _vLeftTop, Vec2 _vSliceSize, Vec2 _vOffset, Vec2 _vBackground, int _FrmCount, float _FPS);
+
 
 
 private:
-    CAnimator2D* m_Animator;
+	CAnimator2D* m_Animator;
 
-    vector<tAnimFrm>    m_vecFrm;
-    int                 m_CurFrmIdx;
-    bool                m_bFinish;
-    float               m_AccTime;
+	vector<tAnimFrm>    m_vecFrm;
+	int                 m_CurFrmIdx;
+	bool                m_bFinish;
+	float               m_AccTime;
 
-    Ptr<CTexture>       m_AtlasTex;
+	Ptr<CTexture>       m_AtlasTex;
 
 
 };
