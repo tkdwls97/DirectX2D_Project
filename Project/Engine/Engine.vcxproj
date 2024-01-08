@@ -196,6 +196,7 @@ call EngineCopy.bat</Command>
     <ClInclude Include="RenderMgr.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="StructuredBuffer.h" />
     <ClInclude Include="TaskMgr.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeMgr.h" />
@@ -243,6 +244,7 @@ call EngineCopy.bat</Command>
     <ClCompile Include="RenderMgr_Init.cpp" />
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="StructuredBuffer.cpp" />
     <ClCompile Include="TaskMgr.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeMgr.cpp" />

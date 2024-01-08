@@ -3,6 +3,7 @@
 
 class CGameObject;
 class CCamera;
+class CStructuredBuffer;
 
 class CRenderMgr : public CSingleton<CRenderMgr>
 {
@@ -28,6 +29,8 @@ private:
 	vector<CCamera*>        m_vecCam;		// 카메라를 저장할 vector (0번 Index -> main Camera)
 	list<tDebugShapeInfo>   m_DebugShapeInfo;
 	CGameObject*			m_pDebugObj;
+	CStructuredBuffer*		m_Light2DBuffer;
+
 	bool                    m_DebugPosition;
 };
 

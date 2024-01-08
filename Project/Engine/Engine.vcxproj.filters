@@ -139,6 +139,9 @@
     <Filter Include="08. Component\04. Animator2D\Animation">
       <UniqueIdentifier>{ca57936d-fd67-498d-9580-df0759b6802b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Device\StructuredBuffer">
+      <UniqueIdentifier>{89c3d2b4-62c8-491d-b118-6a5391146d73}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -276,6 +279,9 @@
     <ClInclude Include="Animation.h">
       <Filter>08. Component\04. Animator2D\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="StructuredBuffer.h">
+      <Filter>03. Device\StructuredBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -391,6 +397,9 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>08. Component\04. Animator2D\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="StructuredBuffer.cpp">
+      <Filter>03. Device\StructuredBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
