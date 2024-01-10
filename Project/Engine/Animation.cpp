@@ -83,6 +83,6 @@ void CAnimation::Create(CAnimator2D* _Animator, Ptr<CTexture> _Atlas, Vec2 _vLef
 		m_vecFrm.push_back(frm);
 	}
 
-	m_vecFrm[1].vOffset.x = 5.0f / (float)_Atlas->GetWidth();
+	//m_vecFrm[1].vOffset.x = 5.0f / (float)_Atlas->GetWidth();
 
 }

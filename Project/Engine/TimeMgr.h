@@ -10,17 +10,19 @@ public:
 	void Tick();
 
 public:
-	float GetDeltaTime();
+	float GetDeltaTime() { return (float)m_DeltaTime; }
+	double GetDeltaTime_d() { return m_DeltaTime; }
 
 private:
 	// Larget Integer 는 그냥 8바이트 long long 타입 정수로 취급
 	LARGE_INTEGER	m_Frequency;
 	LARGE_INTEGER	m_PrevCount;
 	LARGE_INTEGER	m_CurCount;
-	float			m_DeltaTime;
+	double			m_DeltaTime;
 
 
 	UINT			m_iCall;
-	float			m_fTime;
+	double			m_Time;
+
 };
 

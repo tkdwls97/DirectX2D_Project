@@ -11,7 +11,6 @@ CDevice::CDevice()
 	, m_arrBS{}
 	, m_arrSampler{}
 {
-
 }
 
 CDevice::~CDevice()
@@ -21,11 +20,12 @@ CDevice::~CDevice()
 
 int CDevice::Init(HWND _hWnd, Vec2 _vResolution)
 {
-	// 출력 윈도우 
+	// 출력 윈도우
 	m_hRenderWnd = _hWnd;
 
-	// 버퍼 해상도
+	// 버퍼 해상도 
 	m_vRenderResolution = _vResolution;
+
 
 	// 장치 초기화
 	D3D_FEATURE_LEVEL eLevel = D3D_FEATURE_LEVEL_11_0;
@@ -40,14 +40,14 @@ int CDevice::Init(HWND _hWnd, Vec2 _vResolution)
 		return E_FAIL;
 	}
 
-	// 스왑체인 생성
+	// 스왚체인 생성 
 	if (FAILED(CreateSwapChain()))
 	{
 		MessageBox(nullptr, L"SwapChain 생성 실패", L"Device 초기화 실패", MB_OK);
 		return E_FAIL;
 	}
 
-	// 렌더타겟, 렌더타겟 뷰, 뎁스 스텐실 타겟, 뎁스 스텐실 뷰 생성
+	// 렌더타겟, 렌더타겟 뷰, 뎁스스텐실 타겟, 뎁스 스텐실 뷰 생성
 	if (FAILED(CreateTargetView()))
 	{
 		MessageBox(nullptr, L"타겟 및 View 생성 실패", L"Device 초기화 실패", MB_OK);
@@ -79,6 +79,7 @@ int CDevice::Init(HWND _hWnd, Vec2 _vResolution)
 		return E_FAIL;
 	}
 
+
 	// ViewPort 설정
 	D3D11_VIEWPORT ViewportDesc = {};
 
@@ -86,7 +87,7 @@ int CDevice::Init(HWND _hWnd, Vec2 _vResolution)
 	ViewportDesc.MaxDepth = 1.f;
 
 	ViewportDesc.TopLeftX = 0;
-	ViewportDesc.TopLeftX = 0;
+	ViewportDesc.TopLeftY = 0;
 	ViewportDesc.Width = m_vRenderResolution.x;
 	ViewportDesc.Height = m_vRenderResolution.y;
 
@@ -97,6 +98,7 @@ int CDevice::Init(HWND _hWnd, Vec2 _vResolution)
 		MessageBox(nullptr, L"상수버퍼 생성 실패", L"Device 초기화 실패", MB_OK);
 		return E_FAIL;
 	}
+
 
 	return S_OK;
 }
@@ -112,13 +114,12 @@ void CDevice::Present()
 	m_SwapChain->Present(0, 0);
 }
 
-
 int CDevice::CreateSwapChain()
 {
 	// SwapChain 생성 구조체
 	DXGI_SWAP_CHAIN_DESC tDesc = {};
 
-	// SWapChain이 관리하는 Buffer(RenderTarget) 의 구성 정보
+	// SwapChain 이 관리하는 Buffer(RenderTarget) 의 구성 정보
 	tDesc.BufferCount = 1;
 	tDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	tDesc.BufferDesc.Width = (UINT)m_vRenderResolution.x;
@@ -134,9 +135,10 @@ int CDevice::CreateSwapChain()
 	tDesc.SampleDesc.Quality = 0;
 
 	tDesc.Windowed = true; // 창모드
-	tDesc.OutputWindow = m_hRenderWnd; // SwapChain의 출력 윈도우 지정
+	tDesc.OutputWindow = m_hRenderWnd; // SwapChain 의 출력 윈도우 지정
 
-	// 스왑체인 생성기능을 가진 Factory에 접근한다
+
+	// 스왚체인 생성기능을 가지고 있는 Factory 에 접근한다.
 	ComPtr<IDXGIDevice>		pIdxgiDevice = nullptr;
 	ComPtr<IDXGIAdapter>	pAdapter = nullptr;
 	ComPtr<IDXGIFactory>	pFactory = nullptr;
@@ -150,25 +152,26 @@ int CDevice::CreateSwapChain()
 	{
 		return E_FAIL;
 	}
+
+	// 전역 데이터에 렌더링 해상도 기록
+	g_global.g_RenderResolution = m_vRenderResolution;
+
 	return S_OK;
 }
 
 int CDevice::CreateTargetView()
 {
-	/*
-	ID3D11Resource; 부모
+	/*ID3D11Resource;
+	ID3D11Buffer;
+	ID3D11Texture2D;*/
 
-	- ID3D11Buffer; 자식
-	- ID3D11Texture2D; 자식
-	*/
-
-	// 렌더타겟 텍스쳐를 스왑체인으로부터 얻어온다.
+	// 렌더타겟 텍스쳐를 스왚체인으로부터 얻어온다.
 	m_SwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)m_RTTex.GetAddressOf());
 
-	// 렌더 타겟 뷰
+	// RenderTargetView
 	m_Device->CreateRenderTargetView(m_RTTex.Get(), nullptr, m_RTView.GetAddressOf());
 
-	// View ?
+	// View?
 	// RenderTargetView
 	// DepthStencilView
 	// ShaderResourceView
@@ -177,14 +180,14 @@ int CDevice::CreateTargetView()
 	// DepthStencilTexture 생성
 	D3D11_TEXTURE2D_DESC Desc = {};
 
-	// 픽셀 포맷은 Depth -> 3bytes Stencil -> 1bytes
+	// 픽셀 포맷은 Depth 3바이트 Stencil 1바이트
 	Desc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
 
-	// DepthStencilState 텍스처 해상도는 반드시 RenderTargetTexture 와 동일해야한다.
+	// DepthStencilState 텍스쳐 해상도는 반드시 RenderTargetTexture 와 동일해야한다.
 	Desc.Width = (UINT)m_vRenderResolution.x;
 	Desc.Height = (UINT)m_vRenderResolution.y;
 
-	// DepthStencil 용도(깊이 표현 -> z축)의 Texture
+	// DepthStencil 용도의 텍스쳐
 	Desc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 
 	// CPU 접근 불가
@@ -195,7 +198,7 @@ int CDevice::CreateTargetView()
 	Desc.SampleDesc.Count = 1;
 	Desc.SampleDesc.Quality = 0;
 
-	// 저퀼리티 버전의 사본 생성여부 (거리가 멀면 high 퀄리티로 만들 필요가 없음)
+	// 저퀄리티 버전의 사본 생성여부
 	Desc.MipLevels = 1;
 	Desc.MiscFlags = 0;
 
@@ -206,10 +209,10 @@ int CDevice::CreateTargetView()
 		return E_FAIL;
 	}
 
-	// DepthStencilView 생성
+	// DepthStencilView
 	m_Device->CreateDepthStencilView(m_DSTex.Get(), nullptr, m_DSView.GetAddressOf());
 
-	// OM(Output Merge State)에 RenderTargetTexture 와 DepthStencilTexture를 전달한다.
+	// OM(Output Merge State) 에 RenderTargetTexture 와 DepthStencilTexture 를 전달한다.
 	m_Context->OMSetRenderTargets(1, m_RTView.GetAddressOf(), m_DSView.Get());
 
 	return S_OK;
@@ -217,7 +220,7 @@ int CDevice::CreateTargetView()
 
 int CDevice::CreateRasterizerState()
 {
-	m_arrRS[(UINT)RS_TYPE::CULL_BACK] = nullptr;  // 디폴트 값이 CULL_BACK이기 때문에 nullptr 설정
+	m_arrRS[(UINT)RS_TYPE::CULL_BACK] = nullptr;
 
 	HRESULT result = S_OK;
 
@@ -248,14 +251,14 @@ int CDevice::CreateDepthStencilState()
 {
 	HRESULT hr = S_OK;
 
-	m_arrDS[(UINT)DS_TYPE::LESS] = nullptr;		// 디폴트 값이 LESS이기 때문에 nullptr 설정
+	m_arrDS[(UINT)DS_TYPE::LESS] = nullptr;
 
 	D3D11_DEPTH_STENCIL_DESC tDesc = {};
 
 	// Less Equal
-	tDesc.DepthEnable = true;								// 깊이값 적용 할지 말지 설정
-	tDesc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;			// 방식 설정 ex)물체의 거리가 가까운게 보이게한다
-	tDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;		// 깊이 값을 저장할지 설정
+	tDesc.DepthEnable = true;
+	tDesc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;
+	tDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
 	tDesc.StencilEnable = false;
 
 	hr = DEVICE->CreateDepthStencilState(&tDesc, m_arrDS[(UINT)DS_TYPE::LESS_EQUAL].GetAddressOf());
@@ -263,8 +266,8 @@ int CDevice::CreateDepthStencilState()
 
 	// Greater
 	tDesc.DepthEnable = true;
-	tDesc.DepthFunc = D3D11_COMPARISON_GREATER;					// 방식 설정 ex)물체의 거리가 멀면 보이게한다
-	tDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;			// 깊이 값을 저장할지 설정
+	tDesc.DepthFunc = D3D11_COMPARISON_GREATER;
+	tDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
 	tDesc.StencilEnable = false;
 	hr = DEVICE->CreateDepthStencilState(&tDesc, m_arrDS[(UINT)DS_TYPE::GRATER].GetAddressOf());
 	if (FAILED(hr)) return E_FAIL;
@@ -305,7 +308,7 @@ int CDevice::CreateDepthStencilState()
 
 int CDevice::CreateBlendState()
 {
-	m_arrBS[(UINT)BS_TYPE::DEFAULT] = nullptr;		// 디폴트를 nullptr로 설정
+	m_arrBS[(UINT)BS_TYPE::DEFAULT] = nullptr;
 
 
 	D3D11_BLEND_DESC tDesc = {};
@@ -327,7 +330,6 @@ int CDevice::CreateBlendState()
 
 	DEVICE->CreateBlendState(&tDesc, m_arrBS[(UINT)BS_TYPE::ALPHA_BLEND].GetAddressOf());
 
-	// 
 	tDesc.AlphaToCoverageEnable = false;
 	tDesc.IndependentBlendEnable = false;
 
@@ -397,6 +399,9 @@ int CDevice::CreateConstBuffer()
 
 	m_arrCB[(UINT)CB_TYPE::ANIM2D_DATA] = new CConstBuffer(CB_TYPE::ANIM2D_DATA);
 	m_arrCB[(UINT)CB_TYPE::ANIM2D_DATA]->Create(sizeof(tAnimData2D), 1);
+
+	m_arrCB[(UINT)CB_TYPE::GLOBAL_DATA] = new CConstBuffer(CB_TYPE::GLOBAL_DATA);
+	m_arrCB[(UINT)CB_TYPE::GLOBAL_DATA]->Create(sizeof(tGlobalData), 1);
 
 	return S_OK;
 }

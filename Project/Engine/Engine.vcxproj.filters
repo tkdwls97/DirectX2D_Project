@@ -142,6 +142,9 @@
     <Filter Include="03. Device\StructuredBuffer">
       <UniqueIdentifier>{89c3d2b4-62c8-491d-b118-6a5391146d73}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Script\BackGround">
+      <UniqueIdentifier>{a46e3e79-e131-435d-b672-3b6042f980fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -285,6 +288,9 @@
     <ClInclude Include="Light2D.h">
       <Filter>08. Component\06. Light2D</Filter>
     </ClInclude>
+    <ClInclude Include="BackgroundScript.h">
+      <Filter>Script\BackGround</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -407,6 +413,9 @@
     <ClCompile Include="Light2D.cpp">
       <Filter>08. Component\06. Light2D</Filter>
     </ClCompile>
+    <ClCompile Include="BackgroundScript.cpp">
+      <Filter>Script\BackGround</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -424,6 +433,9 @@
       <Filter>ShaderCode</Filter>
     </FxCompile>
     <FxCompile Include="struct.fx">
+      <Filter>ShaderCode</Filter>
+    </FxCompile>
+    <FxCompile Include="func.fx">
       <Filter>ShaderCode</Filter>
     </FxCompile>
   </ItemGroup>

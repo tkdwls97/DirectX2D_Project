@@ -3,8 +3,8 @@
 
 class CGameObject;
 class CCamera;
-class CStructuredBuffer;
 class CLight2D;
+class CStructuredBuffer;
 
 class CRenderMgr : public CSingleton<CRenderMgr>
 {

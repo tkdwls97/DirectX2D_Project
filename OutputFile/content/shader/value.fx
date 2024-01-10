@@ -1,6 +1,10 @@
 #ifndef _VALUE
 #define _VALUE
 
+#include "struct.fx"
+
+#define PI 3.1415926535f
+
 // 4096 크기제한
 cbuffer TRANSFORM : register(b0)
 {
@@ -62,8 +66,18 @@ cbuffer ANIM_DATA2D : register(b2)
     float2 g_vSlizeSize;
     float2 g_vBackground;
     float2 g_vOffset;
-    int    g_UseAnim2D;
+    int g_UseAnim2D;
     float3 padding;
+}
+
+cbuffer GLOBAL_DATA : register(b3)
+{
+    float2 g_RenderResolution; // 렌더링 해상도
+    float g_dt; // Delta Time
+    float g_time; // 누적 시간
+    int g_Light2DCount; // 2D 광원 개수
+    int g_Light3DCount; // 3D 광원 개수
+    float2 globalpadding;
 }
 
 
@@ -80,8 +94,10 @@ TextureCube g_texcube_1 : register(t7);
 Texture2DArray g_texarr_0 : register(t8);
 Texture2DArray g_texarr_1 : register(t9);
 
-
 Texture2D g_anim2d_tex : register(t10);
+
+StructuredBuffer<tLightInfo> g_Light2D : register(t11);
+StructuredBuffer<tLightInfo> g_Light3D : register(t12);
 
 
 SamplerState g_sam_0 : register(s0);

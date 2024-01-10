@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "RenderMgr.h"
 
+#include "Device.h"
+#include "ConstBuffer.h"
+
 #include "StructuredBuffer.h"
 
 #include "TimeMgr.h"
@@ -108,6 +111,16 @@ void CRenderMgr::Render_Debug()
 
 void CRenderMgr::UpdateData()
 {
+	g_global.g_Light2DCount = (int)m_vecLight2D.size();
+	//g_global.g_Light3DCount = (int)m_vecLight3D.size();
+
+	// 전역 데이터 업데이트
+	static CConstBuffer* pCB = CDevice::GetInst()->GetConstBuffer(CB_TYPE::GLOBAL_DATA);
+	pCB->SetData(&g_global);
+	pCB->UpdateData();
+
+
+	// 2D 광원정보 업데이트
 	static vector<tLightInfo> vecLight2DInfo;
 
 	for (size_t i = 0; i < m_vecLight2D.size(); ++i)
@@ -120,6 +133,9 @@ void CRenderMgr::UpdateData()
 	m_Light2DBuffer->UpdateData(11);
 
 	vecLight2DInfo.clear();
+
+
+	// 3D 광원정보 업데이트
 }
 
 void CRenderMgr::Clear()

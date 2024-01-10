@@ -8,7 +8,6 @@ public:
 	CLight2D();
 	~CLight2D();
 
-
 public:
 	virtual void Finaltick() override;
 

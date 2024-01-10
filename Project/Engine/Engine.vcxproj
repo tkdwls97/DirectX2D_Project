@@ -170,6 +170,7 @@ call EngineCopy.bat</Command>
     <ClInclude Include="Animator2D.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetMgr.h" />
+    <ClInclude Include="BackgroundScript.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMoveScript.h" />
     <ClInclude Include="Animation.h" />
@@ -219,6 +220,7 @@ call EngineCopy.bat</Command>
     <ClCompile Include="Animator2D.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetMgr.cpp" />
+    <ClCompile Include="BackgroundScript.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraMoveScript.cpp" />
     <ClCompile Include="Animation.cpp" />
@@ -267,6 +269,7 @@ call EngineCopy.bat</Command>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="debug.fx" />
+    <FxCompile Include="func.fx" />
     <FxCompile Include="std2d.fx">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">std2d</EntryPointName>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">std2d</EntryPointName>
