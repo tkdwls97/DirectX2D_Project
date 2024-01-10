@@ -282,6 +282,9 @@
     <ClInclude Include="StructuredBuffer.h">
       <Filter>03. Device\StructuredBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="Light2D.h">
+      <Filter>08. Component\06. Light2D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -401,6 +404,9 @@
     <ClCompile Include="StructuredBuffer.cpp">
       <Filter>03. Device\StructuredBuffer</Filter>
     </ClCompile>
+    <ClCompile Include="Light2D.cpp">
+      <Filter>08. Component\06. Light2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -415,6 +421,9 @@
       <Filter>ShaderCode</Filter>
     </FxCompile>
     <FxCompile Include="debug.fx">
+      <Filter>ShaderCode</Filter>
+    </FxCompile>
+    <FxCompile Include="struct.fx">
       <Filter>ShaderCode</Filter>
     </FxCompile>
   </ItemGroup>

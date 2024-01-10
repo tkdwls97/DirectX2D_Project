@@ -137,6 +137,13 @@ enum class DEBUG_SHAPE
 
 };
 
+enum class LIGHT_TYPE
+{
+	DIRECTIONAL,
+	POINT,
+	SPOT,
+};
+
 // ScalarParam
 enum SCALAR_PARAM
 {

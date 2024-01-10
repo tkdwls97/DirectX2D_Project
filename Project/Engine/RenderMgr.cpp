@@ -1,48 +1,44 @@
 #include "pch.h"
 #include "RenderMgr.h"
+
 #include "StructuredBuffer.h"
 
 #include "TimeMgr.h"
 #include "Device.h"
-#include "Camera.h"
-#include "MeshRender.h"
 #include "AssetMgr.h"
-#include "Transform.h"
+#include "components.h"
+
 
 CRenderMgr::CRenderMgr()
-	: m_pDebugObj(nullptr)
-	, m_Light2DBuffer(nullptr)
+	: m_Light2DBuffer(nullptr)
+	, m_pDebugObj(nullptr)
 	, m_DebugPosition(true)
 {
-
 }
 
 CRenderMgr::~CRenderMgr()
 {
 	if (nullptr != m_pDebugObj)
-	{
 		delete m_pDebugObj;
-		m_pDebugObj = nullptr;
-	}
+
 	if (nullptr != m_Light2DBuffer)
-	{
 		delete m_Light2DBuffer;
-		m_Light2DBuffer = nullptr;
-	}
 }
 
 void CRenderMgr::Tick()
 {
-	Vec4 vClearColor = Vec4(0.3f, 0.3f, 0.3f, 1.f);
+	Vec4 vClearColor = Vec4(0.f, 0.f, 0.f, 1.f);
 	CDevice::GetInst()->ClearRenderTarget(vClearColor);
 
-	Render();
+	UpdateData();
 
+	Render();
 	Render_Debug();
+
+	Clear();
 
 	CDevice::GetInst()->Present();
 }
-
 
 void CRenderMgr::Render()
 {
@@ -58,7 +54,7 @@ void CRenderMgr::Render_Debug()
 	g_Transform.matProj = m_vecCam[0]->GetProjMat();
 
 	list<tDebugShapeInfo>::iterator iter = m_DebugShapeInfo.begin();
-	for (; iter != m_DebugShapeInfo.end();)
+	for (; iter != m_DebugShapeInfo.end(); )
 	{
 		switch ((*iter).eShape)
 		{
@@ -71,6 +67,7 @@ void CRenderMgr::Render_Debug()
 		case DEBUG_SHAPE::CROSS:
 			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"CrossMesh"));
 			break;
+
 		case DEBUG_SHAPE::CUBE:
 			m_pDebugObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"CubeMesh"));
 			break;
@@ -89,12 +86,14 @@ void CRenderMgr::Render_Debug()
 		{
 			m_pDebugObj->MeshRender()->GetMaterial()->GetShader()->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_LINELIST);
 		}
+
 		m_pDebugObj->Transform()->SetWorldMat((*iter).matWorld);
 		m_pDebugObj->Transform()->UpdateData();
 
 		m_pDebugObj->Render();
 
-		// 설정한 Duration값에 따라서 사라지게 설정
+		m_pDebugObj->MeshRender()->GetMaterial()->GetShader()->SetTopology(PrevTopology);
+
 		(*iter).fLifeTime += DT;
 		if ((*iter).fDuration <= (*iter).fLifeTime)
 		{
@@ -105,6 +104,27 @@ void CRenderMgr::Render_Debug()
 			++iter;
 		}
 	}
+}
+
+void CRenderMgr::UpdateData()
+{
+	static vector<tLightInfo> vecLight2DInfo;
+
+	for (size_t i = 0; i < m_vecLight2D.size(); ++i)
+	{
+		const tLightInfo& info = m_vecLight2D[i]->GetLightInfo();
+		vecLight2DInfo.push_back(info);
+	}
+
+	m_Light2DBuffer->SetData(vecLight2DInfo.data(), vecLight2DInfo.size());
+	m_Light2DBuffer->UpdateData(11);
+
+	vecLight2DInfo.clear();
+}
+
+void CRenderMgr::Clear()
+{
+	m_vecLight2D.clear();
 }
 
 void CRenderMgr::RegisterCamera(CCamera* _Cam, int _Idx)

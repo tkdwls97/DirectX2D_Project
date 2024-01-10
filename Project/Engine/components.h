@@ -10,7 +10,7 @@
 #include "Animator2D.h"
 //#include "Animator3D.h"
 //
-//#include "Light2D.h"
+#include "Light2D.h"
 //#include "Light3D.h"
 //
 //#include "Skybox.h"

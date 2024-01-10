@@ -41,6 +41,7 @@ void CLevelMgr::Init()
 	m_CurLevel->GetLayer(2)->SetName(L"Tile");
 	m_CurLevel->GetLayer(3)->SetName(L"Player");
 	m_CurLevel->GetLayer(4)->SetName(L"Monster");
+	m_CurLevel->GetLayer(5)->SetName(L"Light");
 	m_CurLevel->GetLayer(31)->SetName(L"UI");
 
 
@@ -77,6 +78,20 @@ void CLevelMgr::Init()
 
 	m_CurLevel->AddObject(pCamObj, 0);
 
+	// 광원 추가
+	CGameObject* pLight = new CGameObject;
+	pLight->AddComponent(new CTransform);
+	pLight->AddComponent(new CMeshRender);
+	pLight->AddComponent(new CLight2D);
+
+	pLight->Light2D()->SetLightType(LIGHT_TYPE::DIRECTIONAL);
+	pLight->Light2D()->SetLightColor(Vec3(1.f, 1.f, 1.f));
+	pLight->Light2D()->SetAmbient(Vec3(0.8f, 0.3f, 0.4f));
+
+
+	pLight->Transform()->SetRelativePos(Vec3(0.f, 0.f, 200.f));
+	m_CurLevel->AddObject(pLight, L"Light");
+
 	// Player Object 생성
 	CGameObject* pObj = nullptr;
 
@@ -86,6 +101,7 @@ void CLevelMgr::Init()
 	pObj->AddComponent(new CTransform);
 	pObj->AddComponent(new CMeshRender);
 	pObj->AddComponent(new CCollider2D);
+	pObj->AddComponent(new CAnimator2D);
 	pObj->AddComponent(new CPlayerScript);
 
 	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
@@ -150,7 +166,7 @@ void CLevelMgr::Init()
 
 	m_CurLevel->AddObject(pObj, L"UI", false);
 
-
+	m_CurLevel->Begin();
 }
 
 void CLevelMgr::Tick()
