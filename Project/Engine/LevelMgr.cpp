@@ -11,6 +11,7 @@
 #include "PlayerScript.h"
 #include "CameraMoveScript.h"
 #include "BackgroundScript.h"
+#include "SpotLightScript.h"
 
 #include "Mesh.h"
 #include "GraphicsShader.h"
@@ -76,37 +77,46 @@ void CLevelMgr::Init()
 
 	m_CurLevel->AddObject(pCamObj, 0);
 
-	// 광원 추가
+	//// 광원 추가
+	//CGameObject* pLight = new CGameObject;
+	//pLight->AddComponent(new CTransform);
+	//pLight->AddComponent(new CMeshRender);
+	//pLight->AddComponent(new CLight2D);
+
+	//pLight->Light2D()->SetLightType(LIGHT_TYPE::POINT);
+	//pLight->Light2D()->SetLightColor(Vec3(1.f, 1.f, 1.f));
+	//pLight->Light2D()->SetRadius(300.f);
+
+	//pLight->Transform()->SetRelativePos(Vec3(0.f, 0.f, 200.f));
+	//m_CurLevel->AddObject(pLight, L"Light");
+
+
+	// Spot Light
 	CGameObject* pLight = new CGameObject;
 	pLight->AddComponent(new CTransform);
 	pLight->AddComponent(new CMeshRender);
 	pLight->AddComponent(new CLight2D);
+	pLight->AddComponent(new CSpotLightScript);
 
-	pLight->Light2D()->SetLightType(LIGHT_TYPE::POINT);
-	pLight->Light2D()->SetLightColor(Vec3(1.f, 0.3f, 0.3f));
+
+	pLight->Light2D()->SetLightType(LIGHT_TYPE::SPOT);
+	pLight->Light2D()->SetLightColor(Vec3(1.0f, 1.0f, 1.0f));
 	pLight->Light2D()->SetRadius(300.f);
-
-	pLight->Transform()->SetRelativePos(Vec3(-200.f, 0.f, 200.f));
+	pLight->Light2D()->SetAngle(XM_PI / 4.0f);
 	m_CurLevel->AddObject(pLight, L"Light");
 
-	// 두번째 광원 추가
-	pLight = new CGameObject;
-	pLight->AddComponent(new CTransform);
-	pLight->AddComponent(new CMeshRender);
-	pLight->AddComponent(new CLight2D);
+	//// 두번째 광원 추가
+	//pLight = new CGameObject;
+	//pLight->AddComponent(new CTransform);
+	//pLight->AddComponent(new CMeshRender);
+	//pLight->AddComponent(new CLight2D);
 
-	pLight->Light2D()->SetLightType(LIGHT_TYPE::POINT);
-	pLight->Light2D()->SetLightColor(Vec3(0.3f, 0.3f, 1.f));
-	pLight->Light2D()->SetRadius(300.f);
+	//pLight->Light2D()->SetLightType(LIGHT_TYPE::POINT);
+	//pLight->Light2D()->SetLightColor(Vec3(0.3f, 0.3f, 1.f));
+	//pLight->Light2D()->SetRadius(300.f);
 
-	pLight->Transform()->SetRelativePos(Vec3(200.f, 0.f, 200.f));
-	m_CurLevel->AddObject(pLight, L"Light");
-
-
-
-
-
-
+	//pLight->Transform()->SetRelativePos(Vec3(200.f, 0.f, 200.f));
+	//m_CurLevel->AddObject(pLight, L"Light");
 
 	CGameObject* pObj = nullptr;
 

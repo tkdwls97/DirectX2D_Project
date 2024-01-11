@@ -41,10 +41,35 @@ void CalLight2D(float3 _WorldPos, int _LightIdx, inout tLightColor _output)
     // Spot Light
     else
     {
-        // Point Light 거의 유사
-        // 내적을 활용, 각도 체크
-        // 간단한 영상 찍어서 올리기
-        // 광원을 회전시키기
+        float fAttenu = 1.f; 
+        
+        float fDist = distance(info.vWorldPos.xy, _WorldPos.xy);
+        
+        if (fDist < info.fRadius)
+        {
+           
+            float3 vecLen = _WorldPos - info.vWorldPos;
+            
+            float fDot = dot(vecLen, info.vWorldDir);
+            
+            float fAngle = acos(fDot / fDist);
+            
+            if (fAngle < info.fAngle)
+            {
+                if (g_int_0)
+                {
+                    float fTheta = (fDist / info.fRadius) * (PI / 2.f);
+                    fAttenu = saturate(cos(fTheta));
+                }
+                else
+                {
+                    fAttenu = saturate(1.f - fDist / g_Light2D[0].fRadius);
+                }
+            
+                _output.vColor += info.Color.vColor * fAttenu;
+            }
+        }
+        
     }
 }
 

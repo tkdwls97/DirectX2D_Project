@@ -18,7 +18,11 @@ void CLight2D::Finaltick()
 {
 	// 월드 위치값을 LightInfo 맴버에 갱신해놓는다.
 	Vec3 vWorldPos = Transform()->GetWorldPos();
+	Vec3 vWorldDir = Transform()->GetWorldDir(DIR_TYPE::RIGHT);
+
+
 	m_Info.vWorldPos = vWorldPos;
+	m_Info.vWorldDir = vWorldDir;
 
 	// 광원 등록
 	CRenderMgr::GetInst()->RegisterLight2D(this);

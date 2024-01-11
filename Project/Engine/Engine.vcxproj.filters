@@ -291,6 +291,9 @@
     <ClInclude Include="BackgroundScript.h">
       <Filter>Script\BackGround</Filter>
     </ClInclude>
+    <ClInclude Include="SpotLightScript.h">
+      <Filter>Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -415,6 +418,9 @@
     </ClCompile>
     <ClCompile Include="BackgroundScript.cpp">
       <Filter>Script\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="SpotLightScript.cpp">
+      <Filter>Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
