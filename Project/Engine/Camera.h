@@ -16,6 +16,7 @@ public:
 
 private:
     void Render(vector<CGameObject*>& _vecObj);
+    void Render_PostProcess();
 
 public:
     PROJ_TYPE GetProjType() { return m_ProjType; }

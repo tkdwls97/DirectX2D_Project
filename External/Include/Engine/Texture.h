@@ -17,6 +17,7 @@ public:
     UINT GetWidth() { return m_Desc.Width; }
     UINT GetHeight() { return m_Desc.Height; }
 
+    ComPtr<ID3D11Texture2D>           GetTex2D() { return m_Tex2D; }
     ComPtr<ID3D11RenderTargetView>    GetRTV() { return m_RTV; }
     ComPtr<ID3D11DepthStencilView>    GetDSV() { return m_DSV; }
     ComPtr<ID3D11ShaderResourceView>  GetSRV() { return m_SRV; }
@@ -28,7 +29,8 @@ private:
     int Create(UINT _Width, UINT _Height
         , DXGI_FORMAT _Format, UINT _BindFlag
         , D3D11_USAGE _Usage = D3D11_USAGE_DEFAULT);
-  
+
+    int Create(ComPtr<ID3D11Texture2D> _tex2D);
 
 private:
     ScratchImage                        m_Image;    // 텍스쳐 로딩 및 시스템메모리 관리
@@ -40,6 +42,7 @@ private:
     ComPtr<ID3D11ShaderResourceView>    m_SRV;      // 쉐이더에서 사용하는 용도(텍스쳐 레지스터(t) 바인딩)
     ComPtr<ID3D11UnorderedAccessView>   m_UAV;      // GPGPU(General Purpose GPU) - ComputeShader,
                                                     // 읽기 쓰기 동시가능, (Unordered Register(u) 에 바인딩 가능)
+
 
 };
 

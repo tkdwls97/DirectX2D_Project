@@ -428,6 +428,9 @@
     <ClCompile Include="SpotLightScript.cpp">
       <Filter>Script</Filter>
     </ClCompile>
+    <ClCompile Include="AssetMgr_Init.cpp">
+      <Filter>04. Manager\AssetMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">

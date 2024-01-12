@@ -24,7 +24,8 @@ public:
 	void RegisterCamera(CCamera* _Cam, int _Idx);
 	void AddDebugShapeInfo(const tDebugShapeInfo& _Info) { m_DebugShapeInfo.push_back(_Info); }
 	void RegisterLight2D(CLight2D* _Light2D) { m_vecLight2D.push_back(_Light2D); }
-
+	void CopyRenderTargetToPostProcessTarget();
+	Ptr<CTexture> GetPostProcessTex() { return m_PostProcessTex; }
 private:
 	void Render();
 	void Render_Debug();

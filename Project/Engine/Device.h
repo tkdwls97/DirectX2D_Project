@@ -40,16 +40,14 @@ private:
 	ComPtr<IDXGISwapChain>			m_SwapChain;	// 스왑체인 (출력 버퍼 지정)
 	
 	// OM(Output Merge State)
-	ComPtr<ID3D11Texture2D>			m_RTTex;		// 렌더 타겟 텍스쳐
-	ComPtr<ID3D11RenderTargetView>  m_RTView;		// 렌더 타겟 뷰 (렌더 타겟 텍스처를 전달하는 용도)
-
+	Ptr<CTexture>					m_RTTex;
 	Ptr<CTexture>					m_DSTex;
 
 	HWND							m_hRenderWnd;
 	Vec2							m_vRenderResolution;
 
-	CConstBuffer*					m_arrCB[(UINT)CB_TYPE::END];
 
+	CConstBuffer*					m_arrCB[(UINT)CB_TYPE::END];
 	ComPtr<ID3D11RasterizerState>	m_arrRS[(UINT)RS_TYPE::END];	// 레스터라이저 타입설정 배열
 	ComPtr<ID3D11DepthStencilState>	m_arrDS[(UINT)DS_TYPE::END];	// 뎁스스텐실 타입설정 배열
 	ComPtr<ID3D11BlendState>		m_arrBS[(UINT)BS_TYPE::END];	// 블렌드스테이드 타입 설정 배열
