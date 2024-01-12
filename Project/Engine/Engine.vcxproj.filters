@@ -145,6 +145,12 @@
     <Filter Include="Script\BackGround">
       <UniqueIdentifier>{a46e3e79-e131-435d-b672-3b6042f980fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\Render">
+      <UniqueIdentifier>{7ce43e93-1292-4d79-b211-329af7dfae31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderCode\Utill">
+      <UniqueIdentifier>{b37c5f89-2ae2-4f16-b7f9-b74948562929}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -429,20 +435,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="std2d.fx">
-      <Filter>ShaderCode</Filter>
-    </FxCompile>
-    <FxCompile Include="value.fx">
-      <Filter>ShaderCode</Filter>
-    </FxCompile>
     <FxCompile Include="debug.fx">
-      <Filter>ShaderCode</Filter>
+      <Filter>ShaderCode\Render</Filter>
     </FxCompile>
-    <FxCompile Include="struct.fx">
-      <Filter>ShaderCode</Filter>
+    <FxCompile Include="std2d.fx">
+      <Filter>ShaderCode\Render</Filter>
     </FxCompile>
     <FxCompile Include="func.fx">
-      <Filter>ShaderCode</Filter>
+      <Filter>ShaderCode\Utill</Filter>
+    </FxCompile>
+    <FxCompile Include="struct.fx">
+      <Filter>ShaderCode\Utill</Filter>
+    </FxCompile>
+    <FxCompile Include="value.fx">
+      <Filter>ShaderCode\Utill</Filter>
+    </FxCompile>
+    <FxCompile Include="postprocess.fx">
+      <Filter>ShaderCode\Render</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

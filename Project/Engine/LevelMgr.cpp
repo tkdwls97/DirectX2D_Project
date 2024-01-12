@@ -198,6 +198,18 @@ void CLevelMgr::Init()
 
 	m_CurLevel->AddObject(pObj, L"UI", false);
 
+	// PostProcess 오브젝트 추가
+	pObj = new CGameObject;
+	pObj->SetName(L"GrayFilter");
+
+	pObj->AddComponent(new CTransform);
+	pObj->AddComponent(new CMeshRender);
+
+	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
+	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"GrayFilterMtrl"));
+
+	m_CurLevel->AddObject(pObj, L"Default", false);
+
 
 	m_CurLevel->Begin();
 }

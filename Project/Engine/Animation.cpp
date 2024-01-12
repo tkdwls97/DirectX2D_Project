@@ -28,7 +28,7 @@ void CAnimation::Finaltick()
 		++m_CurFrmIdx;
 		if (m_vecFrm.size() <= m_CurFrmIdx)
 		{
-			m_CurFrmIdx = m_vecFrm.size() - 1;
+			m_CurFrmIdx = (int)m_vecFrm.size() - 1;
 			m_bFinish = true;
 		}
 		m_AccTime = 0.f;

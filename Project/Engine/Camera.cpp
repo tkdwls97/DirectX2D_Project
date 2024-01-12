@@ -3,11 +3,13 @@
 
 #include "Device.h"
 #include "Transform.h"
+
 #include "RenderMgr.h"
 #include "LevelMgr.h"
 #include "Level.h"
 #include "Layer.h"
 #include "GameObject.h"
+#include "RenderComponent.h"
 
 
 CCamera::CCamera()
@@ -26,8 +28,8 @@ CCamera::CCamera()
 
 CCamera::~CCamera()
 {
-
 }
+
 
 void CCamera::Finaltick()
 {
@@ -65,32 +67,7 @@ void CCamera::Finaltick()
 		m_matProj = XMMatrixPerspectiveFovLH(m_FOV, m_AspectRatio, 1.f, m_Far);
 	}
 
-	// 계산한 view 행렬과 proj 행렬을 전역변수에 담아둔다.
-	g_Transform.matView = m_matView;
-	g_Transform.matProj = m_matProj;
-}
 
-void CCamera::Render()
-{
-	// 계산한 view 행렬과 proj 행렬을 전역변수에 담아둔다.
-	g_Transform.matView = m_matView;
-	g_Transform.matProj = m_matProj;
-
-	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurrentLevel();
-
-	for (int i = 0; i < LAYER_MAX; ++i)
-	{
-		// 카메라가 찍도록 설정된 Layer 가 아니면 무시
-		if (false == (m_LayerCheck & (1 << i)))
-			continue;
-
-		CLayer* pLayer = pCurLevel->GetLayer(i);
-		const vector<CGameObject*>& vecObjects = pLayer->GetLayerObjects();
-		for (size_t i = 0; i < vecObjects.size(); ++i)
-		{
-			vecObjects[i]->Render();
-		}
-	}
 }
 
 void CCamera::SetCameraPriority(int _Priority)
@@ -120,4 +97,72 @@ void CCamera::LayerCheck(const wstring& _strLayerName, bool _bCheck)
 
 	int idx = pLayer->GetLayerIdx();
 	LayerCheck(idx, _bCheck);
+}
+
+void CCamera::SortObject()
+{
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+
+	for (int i = 0; i < LAYER_MAX; ++i)
+	{
+		// 카메라가 찍도록 설정된 Layer 가 아니면 무시
+		if (false == (m_LayerCheck & (1 << i)))
+			continue;
+
+		CLayer* pLayer = pCurLevel->GetLayer(i);
+		const vector<CGameObject*>& vecObjects = pLayer->GetLayerObjects();
+		for (size_t j = 0; j < vecObjects.size(); ++j)
+		{
+			// 메쉬, 재질, 쉐이더 확인
+			if (!(vecObjects[j]->GetRenderComopnent()
+				&& vecObjects[j]->GetRenderComopnent()->GetMesh().Get()
+				&& vecObjects[j]->GetRenderComopnent()->GetMaterial().Get()
+				&& vecObjects[j]->GetRenderComopnent()->GetMaterial()->GetShader().Get()))
+			{
+				continue;
+			}
+
+			SHADER_DOMAIN domain = vecObjects[j]->GetRenderComopnent()->GetMaterial()->GetShader()->GetDomain();
+
+			switch (domain)
+			{
+			case SHADER_DOMAIN::DOMAIN_OPAQUE:
+				m_vecOpaque.push_back(vecObjects[j]);
+				break;
+			case SHADER_DOMAIN::DOMAIN_MASKED:
+				m_vecMaked.push_back(vecObjects[j]);
+				break;
+			case SHADER_DOMAIN::DOMAIN_TRANSPARENT:
+				m_vecTransparent.push_back(vecObjects[j]);
+				break;
+			case SHADER_DOMAIN::DOMAIN_POSTPROCESS:
+				m_vecPostProcess.push_back(vecObjects[j]);
+				break;
+			case SHADER_DOMAIN::DOMAIN_DEBUG:
+				break;
+			}
+		}
+	}
+}
+
+void CCamera::Render()
+{
+	// 계산한 view 행렬과 proj 행렬을 전역변수에 담아둔다.
+	g_Transform.matView = m_matView;
+	g_Transform.matProj = m_matProj;
+
+	// Domain 순서대로 렌더링
+	Render(m_vecOpaque);
+	Render(m_vecMaked);
+	Render(m_vecTransparent);
+	Render(m_vecPostProcess);
+}
+
+void CCamera::Render(vector<CGameObject*>& _vecObj)
+{
+	for (size_t i = 0; i < _vecObj.size(); ++i)
+	{
+		_vecObj[i]->Render();
+	}
+	_vecObj.clear();
 }

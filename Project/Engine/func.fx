@@ -53,7 +53,7 @@ void CalLight2D(float3 _WorldPos, int _LightIdx, inout tLightColor _output)
             float fDot = dot(vecLen, info.vWorldDir);
             
             float fAngle = acos(fDot / fDist);
-            
+           
             if (fAngle < info.fAngle)
             {
                 if (g_int_0)

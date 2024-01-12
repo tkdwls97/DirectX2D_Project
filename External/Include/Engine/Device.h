@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Texture.h"
+
 class CConstBuffer;
 
 // Direct11 기준 GPU 제어
@@ -41,8 +43,7 @@ private:
 	ComPtr<ID3D11Texture2D>			m_RTTex;		// 렌더 타겟 텍스쳐
 	ComPtr<ID3D11RenderTargetView>  m_RTView;		// 렌더 타겟 뷰 (렌더 타겟 텍스처를 전달하는 용도)
 
-	ComPtr<ID3D11Texture2D>			m_DSTex;		// 뎊스 스텐실 텍스처 (깊이 값)
-	ComPtr<ID3D11DepthStencilView>  m_DSView;		// 뎊스 스텐실 View (뎊스 스텐실 텍스처를 전달하는 용도)
+	Ptr<CTexture>					m_DSTex;
 
 	HWND							m_hRenderWnd;
 	Vec2							m_vRenderResolution;
@@ -53,5 +54,7 @@ private:
 	ComPtr<ID3D11DepthStencilState>	m_arrDS[(UINT)DS_TYPE::END];	// 뎁스스텐실 타입설정 배열
 	ComPtr<ID3D11BlendState>		m_arrBS[(UINT)BS_TYPE::END];	// 블렌드스테이드 타입 설정 배열
 	ComPtr<ID3D11SamplerState>		m_arrSampler[2];
+
+
 };
 

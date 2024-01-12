@@ -1,6 +1,8 @@
 #pragma once
 #include "Singleton.h"
 
+#include "Texture.h"
+
 class CGameObject;
 class CCamera;
 class CLight2D;
@@ -41,5 +43,6 @@ private:
 	vector<CLight2D*>       m_vecLight2D;
 
 	bool                    m_DebugPosition;
+	Ptr<CTexture>           m_PostProcessTex;
 };
 

@@ -272,6 +272,7 @@ call EngineCopy.bat</Command>
   <ItemGroup>
     <FxCompile Include="debug.fx" />
     <FxCompile Include="func.fx" />
+    <FxCompile Include="postprocess.fx" />
     <FxCompile Include="std2d.fx">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">std2d</EntryPointName>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">std2d</EntryPointName>

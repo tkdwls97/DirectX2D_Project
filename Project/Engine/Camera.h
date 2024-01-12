@@ -11,7 +11,11 @@ public:
 
 public:
     virtual void Finaltick() override;
+    void SortObject();
     void Render();
+
+private:
+    void Render(vector<CGameObject*>& _vecObj);
 
 public:
     PROJ_TYPE GetProjType() { return m_ProjType; }
@@ -31,6 +35,8 @@ public:
     void LayerCheck(UINT _LayerIdx, bool _bCheck);
     void LayerCheck(const wstring& _strLayerName, bool _bCheck);
     void LayerCheckAll() { m_LayerCheck = 0xffffffff; }
+
+
 
 private:
     PROJ_TYPE   m_ProjType;     // 투영 방식
@@ -52,6 +58,12 @@ private:
 
     // 렌더링 할 LayerCheck
     UINT        m_LayerCheck;
+
+    // 물체 분류
+    vector<CGameObject*>    m_vecOpaque;
+    vector<CGameObject*>    m_vecMaked;
+    vector<CGameObject*>    m_vecTransparent;
+    vector<CGameObject*>    m_vecPostProcess;
 
 };
 
