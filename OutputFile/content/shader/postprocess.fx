@@ -76,16 +76,16 @@ float4 PS_Distortion(VS_OUT _in) : SV_Target
         
         //vScreenUV += vNoise;
         
-        float2 vWarpUV = vScreenUV * 2.f;
+        float2 vWarpUV = vScreenUV * 10.f;
     
         float len = length(vWarpUV);
-        float2 st = vWarpUV * 0.1f + 0.2 * float2(cos(0.071f * g_time * 2.f + len), sin(0.073 * g_time * 2.f - len));
+        float2 st = vWarpUV * 0.1f + 0.2 * float2(cos(0.071f * g_time * 8.f + len), sin(0.073 * g_time * 8.f - len));
         float3 warpedCol = g_tex_0.Sample(g_sam_0, st).xyz * 2.0f;
         float w = max(warpedCol.r, 0.85);
         
         float2 offset = 0.01 * cos(warpedCol.rg * 3.141592f);
-        vColor = float4(g_postprocess.Sample(g_sam_0, vScreenUV + offset).rgb * float3(0.8, 0.8, 1.5), 1.0f);
-        vColor *= w * 1.2;
+        vColor = float4(g_postprocess.Sample(g_sam_0, vScreenUV + offset).rgb * float3(0.8f, 0.8f, 1.5f), 1.0f);
+        vColor *= w * 1.2f;
     }
         
    //vColor = g_postprocess.Sample(g_sam_0, vScreenUV);
