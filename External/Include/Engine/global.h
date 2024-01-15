@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <Windows.h>
 #include <string>
+#include <string.h>
 
 #include <vector>
 #include <list>
@@ -15,6 +16,7 @@ using std::make_pair;
 
 using std::wstring;
 using std::string;
+
 
 
 
@@ -56,3 +58,4 @@ typedef Vector4 Vec4;
 #include "enums.h"
 #include "struct.h"
 #include "func.h"
+

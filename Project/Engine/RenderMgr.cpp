@@ -40,11 +40,16 @@ void CRenderMgr::Tick()
 
 	Clear();
 
-	CDevice::GetInst()->Present();
 }
 
 void CRenderMgr::Render()
 {
+	// 렌더타겟 및 깊이 타겟 설정
+	// ImGui에서 윈도우 창 밖으로 벗어날 시 렌더타겟을 다시 설정하기 때문에 렌더링 전에 렌더타겟을 다시 갱신해줘야한다. 
+	Ptr<CTexture> pRTTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"RenderTargetTex");
+	Ptr<CTexture> pDSTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"DepthStencilTex");
+	CONTEXT->OMSetRenderTargets(1, pRTTex->GetRTV().GetAddressOf(), pDSTex->GetDSV().Get());
+
 	for (size_t i = 0; i < m_vecCam.size(); ++i)
 	{
 		m_vecCam[i]->SortObject();
