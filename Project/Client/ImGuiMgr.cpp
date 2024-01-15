@@ -91,16 +91,16 @@ void CImGuiMgr::Tick()
     // 2. Key값이 같으면 안되기 때문에 ##뒤에 오는 str을 다르게하여 이름이 같아도 다른 창을 구현 가능
     // 3. 컴파일 후 exe실행 파일이 저장되는 폴더에 마지막으로 수정했던 창의 정보를 저장하고 있는
     //    imgui.ini 파일이 생성된다.
-    ImGui::Begin("MyWindow 0##aaaa");
-    ImVec2 vSize = ImGui::GetWindowSize();
-    ImGui::Button("Test Btn", vSize);
-    ImGui::End();
+    //ImGui::Begin("MyWindow 0##aaaa");
+    //ImVec2 vSize = ImGui::GetWindowSize();
+    //ImGui::Button("Test Btn", vSize);
+    //ImGui::End();
 
-    ImGui::Begin("MyWindow 0##vv");
-    ImGui::End();
+    //ImGui::Begin("MyWindow 0##vv");
+    //ImGui::End();
 
-    ImGui::Begin("MyWindow 2");
-    ImGui::End();
+    //ImGui::Begin("MyWindow 2");
+    //ImGui::End();
 }
 
 void CImGuiMgr::Render()

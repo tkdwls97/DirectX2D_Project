@@ -188,17 +188,15 @@ void CLevelMgr::Init()
 	pObj->AddComponent(new CMeshRender);
 
 	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 200.f));
-	pObj->Transform()->SetRelativeScale(Vec3(300.f, 300.f, 1.f));
+	//pObj->Transform()->SetRelativeScale(Vec3(300.f, 300.f, 1.f));
+	pObj->Transform()->SetRelativeScale(Vec3(1280.f, 768.f, 1.f));
+
 
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"DistortionMtrl"));
 	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"NoiseTex", L"texture\\noise\\noise_03.jpg"));
 
 	m_CurLevel->AddObject(pObj, L"Default", false);
-
-
-
-
 
 	// Level ½ÃÀÛ
 	m_CurLevel->Begin();
