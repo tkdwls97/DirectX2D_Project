@@ -17,6 +17,18 @@
     <Filter Include="ImGui">
       <UniqueIdentifier>{e0c55719-0eee-43cb-a98d-94599e2b564b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI\02. Content">
+      <UniqueIdentifier>{dc0b3a22-a322-4a5f-9777-fb6d3c3063dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\01. OutLiner">
+      <UniqueIdentifier>{b685cc0e-2aaa-4667-9e1d-48746e6e932b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\00. Inspector">
+      <UniqueIdentifier>{3990f84c-cff5-42f1-a0ba-9c841c4912b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\00. Inspector\TransformUI">
+      <UniqueIdentifier>{e5a55a42-d4a0-48ef-9ece-eeb5d724f103}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -64,6 +76,16 @@
     <ClInclude Include="UI.h">
       <Filter>UI</Filter>
     </ClInclude>
+    <ClInclude Include="Inspector.h">
+      <Filter>UI\00. Inspector</Filter>
+    </ClInclude>
+    <ClInclude Include="OutLiner.h">
+      <Filter>UI\01. OutLiner</Filter>
+    </ClInclude>
+    <ClInclude Include="Content.h">
+      <Filter>UI\02. Content</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -110,5 +132,15 @@
     <ClCompile Include="UI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="Inspector.cpp">
+      <Filter>UI\00. Inspector</Filter>
+    </ClCompile>
+    <ClCompile Include="OutLiner.cpp">
+      <Filter>UI\01. OutLiner</Filter>
+    </ClCompile>
+    <ClCompile Include="Content.cpp">
+      <Filter>UI\02. Content</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformUI.cpp" />
   </ItemGroup>
 </Project>

@@ -17,11 +17,16 @@ public:
 	void Tick();
 	void Finaltick();
 
+
+public:
 	void AddObject(CGameObject* _Object, int _LayerIdx, bool _bChildMove = true);
 	void AddObject(CGameObject* _Object, const wstring& _strLayerName, bool _bChildMove = true);
 
 	CLayer* GetLayer(int _layerIdx) { return m_ArrLayer[_layerIdx]; }
 	CLayer* GetLayer(const wstring& _strLayerName);
+
+	CGameObject* FindObjectByName(const wstring& _strName);
+	void FindObjectsByName(const wstring& _strName, vector<CGameObject*>& _vecObj);
 
 private:
 	void Clear();

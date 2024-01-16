@@ -49,12 +49,13 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
         if (vUV.x < g_vLeftTop.x || (g_vLeftTop.x + g_vSlizeSize.x) < vUV.x
             || vUV.y < g_vLeftTop.y || (g_vLeftTop.y + g_vSlizeSize.y) < vUV.y)
         {
-            //vColor = float4(1.f, 1.f, 0.f, 1.f);
+           //vColor = float4(1.f, 1.f, 0.f, 1.f);
             discard;
         }
         else
         {
             vColor = g_anim2d_tex.Sample(g_sam_1, vUV);
+           
         }
     }
     else
@@ -69,9 +70,11 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
         
             if (fAlpha < 0.1f)
             {
-            // ÇÈ¼¿ ½¦ÀÌ´õ¸¦ Áß°£¿¡ Æó±âÃ³¸®
-                discard; //clip(-1);            
+                // ÇÈ¼¿ ½¦ÀÌ´õ¸¦ Áß°£¿¡ Æó±âÃ³¸®
+                discard; //clip(-1);  
+                
             }
+  
         }
     }
         

@@ -80,7 +80,7 @@ float4 PS_Distortion(VS_OUT _in) : SV_Target
     
         float len = length(vWarpUV);
         float2 st = vWarpUV * 0.1f + 0.2f * float2(cos(0.071f * g_time * 8.f + len), sin(0.073 * g_time * 8.f - len));
-        float3 warpedCol = g_tex_0.Sample(g_sam_0, st).xyz * 2.4f;
+        float3 warpedCol = g_tex_0.Sample(g_sam_0, st).xyz * 2.f;
         float w = max(warpedCol.r, 0.85f);
         
         float2 offset = 0.01f * cos(warpedCol.rgb * PI);

@@ -1,10 +1,17 @@
 #include "pch.h"
 #include "ImGuiMgr.h"
 
+#include <Engine/LevelMgr.h>
+#include <Engine/Level.h>
+#include <Engine/GameObject.h>
 
 #include "imgui.h"
 #include "imgui_impl_win32.h"
 #include "imgui_impl_dx11.h"
+
+#include "Inspector.h"
+#include "Content.h"
+#include "OutLiner.h"
 
 
 CImGuiMgr::CImGuiMgr()
@@ -18,6 +25,9 @@ CImGuiMgr::~CImGuiMgr()
     ImGui_ImplDX11_Shutdown();
     ImGui_ImplWin32_Shutdown();
     ImGui::DestroyContext();
+
+    // UI 
+    Delete_Map(m_mapUI);
 }
 
 void CImGuiMgr::Init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device
@@ -71,6 +81,12 @@ void CImGuiMgr::Init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
     //ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, nullptr, io.Fonts->GetGlyphRangesJapanese());
     //IM_ASSERT(font != nullptr);
+
+    Create_UI();
+
+    CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+    CGameObject* pObject = pCurLevel->FindObjectByName(L"Player");
+    ((Inspector*)FindUI("##Inspector"))->SetTargetObject(pObject);
 }
 
 void CImGuiMgr::Progress()
@@ -87,6 +103,10 @@ void CImGuiMgr::Tick()
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
 
+    for (const auto& pair : m_mapUI)
+    {
+        pair.second->Tick();
+    }
     // 1. Begin()이 End()를 만날 때 까지 코드를 인식해서 1개의 콘솔 창을 만드는 구조
     // 2. Key값이 같으면 안되기 때문에 ##뒤에 오는 str을 다르게하여 이름이 같아도 다른 창을 구현 가능
     // 3. 컴파일 후 exe실행 파일이 저장되는 폴더에 마지막으로 수정했던 창의 정보를 저장하고 있는
@@ -105,6 +125,11 @@ void CImGuiMgr::Tick()
 
 void CImGuiMgr::Render()
 {
+    for (const auto& pair : m_mapUI)
+    {
+        pair.second->Render();
+    }
+
     // Rendering
     ImGui::Render();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
@@ -117,10 +142,39 @@ void CImGuiMgr::Render()
     }
 }
 
+void CImGuiMgr::Create_UI()
+{
+    UI* pUI = nullptr;
 
+    // Inspector
+    pUI = new Inspector;
+    AddUI(pUI->GetID(), pUI);
 
+    // Content
+    pUI = new Content;
+    AddUI(pUI->GetID(), pUI);
 
+    // Outliner
+    pUI = new OutLiner;
+    AddUI(pUI->GetID(), pUI);
+}
 
+UI* CImGuiMgr::FindUI(const string& _strUIName)
+{
+    map<string, UI*>::iterator iter = m_mapUI.find(_strUIName);
+
+    if (iter == m_mapUI.end())
+        return nullptr;
+
+    return iter->second;
+}
+
+void CImGuiMgr::AddUI(const string& _strKey, UI* _UI)
+{
+    UI* pUI = FindUI(_strKey);
+    assert(!pUI);
+    m_mapUI.insert(make_pair(_strKey, _UI));
+}
 
 //bool show_demo_window = true;
 //bool show_another_window = false;

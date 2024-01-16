@@ -1,6 +1,6 @@
 #pragma once
 #include <Engine/Singleton.h>
-
+#include "UI.h"
 
 class CImGuiMgr : public CSingleton<CImGuiMgr>
 {
@@ -12,6 +12,15 @@ public:
 private:
 	void Tick();
 	void Render();
+	void Create_UI();
+
+public:
+	UI* FindUI(const string& _strUIName);
+	void AddUI(const string& _strKey, UI* _UI);
+
+private:
+	map<string, UI*> m_mapUI;
+
 
 };
 
