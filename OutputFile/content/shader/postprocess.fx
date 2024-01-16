@@ -61,21 +61,34 @@ float4 PS_Distortion(VS_OUT _in) : SV_Target
     // 픽셀쉐이더에 SV_Position 으로 입력된 값은 픽셀 쉐이더를 호출한 해당 픽셀의 좌표가 들어있다.
     float2 vScreenUV = _in.vPosition.xy / g_RenderResolution;
     
-    
-    
     //vScreenUV.y += cos((vScreenUV.x + (g_time * (속도) )) * (주파수)) * (진폭);
     //vScreenUV.y += cos((vScreenUV.x + (g_time *  0.1f))   *   40.f)  *  0.1f;
     
     if (g_btex_0)
     {
-        //float2 vUV = _in.vUV;
-        //vUV.xy += g_time * 0.01f;
+        float2 vUV = _in.vUV;
+        vUV.xy += g_time * 0.01f;
         
-        //float2 vNoise = g_tex_0.Sample(g_sam_0, vUV);
-        ////vNoise = (vNoise.xy - 0.5f) * 0.1f;
+        float2 vNoise = g_tex_0.Sample(g_sam_0, vUV);
+        //vNoise = (vNoise.xy - 0.5f) * 0.1f;
         
-        //vScreenUV += vNoise;
+        vScreenUV += vNoise;
+    }
+    
+   vColor = g_postprocess.Sample(g_sam_0, vScreenUV);
+    
+    return vColor;
+}
+
+float4 PS_WarpDistortion(VS_OUT _in) : SV_Target
+{
+    float4 vColor = (float4) 0.f;
         
+    // 픽셀쉐이더에 SV_Position 으로 입력된 값은 픽셀 쉐이더를 호출한 해당 픽셀의 좌표가 들어있다.
+    float2 vScreenUV = _in.vPosition.xy / g_RenderResolution;
+    
+    if (g_btex_0)
+    {
         float2 vWarpUV = vScreenUV * 10.f;
     
         float len = length(vWarpUV);
@@ -87,12 +100,11 @@ float4 PS_Distortion(VS_OUT _in) : SV_Target
         vColor = float4(g_postprocess.Sample(g_sam_0, vScreenUV + offset).rgb * float3(0.8f, 0.8f, 1.5f), 1.0f);
         vColor *= w * 1.2f;
     }
-       
-    
-   //vColor = g_postprocess.Sample(g_sam_0, vScreenUV);
     
     return vColor;
 }
+
+
 
 
 #endif

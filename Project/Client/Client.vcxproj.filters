@@ -85,7 +85,9 @@
     <ClInclude Include="Content.h">
       <Filter>UI\02. Content</Filter>
     </ClInclude>
-    <ClInclude Include="TransformUI.h" />
+    <ClInclude Include="TransformUI.h">
+      <Filter>UI\00. Inspector\TransformUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -141,6 +143,8 @@
     <ClCompile Include="Content.cpp">
       <Filter>UI\02. Content</Filter>
     </ClCompile>
-    <ClCompile Include="TransformUI.cpp" />
+    <ClCompile Include="TransformUI.cpp">
+      <Filter>UI\00. Inspector\TransformUI</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

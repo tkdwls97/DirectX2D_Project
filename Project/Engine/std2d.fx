@@ -49,13 +49,37 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
         if (vUV.x < g_vLeftTop.x || (g_vLeftTop.x + g_vSlizeSize.x) < vUV.x
             || vUV.y < g_vLeftTop.y || (g_vLeftTop.y + g_vSlizeSize.y) < vUV.y)
         {
-           //vColor = float4(1.f, 1.f, 0.f, 1.f);
             discard;
         }
         else
         {
             vColor = g_anim2d_tex.Sample(g_sam_1, vUV);
-           
+            
+            // outline
+            vColor = float4(0.f, 0.f, 0.f, 0.f);
+            float3 targetColor = float3(sin(g_time), cos(g_time), 1.0); //The color of the outline
+            float samples = 10;
+            float rads = ((360.0 / float(samples)) * PI) / 180.0;
+            float mag = 0.01;
+            for (int i = 0; i < samples; i++)
+            {
+                if (vColor.w < 0.1)
+                {
+                    float r = float(i + 1) * rads;
+                    float2 offset = float2(cos(r) * 0.1, -sin(r)) * mag; //calculate vector based on current radians and multiply by magnitude
+                    vColor = g_anim2d_tex.Sample(g_sam_1, vUV + offset); //render the texture to the pixel on an offset UV
+                    if (vColor.w > 0.0)
+                    {
+                        vColor.xyz = targetColor;
+                    }
+                }
+            }
+            
+            float4 tex = g_anim2d_tex.Sample(g_sam_1, vUV);
+            if (tex.w > 0.0)
+            {
+                vColor = tex; //if the centered texture's alpha is greater than 0, set finalcol to tex
+            }
         }
     }
     else
@@ -72,9 +96,7 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
             {
                 // «»ºø Ω¶¿Ã¥ı∏¶ ¡ﬂ∞£ø° ∆Û±‚√≥∏Æ
                 discard; //clip(-1);  
-                
             }
-  
         }
     }
         
@@ -153,6 +175,8 @@ float4 PS_Std2D_Effect(VS_OUT _in) : SV_Target
     
     return vColor;
 }
+
+
 
 
 #endif

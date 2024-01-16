@@ -302,9 +302,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>99. Default</Filter>
-    </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>01. Engine</Filter>
     </ClCompile>
@@ -430,6 +427,9 @@
     </ClCompile>
     <ClCompile Include="AssetMgr_Init.cpp">
       <Filter>04. Manager\AssetMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>00. Header</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

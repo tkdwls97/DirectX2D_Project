@@ -91,7 +91,7 @@ Vec3 CTransform::GetWorldScale()
 	Vec3 vWorldScale = m_vRelativeScale;
 
 	// 만약 부모 오브젝트가 있다면
-	while (pParent) 
+	while (pParent)
 	{
 		// 부모 오브젝트의 크기를 곱한다
 		vWorldScale *= pParent->Transform()->GetRelativeScale();

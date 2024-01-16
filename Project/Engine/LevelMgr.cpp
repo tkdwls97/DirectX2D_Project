@@ -104,34 +104,34 @@ void CLevelMgr::Init()
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"BackgroundMtrl"));
 
-	Ptr<CTexture> pTex = CAssetMgr::GetInst()->Load<CTexture>(L"BackgroundTex", L"texture\\Background.jpg");
+	Ptr<CTexture> pTex = CAssetMgr::GetInst()->Load<CTexture>(L"BackgroundTex", L"texture\\Title.png");
 	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_0, pTex);
 
 	m_CurLevel->AddObject(pObj, L"Background", false);
 
 
 	// Player Object 持失
-	pObj = new CGameObject;
-	pObj->SetName(L"Player");
+	CGameObject* pPlayer = new CGameObject;
+	pPlayer->SetName(L"Player");
 
-	pObj->AddComponent(new CTransform);
-	pObj->AddComponent(new CMeshRender);
-	pObj->AddComponent(new CCollider2D);
-	pObj->AddComponent(new CAnimator2D);
-	pObj->AddComponent(new CPlayerScript);
+	pPlayer->AddComponent(new CTransform);
+	pPlayer->AddComponent(new CMeshRender);
+	pPlayer->AddComponent(new CCollider2D);
+	pPlayer->AddComponent(new CAnimator2D);
+	pPlayer->AddComponent(new CPlayerScript);
 
-	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
-	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
+	pPlayer->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
+	pPlayer->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
 
-	pObj->Collider2D()->SetAbsolute(true);
-	pObj->Collider2D()->SetOffsetScale(Vec2(100.f, 100.f));
-	pObj->Collider2D()->SetOffsetPos(Vec2(0.f, 0.f));
+	pPlayer->Collider2D()->SetAbsolute(true);
+	pPlayer->Collider2D()->SetOffsetScale(Vec2(100.f, 100.f));
+	pPlayer->Collider2D()->SetOffsetPos(Vec2(0.f, 0.f));
 
-	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
-	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
-	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"PlayerTexture", L"texture\\Fighter.bmp"));
+	pPlayer->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
+	pPlayer->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
+	pPlayer->MeshRender()->GetMaterial()->SetTexParam(TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"PlayerTexture", L"texture\\Fighter.bmp"));
 
-	m_CurLevel->AddObject(pObj, L"Player", false);
+	m_CurLevel->AddObject(pPlayer, L"Player", false);
 
 	// Monster Object 持失
 	pObj = new CGameObject;
@@ -188,12 +188,10 @@ void CLevelMgr::Init()
 	pObj->AddComponent(new CMeshRender);
 
 	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 200.f));
-	//pObj->Transform()->SetRelativeScale(Vec3(300.f, 300.f, 1.f));
 	pObj->Transform()->SetRelativeScale(Vec3(1280.f, 768.f, 1.f));
 
-
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
-	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"DistortionMtrl"));
+	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"WarpDistortionMtrl"));
 	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"NoiseTex", L"texture\\noise\\noise_03.jpg"));
 
 	m_CurLevel->AddObject(pObj, L"Default", false);
