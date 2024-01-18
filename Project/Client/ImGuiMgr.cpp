@@ -12,9 +12,10 @@
 #include "Inspector.h"
 #include "Content.h"
 #include "OutLiner.h"
-
+#include "ListUI.h"
 
 CImGuiMgr::CImGuiMgr()
+    : m_bDemoUI(true)
 {
 
 }
@@ -98,29 +99,20 @@ void CImGuiMgr::Progress()
 
 void CImGuiMgr::Tick()
 {
-    
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
+
+
+    if (m_bDemoUI)
+    {
+        ImGui::ShowDemoWindow(&m_bDemoUI);
+    }
 
     for (const auto& pair : m_mapUI)
     {
         pair.second->Tick();
     }
-    // 1. Begin()이 End()를 만날 때 까지 코드를 인식해서 1개의 콘솔 창을 만드는 구조
-    // 2. Key값이 같으면 안되기 때문에 ##뒤에 오는 str을 다르게하여 이름이 같아도 다른 창을 구현 가능
-    // 3. 컴파일 후 exe실행 파일이 저장되는 폴더에 마지막으로 수정했던 창의 정보를 저장하고 있는
-    //    imgui.ini 파일이 생성된다.
-    //ImGui::Begin("MyWindow 0##aaaa");
-    //ImVec2 vSize = ImGui::GetWindowSize();
-    //ImGui::Button("Test Btn", vSize);
-    //ImGui::End();
-
-    //ImGui::Begin("MyWindow 0##vv");
-    //ImGui::End();
-
-    //ImGui::Begin("MyWindow 2");
-    //ImGui::End();
 }
 
 void CImGuiMgr::Render()
@@ -142,22 +134,6 @@ void CImGuiMgr::Render()
     }
 }
 
-void CImGuiMgr::Create_UI()
-{
-    UI* pUI = nullptr;
-
-    // Inspector
-    pUI = new Inspector;
-    AddUI(pUI->GetID(), pUI);
-
-    // Content
-    pUI = new Content;
-    AddUI(pUI->GetID(), pUI);
-
-    // Outliner
-    pUI = new OutLiner;
-    AddUI(pUI->GetID(), pUI);
-}
 
 UI* CImGuiMgr::FindUI(const string& _strUIName)
 {
@@ -176,43 +152,31 @@ void CImGuiMgr::AddUI(const string& _strKey, UI* _UI)
     m_mapUI.insert(make_pair(_strKey, _UI));
 }
 
-//bool show_demo_window = true;
-//bool show_another_window = false;
-//ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-//
-//// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
-//if (show_demo_window)
-//ImGui::ShowDemoWindow(&show_demo_window);
-//
-//// 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
-//{
-//    static float f = 0.0f;
-//    static int counter = 0;
-//
-//    ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-//
-//    ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-//    ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-//    ImGui::Checkbox("Another Window", &show_another_window);
-//
-//    ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-//    ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-//
-//    if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-//        counter++;
-//    ImGui::SameLine();
-//    ImGui::Text("counter = %d", counter);
-//
-//    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-//    ImGui::End();
-//}
-//
-//// 3. Show another simple window.
-//if (show_another_window)
-//{
-//    ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-//    ImGui::Text("Hello from another window!");
-//    if (ImGui::Button("Close Me"))
-//        show_another_window = false;
-//    ImGui::End();
-//}
+
+
+void CImGuiMgr::Create_UI()
+{
+    UI* pUI = nullptr;
+
+    // Inspector
+    pUI = new Inspector;
+    AddUI(pUI->GetID(), pUI);
+
+    // Content
+    pUI = new Content;
+    AddUI(pUI->GetID(), pUI);
+
+    // Outliner
+    pUI = new OutLiner;
+    AddUI(pUI->GetID(), pUI);
+
+    // List
+    pUI = new ListUI;
+    AddUI(pUI->GetID(), pUI);
+}
+
+
+
+
+
+

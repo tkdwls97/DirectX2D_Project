@@ -7,6 +7,7 @@ UI::UI(const string& _strName, const string& _strID)
 	, m_strID(_strID)
 	, m_bActive(true)
 	, m_Parent(nullptr)
+	, m_bModal(false)
 {
 }
 
@@ -25,22 +26,72 @@ void UI::Render()
 	if (!m_bActive)
 		return;
 
+	bool Active = m_bActive;
+
 	if (nullptr == GetParentUI())
 	{
-		ImGui::Begin(string(m_strName + m_strID).c_str(), &m_bActive);
-
-		Render_Update();
-
-		for (size_t i = 0; i < m_vecChildUI.size(); ++i)
+		// Modal
+		if (!m_bModal)
 		{
-			m_vecChildUI[i]->Render();
+			ImGui::Begin(string(m_strName + m_strID).c_str(), &Active);
+
+			// 활성화, 비활성화 전환이 발생한 경우에는 Activate or Deactivate 를 호출시킨다.
+			if (Active != m_bActive)
+			{
+				m_bActive = Active;
+
+				if (m_bActive)
+					Activate();
+				else
+					Deactivate();
+			}
+
+			Render_Update();
+
+			for (size_t i = 0; i < m_vecChildUI.size(); ++i)
+			{
+				m_vecChildUI[i]->Render();
+			}
+
+			ImGui::End();
 		}
 
-		ImGui::End();
+		// Modal
+		else
+		{
+			ImGui::OpenPopup(string(m_strName + m_strID).c_str());
+			if (ImGui::BeginPopupModal(string(m_strName + m_strID).c_str(), &Active))
+			{
+				Render_Update();
+
+				for (size_t i = 0; i < m_vecChildUI.size(); ++i)
+				{
+					m_vecChildUI[i]->Render();
+				}
+
+				ImGui::EndPopup();
+			}
+
+			else
+			{
+				// 활성화, 비활성화 전환이 발생한 경우에는 Activate or Deactivate 를 호출시킨다.
+				if (Active != m_bActive)
+				{
+					m_bActive = Active;
+
+					if (m_bActive)
+						Activate();
+					else
+						Deactivate();
+				}
+			}
+		}
 	}
+
+	// Child UI 인 경우
 	else
 	{
-		ImGui::BeginChild(string(m_strName + m_strID).c_str());
+		ImGui::BeginChild(string(m_strName + m_strID).c_str(), m_vSize);
 
 		Render_Update();
 

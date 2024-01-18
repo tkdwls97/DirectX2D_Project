@@ -14,13 +14,11 @@
 #pragma comment(lib, "Engine\\Engine.lib")
 #endif
 
-
-#include "ImGuiMgr.h"
-
 #include "imgui.h"
 #include "imgui_impl_win32.h"
 #include "imgui_impl_dx11.h"
 
+#include "ImGuiMgr.h"
 
 
 HINSTANCE   hInst;

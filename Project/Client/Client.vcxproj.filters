@@ -26,8 +26,17 @@
     <Filter Include="UI\00. Inspector">
       <UniqueIdentifier>{3990f84c-cff5-42f1-a0ba-9c841c4912b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\00. Inspector\TransformUI">
+    <Filter Include="UI\03. List">
+      <UniqueIdentifier>{75267c09-7b43-4e05-9cd9-a94a62978348}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\00. Inspector\ComponentUI">
+      <UniqueIdentifier>{e037dff2-7c50-4691-8756-add3603c8d9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\00. Inspector\ComponentUI\TransformUI">
       <UniqueIdentifier>{e5a55a42-d4a0-48ef-9ece-eeb5d724f103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\00. Inspector\ComponentUI\MeshRenderUI">
+      <UniqueIdentifier>{2aef2347-0338-4eb1-bffa-13237cd0f67b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -86,7 +95,16 @@
       <Filter>UI\02. Content</Filter>
     </ClInclude>
     <ClInclude Include="TransformUI.h">
-      <Filter>UI\00. Inspector\TransformUI</Filter>
+      <Filter>UI\00. Inspector\ComponentUI\TransformUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentUI.h">
+      <Filter>UI\00. Inspector\ComponentUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRenderUI.h">
+      <Filter>UI\00. Inspector\ComponentUI\MeshRenderUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ListUI.h">
+      <Filter>UI\03. List</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -144,7 +162,16 @@
       <Filter>UI\02. Content</Filter>
     </ClCompile>
     <ClCompile Include="TransformUI.cpp">
-      <Filter>UI\00. Inspector\TransformUI</Filter>
+      <Filter>UI\00. Inspector\ComponentUI\TransformUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentUI.cpp">
+      <Filter>UI\00. Inspector\ComponentUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRenderUI.cpp">
+      <Filter>UI\00. Inspector\ComponentUI\MeshRenderUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ListUI.cpp">
+      <Filter>UI\03. List</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

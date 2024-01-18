@@ -106,6 +106,12 @@ void Vector3::ToRadian()
 	z = (z / 180.f) * XM_PI;
 }
 
+string ToString(const wstring& _str)
+{
+	return string(_str.begin(), _str.end());
+}
 
-
-
+wstring ToWString(const string& _str)
+{
+	return wstring(_str.begin(), _str.end());
+}

@@ -1,7 +1,9 @@
 #pragma once
-#include "UI.h"
+#include "ComponentUI.h"
 
-class TransformUI : public UI
+#include <Engine/GameObject.h>
+
+class TransformUI : public ComponentUI
 {
 public:
     TransformUI();
@@ -10,14 +12,7 @@ public:
 public:
     virtual void Render_Update() override;
 
-public:
-    void SetTargetObject(CGameObject* _Target)
-    {
-        m_TargetObject = _Target;
-    }
 
 private:
-    CGameObject* m_TargetObject;
-
 };
 

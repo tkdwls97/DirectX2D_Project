@@ -9,7 +9,7 @@
 
 // Asset 정보
 //  - 각 에셋의 정보
-class TransformUI;
+class ComponentUI;
 
 class Inspector :
     public UI
@@ -27,10 +27,11 @@ public:
     void SetTargetObject(CGameObject* _Object);
     void SetTargetAsset(Ptr<CAsset> _Asset);
 
+    CGameObject* GetTargetObject() { return m_TargetObject; }
 
 private:
     CGameObject*    m_TargetObject;
     Ptr<CAsset>     m_TargetAsset;
-    TransformUI*    m_TransformUI;
+    ComponentUI*    m_arrComUI[(UINT)COMPONENT_TYPE::END];
 };
 
