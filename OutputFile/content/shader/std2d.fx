@@ -4,7 +4,6 @@
 #include "value.fx"
 #include "func.fx"
 
-StructuredBuffer<float4> g_Data : register(t14);
 
 
 struct VS_IN
@@ -55,31 +54,31 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
         {
             vColor = g_anim2d_tex.Sample(g_sam_1, vUV);
             
-            // outline
-            vColor = float4(0.f, 0.f, 0.f, 0.f);
-            float3 targetColor = float3(sin(g_time), cos(g_time), 1.0); //The color of the outline
-            float samples = 10;
-            float rads = ((360.0 / float(samples)) * PI) / 180.0;
-            float mag = 0.01;
-            for (int i = 0; i < samples; i++)
-            {
-                if (vColor.w < 0.1)
-                {
-                    float r = float(i + 1) * rads;
-                    float2 offset = float2(cos(r) * 0.1, -sin(r)) * mag; //calculate vector based on current radians and multiply by magnitude
-                    vColor = g_anim2d_tex.Sample(g_sam_1, vUV + offset); //render the texture to the pixel on an offset UV
-                    if (vColor.w > 0.0)
-                    {
-                        vColor.xyz = targetColor;
-                    }
-                }
-            }
+            //// outline
+            //vColor = float4(0.f, 0.f, 0.f, 0.f);
+            //float3 targetColor = float3(sin(g_time), cos(g_time), 1.f); //The color of the outline
+            //float samples = 10;
+            //float rads = ((360.0 / float(samples)) * PI) / 180.f;
+            //float mag = 0.01;
+            //for (int i = 0; i < samples; i++)
+            //{
+            //    if (vColor.w < 0.1f)
+            //    {
+            //        float r = float(i + 1) * rads;
+            //        float2 offset = float2(cos(r) * 0.1f, -sin(r)) * mag; //calculate vector based on current radians and multiply by magnitude
+            //        vColor = g_anim2d_tex.Sample(g_sam_1, vUV + offset); //render the texture to the pixel on an offset UV
+            //        if (vColor.w > 0.0f)
+            //        {
+            //            vColor.xyz = targetColor;
+            //        }
+            //    }
+            //}
             
-            float4 tex = g_anim2d_tex.Sample(g_sam_1, vUV);
-            if (tex.w > 0.0)
-            {
-                vColor = tex; //if the centered texture's alpha is greater than 0, set finalcol to tex
-            }
+            //float4 tex = g_anim2d_tex.Sample(g_sam_1, vUV);
+            //if (tex.w > 0.0)
+            //{
+            //    vColor = tex; //if the centered texture's alpha is greater than 0, set finalcol to tex
+            //}
         }
     }
     else

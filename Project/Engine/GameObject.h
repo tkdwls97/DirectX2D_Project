@@ -40,7 +40,7 @@ public:
     const vector<CGameObject*>& GetChild() { return m_vecChild; }
 
     const vector<CScript*>& GetScripts() { return m_vecScript; }
-    CRenderComponent* GetRenderComopnent() { return m_RenderCom; }
+    CRenderComponent* GetRenderComponent() { return m_RenderCom; }
 
     template<typename T>
     T* GetScript()
@@ -59,6 +59,7 @@ public:
     GET_COMPONENT(Collider2D, COLLIDER2D);
     GET_COMPONENT(Animator2D, ANIMATOR2D);
     GET_COMPONENT(Light2D, LIGHT2D);
+    GET_COMPONENT(TileMap, TILEMAP);
 
 
 private:

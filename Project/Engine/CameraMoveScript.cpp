@@ -113,6 +113,10 @@ void CCameraMoveScript::MovePerspective()
 		Vec3 vRot = Transform()->GetRelativeRotation();
 		vRot.y += vDrag.x * DT * XM_PI * 4.f;
 		vRot.x += vDrag.y * DT * XM_PI * 4.f;
+		if (vRot.y > 0.5f)
+		{
+			int a = 0;
+		}
 		Transform()->SetRelativeRotation(vRot);
 	}
 }

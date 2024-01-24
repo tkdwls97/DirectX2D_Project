@@ -5,12 +5,13 @@
 #include "Camera.h"
 
 #include "Collider2D.h"
+#include "Animator2D.h"
+#include "Light2D.h"
+#include "TileMap.h"
 //#include "Collider3D.h"
 
-#include "Animator2D.h"
 //#include "Animator3D.h"
 //
-#include "Light2D.h"
 //#include "Light3D.h"
 //
 //#include "Skybox.h"

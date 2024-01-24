@@ -20,6 +20,7 @@ void CLight2D::Finaltick()
 	Vec3 vWorldPos = Transform()->GetWorldPos();
 	Vec3 vWorldDir = Transform()->GetWorldDir(DIR_TYPE::RIGHT);
 
+
 	m_Info.vWorldPos = vWorldPos;
 	m_Info.vWorldDir = vWorldDir;
 

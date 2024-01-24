@@ -32,11 +32,20 @@
     <Filter Include="UI\00. Inspector\ComponentUI">
       <UniqueIdentifier>{e037dff2-7c50-4691-8756-add3603c8d9e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\00. Inspector\ComponentUI\TransformUI">
-      <UniqueIdentifier>{e5a55a42-d4a0-48ef-9ece-eeb5d724f103}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI\00. Inspector\ComponentUI\MeshRenderUI">
       <UniqueIdentifier>{2aef2347-0338-4eb1-bffa-13237cd0f67b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\00. Inspector\ComponentUI\Light2D">
+      <UniqueIdentifier>{1b8e428a-a841-4f9c-a680-d17926f3cd0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\00. Inspector\ComponentUI\Collider2D">
+      <UniqueIdentifier>{133f12ee-9d7c-4941-95dd-c9cca6cca54b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\00. Inspector\ComponentUI\Animator2D">
+      <UniqueIdentifier>{ea6e3cca-bfdc-4122-807a-135ab74390f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\00. Inspector\ComponentUI\TransformUI">
+      <UniqueIdentifier>{e5a55a42-d4a0-48ef-9ece-eeb5d724f103}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +115,15 @@
     <ClInclude Include="ListUI.h">
       <Filter>UI\03. List</Filter>
     </ClInclude>
+    <ClInclude Include="Light2DUI.h">
+      <Filter>UI\00. Inspector\ComponentUI\Light2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider2DUI.h">
+      <Filter>UI\00. Inspector\ComponentUI\Collider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator2DUI.h">
+      <Filter>UI\00. Inspector\ComponentUI\Animator2D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -172,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="ListUI.cpp">
       <Filter>UI\03. List</Filter>
+    </ClCompile>
+    <ClCompile Include="Light2DUI.cpp">
+      <Filter>UI\00. Inspector\ComponentUI\Light2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider2DUI.cpp">
+      <Filter>UI\00. Inspector\ComponentUI\Collider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator2DUI.cpp">
+      <Filter>UI\00. Inspector\ComponentUI\Animator2D</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

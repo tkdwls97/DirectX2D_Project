@@ -1,19 +1,19 @@
 #pragma once
 #include "ComponentUI.h"
-
 class MeshRenderUI : public ComponentUI
 {
 public:
-	MeshRenderUI();
-	virtual ~MeshRenderUI();
+    MeshRenderUI();
+    ~MeshRenderUI();
 
 public:
-	virtual void Render_Update() override;
-	
-public:
-	void MeshDBClicked();
+    virtual void Render_Update() override;
 
-private:
+
+public:
+    void MeshSelect(DWORD_PTR _ptr);
+    void MaterialSelect(DWORD_PTR _ptr);
+
 
 };
 

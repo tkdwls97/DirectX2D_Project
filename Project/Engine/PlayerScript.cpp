@@ -27,6 +27,7 @@ void CPlayerScript::Begin()
 	Animator2D()->Create(L"MOVE_DOWN", pAltasTex, Vec2(0.f, 520.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
 	Animator2D()->Create(L"MOVE_LEFT", pAltasTex, Vec2(0.f, 650.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
 	Animator2D()->Create(L"MOVE_RIGHT", pAltasTex, Vec2(0.f, 910.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
+	Animator2D()->Play(L"IDLE_DOWN");
 }
 
 void CPlayerScript::Tick()
@@ -118,14 +119,17 @@ void CPlayerScript::Tick()
 		}
 	}
 
-	//GamePlayStatic::DrawDebugRect(Vec3(0.f, 0.f, 0.f), Vec3(200.f, 200.f, 1.f), Vec3(0.f, 0.f, 0.f), Vec3(1.f, 1.f, 1.f), true, 20);
+	Vec3 vWorldPos = GetOwner()->Transform()->GetWorldPos();
+	Vec3 vWorldScale = GetOwner()->Transform()->GetWorldScale();
+
+	//GamePlayStatic::DrawDebugRect(vWorldPos, vWorldScale, Vec3(0.f, 0.f, 0.f), Vec3(1.f, 1.f, 1.f), true, 20);
 	//GamePlayStatic::DrawDebugCircle(Vec3(0.f, 0.f, 0.f), 200.f, Vec3(0.f, 1.f, 1.f), true);
 }
 
-void CPlayerScript::BeginOverlap(CCollider2D* _Collider
-	, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+void CPlayerScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-	_OtherObj->Destroy();
+	//_OtherObj->Destroy();
+	
 }
 
 void CPlayerScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)

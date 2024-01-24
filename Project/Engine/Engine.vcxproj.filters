@@ -300,6 +300,9 @@
     <ClInclude Include="SpotLightScript.h">
       <Filter>Script</Filter>
     </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>08. Component\RenderComponent\02. TileMap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -431,6 +434,9 @@
     <ClCompile Include="pch.cpp">
       <Filter>00. Header</Filter>
     </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>08. Component\RenderComponent\02. TileMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -454,6 +460,9 @@
       <Filter>ShaderCode\Utill</Filter>
     </FxCompile>
     <FxCompile Include="postprocess.fx">
+      <Filter>ShaderCode\Render</Filter>
+    </FxCompile>
+    <FxCompile Include="tilemap.fx">
       <Filter>ShaderCode\Render</Filter>
     </FxCompile>
   </ItemGroup>

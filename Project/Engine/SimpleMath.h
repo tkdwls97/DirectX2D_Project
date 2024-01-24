@@ -150,6 +150,14 @@ namespace DirectX
             Vector2 operator+ () const { return *this; }
             Vector2 operator- () const { return Vector2(-x, -y); }
 
+            typedef float(&f2)[2];
+            operator f2() const { return (f2)x; }
+
+            float& operator[](int _iIdx)
+            {
+                return *((float*)this + _iIdx);
+            }
+
             // Vector operations
             bool InBounds(const Vector2& Bounds) const;
 
