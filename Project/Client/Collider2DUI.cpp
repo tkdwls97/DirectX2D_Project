@@ -90,6 +90,9 @@ void Collider2DUI::Render_Update()
 
 	ImGui::Text("Collision Count : ");
 	ImGui::SameLine();
+	
+	string str = std::to_string(iCollisionCount);
+	ImGui::Text((str.c_str()));
 
 	
 	

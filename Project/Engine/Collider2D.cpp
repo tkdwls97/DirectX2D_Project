@@ -41,7 +41,8 @@ void CCollider2D::Finaltick()
 		m_matColWorld *= matObjWorld;
 	}
 
-	Vec2 vPos = Collider2D()->GetOffsetPos();
+	Vec3 vPos = Transform()->GetWorldPos();
+	Vec2 vOffsetPos = Collider2D()->GetOffsetPos();
 
 	// 충돌중이면 Red, 충돌하고 있지 않으면 Green
 	if (0 == m_CollisionCount)
@@ -53,7 +54,7 @@ void CCollider2D::Finaltick()
 		}
 		else
 		{
-			GamePlayStatic::DrawDebugCircle(Vec3(vPos.x, vPos.y, 1.f), m_fOffsetRadius, Vec3(0.f, 1.f, 0.f), false);
+			GamePlayStatic::DrawDebugCircle(vPos + Vec3(vOffsetPos.x, vOffsetPos.y, 0.f), m_fOffsetRadius, Vec3(0.f, 1.f, 0.f), false);
 		}
 
 	}
@@ -66,7 +67,7 @@ void CCollider2D::Finaltick()
 		}
 		else
 		{
-			GamePlayStatic::DrawDebugCircle(Vec3(vPos.x, vPos.y, 1.f), m_fOffsetRadius, Vec3(1.f, 0.f, 0.f), false);
+			GamePlayStatic::DrawDebugCircle(vPos + Vec3(vOffsetPos.x, vOffsetPos.y, 0.f), m_fOffsetRadius, Vec3(1.f, 0.f, 0.f), false);
 		}
 
 	}
