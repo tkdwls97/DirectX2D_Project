@@ -189,6 +189,7 @@ call EngineCopy.bat</Command>
     <ClInclude Include="Component.h" />
     <ClInclude Include="components.h" />
     <ClInclude Include="ConstBuffer.h" />
+    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="func.h" />
@@ -241,6 +242,7 @@ call EngineCopy.bat</Command>
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConstBuffer.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="exturn.cpp" />
     <ClCompile Include="func.cpp" />

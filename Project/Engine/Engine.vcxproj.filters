@@ -303,6 +303,9 @@
     <ClInclude Include="TileMap.h">
       <Filter>08. Component\RenderComponent\02. TileMap</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>08. Component\RenderComponent\03. ParticleSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -436,6 +439,9 @@
     </ClCompile>
     <ClCompile Include="TileMap.cpp">
       <Filter>08. Component\RenderComponent\02. TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem.cpp">
+      <Filter>08. Component\RenderComponent\03. ParticleSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

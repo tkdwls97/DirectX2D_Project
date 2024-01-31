@@ -12,14 +12,23 @@ struct tLightInfo
 {
     tLightColor Color;
 
-    float3 vWorldPos; // 광원의 위치
-    float3 vWorldDir; // 광원이 향하는 방향
-    float fRadius; // 광원의 영향 반경, 거리 정보
-    float fAngle; // 광원의 범위 각도
+    float3      vWorldPos; // 광원의 위치
+    float3      vWorldDir; // 광원이 향하는 방향
+    float       fRadius; // 광원의 영향 반경, 거리 정보
+    float       fAngle; // 광원의 범위 각도
 
-    int LightType; // 광원 타입 (0 : Directional, 1 : Point, 2 : Spot)
-    float3 vPadding;
+    int         LightType; // 광원 타입 (0 : Directional, 1 : Point, 2 : Spot)
+    float3      vPadding;
 };
+
+
+struct tTileInfo
+{
+    float2  vLeftTopUV;
+    int     bRender;
+    int     padding;
+};
+
 
 
 #endif
