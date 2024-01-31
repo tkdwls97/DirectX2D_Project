@@ -307,6 +307,6 @@ void CAssetMgr::CreateDefaultComputeShader()
 
 	// SetColorShader
 	pShader = new CSetColorShader;
-	pShader->Create(L"setcolor.fx", "CS_SetColor");
+	pShader->Create(L"shader\\setcolor.fx", "CS_SetColor");
 	AddAsset(L"SetColorShader", pShader.Get());
 }

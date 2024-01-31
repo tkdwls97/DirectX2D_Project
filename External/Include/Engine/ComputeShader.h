@@ -11,7 +11,7 @@ public:
     ~CComputeShader();
 
 private:
-    virtual void UpdateData() = 0;
+    virtual int UpdateData() = 0;
     virtual void Clear() = 0;
 
 public:
@@ -32,6 +32,12 @@ protected:
 
 protected:
     tMtrlConst                  m_Const;
+
+    // 스레드 개수
+    const UINT                  m_ThreadX;
+    const UINT                  m_ThreadY;
+    const UINT                  m_ThreadZ;
+
 private:
     ComPtr<ID3DBlob>            m_CSBlob;
     ComPtr<ID3D11ComputeShader> m_CS;
@@ -41,9 +47,6 @@ private:
     UINT                        m_GroupY;
     UINT                        m_GroupZ;
 
-    // 스레드 개수
-    const UINT                  m_ThreadX;
-    const UINT                  m_ThreadY;
-    const UINT                  m_ThreadZ;
+
 };
 

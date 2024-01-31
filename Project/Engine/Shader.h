@@ -8,7 +8,7 @@ public:
 	~CShader();
 
 public:
-	virtual void UpdateData() = 0;
+	virtual int UpdateData() = 0;
 
 protected:
 	ComPtr<ID3DBlob>	m_ErrBlob;

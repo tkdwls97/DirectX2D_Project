@@ -50,7 +50,7 @@ void CLevelMgr::Init()
 		, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
 
 	Ptr<CSetColorShader> pCS = (CSetColorShader*)CAssetMgr::GetInst()->FindAsset<CComputeShader>(L"SetColorShader").Get();
-	pCS->SetColor(Vec3(1.f, 0.f, 0.f));
+	pCS->SetColor(Vec3(0.f, 1.f, 0.f));
 	pCS->SetTargetTexture(pTestTex);
 	pCS->Execute();
 
@@ -136,7 +136,7 @@ void CLevelMgr::Init()
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"BackgroundMtrl"));
 
 	Ptr<CTexture> pTex = CAssetMgr::GetInst()->Load<CTexture>(L"BackgroundTex", L"texture\\Title.png");
-	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_0, pTex);
+	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_0, pTestTex);
 
 	m_CurLevel->AddObject(pObj, L"Background", false);
 

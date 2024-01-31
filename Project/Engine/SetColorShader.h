@@ -10,7 +10,7 @@ public:
     ~CSetColorShader();
 
 public:
-    virtual void UpdateData() override;
+    virtual int UpdateData() override;
     virtual void Clear() override;
 
 public:

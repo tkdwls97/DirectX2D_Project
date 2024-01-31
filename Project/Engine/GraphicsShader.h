@@ -8,7 +8,7 @@ public:
     ~CGraphicsShader();
 
 public:
-    virtual void UpdateData();
+    virtual int UpdateData();
     
 
 public:
