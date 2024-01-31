@@ -17,6 +17,7 @@
 #include "GraphicsShader.h"
 #include "Texture.h"
 #include "CollisionMgr.h"
+#include "SetColorShader.h"
 
 CLevelMgr::CLevelMgr()
 	: m_CurLevel(nullptr)
@@ -41,6 +42,18 @@ void CLevelMgr::Init()
 	m_CurLevel->GetLayer(4)->SetName(L"Monster");
 	m_CurLevel->GetLayer(5)->SetName(L"Light");
 	m_CurLevel->GetLayer(31)->SetName(L"UI");
+
+	// ComputeShader 테스트
+	// 사용할 텍스쳐 생성
+	Ptr<CTexture> pTestTex = CAssetMgr::GetInst()->CreateTexture(L"TestTex"
+		, 1024, 1024, DXGI_FORMAT_R8G8B8A8_UNORM
+		, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+
+	Ptr<CSetColorShader> pCS = (CSetColorShader*)CAssetMgr::GetInst()->FindAsset<CComputeShader>(L"SetColorShader").Get();
+	pCS->SetColor(Vec3(1.f, 0.f, 0.f));
+	pCS->SetTargetTexture(pTestTex);
+	pCS->Execute();
+
 
 	// 충돌 설정
 	CCollisionMgr::GetInst()->LayerCheck(L"Player", L"Monster");

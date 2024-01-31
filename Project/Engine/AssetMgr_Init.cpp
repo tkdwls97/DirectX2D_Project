@@ -11,6 +11,8 @@ void CAssetMgr::Init()
 
 	CreateDefaultGraphicsShader();
 
+	CreateDefaultComputeShader();
+
 	CreateDefaultMaterial();
 }
 
@@ -256,6 +258,8 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	AddAsset(L"DebugShapeShader", pShader);
 }
 
+
+
 void CAssetMgr::CreateDefaultMaterial()
 {
 	CMaterial* pMtrl = nullptr;
@@ -294,4 +298,15 @@ void CAssetMgr::CreateDefaultMaterial()
 	pMtrl = new CMaterial;
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"DebugShapeShader"));
 	AddAsset<CMaterial>(L"DebugShapeMtrl", pMtrl);
+}
+
+#include "SetColorShader.h"
+void CAssetMgr::CreateDefaultComputeShader()
+{
+	Ptr<CComputeShader> pShader = nullptr;
+
+	// SetColorShader
+	pShader = new CSetColorShader;
+	pShader->Create(L"setcolor.fx", "CS_SetColor");
+	AddAsset(L"SetColorShader", pShader.Get());
 }

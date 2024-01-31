@@ -188,8 +188,10 @@ call EngineCopy.bat</Command>
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="components.h" />
+    <ClInclude Include="ComputeShader.h" />
     <ClInclude Include="ConstBuffer.h" />
     <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="SetColorShader.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="func.h" />
@@ -241,8 +243,10 @@ call EngineCopy.bat</Command>
     <ClCompile Include="Collider2D.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ComputeShader.cpp" />
     <ClCompile Include="ConstBuffer.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="SetColorShader.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="exturn.cpp" />
     <ClCompile Include="func.cpp" />
@@ -288,6 +292,7 @@ call EngineCopy.bat</Command>
     <FxCompile Include="debug.fx" />
     <FxCompile Include="func.fx" />
     <FxCompile Include="postprocess.fx" />
+    <FxCompile Include="setcolor.fx" />
     <FxCompile Include="std2d.fx">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">std2d</EntryPointName>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">std2d</EntryPointName>

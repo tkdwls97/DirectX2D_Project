@@ -8,6 +8,7 @@
 #include "Texture.h"
 #include "Mesh.h"
 #include "GraphicsShader.h"
+#include "ComputeShader.h"
 #include "Material.h"
 
 
@@ -40,6 +41,7 @@ public:
 private:
 	void CreateDefaultMesh();
 	void CreateDefaultGraphicsShader();
+	void CreateDefaultComputeShader();
 	void CreateDefaultMaterial();
 
 private:
@@ -54,14 +56,25 @@ ASSET_TYPE GetAssetType()
 	ASSET_TYPE Type = ASSET_TYPE::END;
 
 	if (&info == &typeid(CMesh))
+	{
 		Type = ASSET_TYPE::MESH;
+	}
 	else if (&info == &typeid(CTexture))
+	{
 		Type = ASSET_TYPE::TEXTURE;
+	}
 	else if (&info == &typeid(CGraphicsShader))
+	{
 		Type = ASSET_TYPE::GRAPHICS_SHADER;
+	}
+	else if (&info == &typeid(CComputeShader))
+	{
+		Type = ASSET_TYPE::COMPUTE_SHADER;
+	}
 	else if (&info == &typeid(CMaterial))
+	{
 		Type = ASSET_TYPE::MATERIAL;
-
+	}
 	return Type;
 }
 
