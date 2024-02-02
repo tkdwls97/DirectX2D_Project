@@ -15,7 +15,7 @@
 #include "ListUI.h"
 
 CImGuiMgr::CImGuiMgr()
-    : m_bDemoUI(true)
+    : m_bDemoUI(false)
 {
 
 }

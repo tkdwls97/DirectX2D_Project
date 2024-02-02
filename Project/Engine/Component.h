@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 
+#define GET_OTHER_COMPONENT(Type) C##Type* Type() { return m_Owner->Type(); }
 
 class CComponent : public CEntity
 {

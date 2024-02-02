@@ -291,6 +291,7 @@ call EngineCopy.bat</Command>
   <ItemGroup>
     <FxCompile Include="debug.fx" />
     <FxCompile Include="func.fx" />
+    <FxCompile Include="particle.fx" />
     <FxCompile Include="postprocess.fx" />
     <FxCompile Include="setcolor.fx" />
     <FxCompile Include="std2d.fx">
