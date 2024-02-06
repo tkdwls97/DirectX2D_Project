@@ -3,7 +3,8 @@
 // (main code and documentation)
 
 // Help:
-// - See links below.
+// - See 
+// s below.
 // - Call and read ImGui::ShowDemoWindow() in imgui_demo.cpp. All applications in examples/ are doing that.
 // - Read top of imgui.cpp for more details, links and comments.
 

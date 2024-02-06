@@ -150,6 +150,26 @@ void CLevelMgr::Init()
 
 	m_CurLevel->AddObject(pObj, L"Player", false);
 
+	// Monster
+	pObj = new CGameObject;
+	pObj->SetName(L"Monster");
+
+	pObj->AddComponent(new CTransform);
+	pObj->AddComponent(new CMeshRender);
+	pObj->AddComponent(new CCollider2D);
+
+	pObj->Transform()->SetRelativePos(Vec3(400.f, 0.f, 500.f));
+	pObj->Transform()->SetRelativeScale(Vec3(100.f, 100.f, 1.f));
+
+	pObj->Collider2D()->SetAbsolute(true);
+	pObj->Collider2D()->SetOffsetScale(Vec2(100.f, 100.f));
+	pObj->Collider2D()->SetOffsetPos(Vec2(0.f, 0.f));
+
+	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
+	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
+	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"MonsterTexture", L"texture\\AzhiDahaka.bmp"));
+
+	m_CurLevel->AddObject(pObj, L"Monster", false);
 
 	// Particle Object
 	pObj = new CGameObject;
@@ -160,7 +180,7 @@ void CLevelMgr::Init()
 
 	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.f));
 
-	m_CurLevel->AddObject(pObj, L"Default", false);
+	//m_CurLevel->AddObject(pObj, L"Default", false);
 
 	// Level ½ÃÀÛ
 	m_CurLevel->Begin();
