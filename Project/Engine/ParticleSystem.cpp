@@ -14,8 +14,7 @@
 CParticleSystem::CParticleSystem()
 	: CRenderComponent(COMPONENT_TYPE::PARTICLESYSTEM)
 	, m_ParticleBuffer(nullptr)
-	, m_MaxParticleCount(2000)
-	, m_Time(0.f)
+	, m_MaxParticleCount(1000)
 {
 	// 전용 메쉬와 전용 재질 사용
 	SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"PointMesh"));
@@ -50,21 +49,20 @@ CParticleSystem::CParticleSystem()
 
 	m_Module.SpaceType = 1;
 	m_Module.vSpawnColor = Vec4(0.2f, 0.4f, 0.9f, 1.f);
-	m_Module.vSpawnMinScale = Vec4(200.f, 200.f, 1.f, 1.f);
-	m_Module.vSpawnMaxScale = Vec4(200.f, 200.f, 1.f, 1.f);
-	m_Module.MinLife = 3.f;
-	m_Module.MaxLife = 5.f;
+	m_Module.vSpawnMinScale = Vec4(10.f, 5.f, 1.f, 1.f);
+	m_Module.vSpawnMaxScale = Vec4(20.f, 10.f, 1.f, 1.f);
+	m_Module.MinLife = 3000.f;
+	m_Module.MaxLife = 3000.f;
 	m_Module.MinMass = 1.f;
 	m_Module.MaxMass = 1.f;
 	m_Module.SpawnShape = 1; // 0 : Sphere, 1 : Box
 	m_Module.Radius = 100.f;
-	m_Module.vSpawnBoxScale = Vec4(500.f, 500.f, 0.f, 0.f);
+	m_Module.vSpawnBoxScale = Vec4(10.f, 10.f, 0.f, 0.f);
 	m_Module.SpawnRate = 50;
 
-
 	// Add Velocity Module
-	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::ADD_VELOCITY] = 0;
-	m_Module.AddVelocityType = 0;
+	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::ADD_VELOCITY] = 1;
+	m_Module.AddVelocityType = 0; // 0 : From Center, 1: To Center, 2: Fix Direction
 	m_Module.MinSpeed = 100;
 	m_Module.MaxSpeed = 150;
 	m_Module.FixedDirection;
@@ -76,17 +74,19 @@ CParticleSystem::CParticleSystem()
 
 	// Noise Force
 	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::NOISE_FORCE] = 1;
-	m_Module.NoiseForceScale = 50.f;
+	m_Module.NoiseForceScale = 10.f;
 	m_Module.NoiseForceTerm = 0.3f;
 
 	// Calculate Forec
 	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::CALCULATE_FORCE] = 1;
+
 	// Render 
 	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::RENDER] = 1;
 	m_Module.VelocityAlignment = 1; // 속도에 따른 방향 정렬
+	m_Module.AlphaBasedLife = 1;
+	m_Module.AlphaMaxAge = 2.f;
 
-
-	m_ParticleTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\particle\\CartoonSmoke.png", L"texture\\particle\\ray.png");
+	m_ParticleTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\particle\\ray.png", L"texture\\particle\\ray.png");
 }
 
 CParticleSystem::~CParticleSystem()
