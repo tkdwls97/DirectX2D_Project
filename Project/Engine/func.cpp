@@ -115,3 +115,8 @@ wstring ToWString(const string& _str)
 {
 	return wstring(_str.begin(), _str.end());
 }
+
+Vec3 DecomposeRotMat(const Matrix& _matRot)
+{
+	return Vec3();
+}
