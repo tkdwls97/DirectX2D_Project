@@ -178,9 +178,9 @@ void CLevelMgr::Init()
 	pObj->AddComponent(new CTransform);
 	pObj->AddComponent(new CParticleSystem);
 
-	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.f));
+	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 200.f));
 
-	//m_CurLevel->AddObject(pObj, L"Default", false);
+	m_CurLevel->AddObject(pObj, L"Default", false);
 
 	// Level ½ÃÀÛ
 	m_CurLevel->Begin();

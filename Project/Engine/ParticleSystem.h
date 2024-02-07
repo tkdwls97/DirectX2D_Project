@@ -23,6 +23,7 @@ private:
     CStructuredBuffer*      m_ParticleModuleBuffer;
     CStructuredBuffer*      m_SpawnCountBuffer;
     Ptr<CParticleUpdate>    m_CSParticleUpdate;
+    Ptr<CTexture>           m_ParticleTex;
 
     float                   m_Time;
 };

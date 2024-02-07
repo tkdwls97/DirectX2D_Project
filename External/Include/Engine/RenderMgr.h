@@ -45,5 +45,8 @@ private:
 
 	bool                    m_DebugPosition;
 	Ptr<CTexture>           m_PostProcessTex;
+
+	// NoiseTexture
+	vector<Ptr<CTexture>>   m_vecNoiseTex;
 };
 

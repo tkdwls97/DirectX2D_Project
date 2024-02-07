@@ -12,25 +12,26 @@ struct tLightInfo
 {
     tLightColor Color;
 
-    float3      vWorldPos; // 광원의 위치
-    float3      vWorldDir; // 광원이 향하는 방향
-    float       fRadius; // 광원의 영향 반경, 거리 정보
-    float       fAngle; // 광원의 범위 각도
+    float3 vWorldPos; // 광원의 위치
+    float3 vWorldDir; // 광원이 향하는 방향
+    float fRadius; // 광원의 영향 반경, 거리 정보
+    float fAngle; // 광원의 범위 각도
 
-    int         LightType; // 광원 타입 (0 : Directional, 1 : Point, 2 : Spot)
-    float3      vPadding;
+    int LightType; // 광원 타입 (0 : Directional, 1 : Point, 2 : Spot)
+    float3 vPadding;
 };
 
 
 struct tTileInfo
 {
-    float2  vLeftTopUV;
-    int     bRender;
-    int     padding;
+    float2 vLeftTopUV;
+    int bRender;
+    int padding;
 };
 
 struct tParticle
 {
+    float4 vLocalPos;
     float4 vWorldPos; // 위치
     float4 vWorldScale; // 크기
     float4 vWorldRotation; // 회전값
@@ -54,7 +55,22 @@ struct tParticleModule
     float MaxLife; // 최대 수명
     int SpawnRate; // 초당 생성 개수
     int SpaceType; // 좌표계(0 : LocalSpace, 1 : WorldSpace)
+    
+    int SpawnShape; // 스폰 범위(0 : Sphere, 1 : Box)
+    float Radius; // SpawnShape 가 Sphere 인 경우, 반지름 길이
+    float4 vSpawnBoxScale; // SpawnShape 가 Box 인 경우, Box 의 크기
+    float2 padding;
+    
+    // Add Velocity
+    int AddVelocityType; // 0 : From Center, 1: To Center, 2: Fix Direction
+    float MinSpeed;
+    float MaxSpeed;
+    float FixedAngle; // 해당 방향에서 랜덤범위 각도
+    float4 FixedDirection; // 지정 방향
+    
+    int arrModuleCheck[4];
 };
+
 
 struct tSpawnCount
 {
