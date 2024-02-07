@@ -153,7 +153,7 @@ call EngineCopy.bat</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinFilesInUnityFile>10</MinFilesInUnityFile>
@@ -191,6 +191,7 @@ call EngineCopy.bat</Command>
     <ClInclude Include="ComputeShader.h" />
     <ClInclude Include="ConstBuffer.h" />
     <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="ParticleUpdate.h" />
     <ClInclude Include="SetColorShader.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="enums.h" />
@@ -246,6 +247,7 @@ call EngineCopy.bat</Command>
     <ClCompile Include="ComputeShader.cpp" />
     <ClCompile Include="ConstBuffer.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="ParticleUpdate.cpp" />
     <ClCompile Include="SetColorShader.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="exturn.cpp" />
@@ -292,6 +294,7 @@ call EngineCopy.bat</Command>
     <FxCompile Include="debug.fx" />
     <FxCompile Include="func.fx" />
     <FxCompile Include="particle.fx" />
+    <FxCompile Include="particle_update.fx" />
     <FxCompile Include="postprocess.fx" />
     <FxCompile Include="setcolor.fx" />
     <FxCompile Include="std2d.fx">

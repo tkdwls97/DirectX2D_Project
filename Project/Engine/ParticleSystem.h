@@ -2,6 +2,7 @@
 #include "RenderComponent.h"
 
 #include "StructuredBuffer.h"
+#include "ParticleUpdate.h"
 
 class CParticleSystem :
     public CRenderComponent
@@ -16,7 +17,8 @@ public:
     virtual void Render() override;
 
 private:
-    CStructuredBuffer*  m_ParticleBuffer;
-    UINT                m_MaxParticleCount;
+    CStructuredBuffer*      m_ParticleBuffer;
+    UINT                    m_MaxParticleCount;
+    Ptr<CParticleUpdate>    m_CSParticleUpdate;
 };
 

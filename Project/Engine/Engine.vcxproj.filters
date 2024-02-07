@@ -321,6 +321,9 @@
     <ClInclude Include="SetColorShader.h">
       <Filter>ShaderCode\Compute\SetColor</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleUpdate.h">
+      <Filter>ShaderCode\Compute\ParticleUpdate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -464,6 +467,9 @@
     <ClCompile Include="SetColorShader.cpp">
       <Filter>ShaderCode\Compute\SetColor</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleUpdate.cpp">
+      <Filter>ShaderCode\Compute\ParticleUpdate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -497,6 +503,9 @@
     </FxCompile>
     <FxCompile Include="particle.fx">
       <Filter>ShaderCode\Render</Filter>
+    </FxCompile>
+    <FxCompile Include="particle_update.fx">
+      <Filter>ShaderCode\Compute\ParticleUpdate</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

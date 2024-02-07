@@ -10,6 +10,7 @@ public:
 public:
     int Create(void* _Vtx, UINT _VtxCount, void* _Idx, UINT _IdxCount);
     void Render();
+    void Render_Particle(UINT _ParticleCount);
 
 private:
     void UpdateData();

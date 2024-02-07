@@ -21,4 +21,4 @@
 #define LAYER_MAX 32
 
 #define GET_COMPONENT(Type, TYPE) class C##Type* Type() { return (C##Type*)m_arrCom[(UINT)COMPONENT_TYPE::##TYPE]; }
-
+#define GET_OTHER_COMPONENT(Type) C##Type* Type() { return m_Owner->Type(); }

@@ -3,7 +3,11 @@
 
 #include "GameObject.h"
 
-#define GET_OTHER_COMPONENT(Type) C##Type* Type() { return m_Owner->Type(); }
+//class CTransform;
+//class CMeshRender;
+//class CCamera;
+//class CCollider2D;
+//class CAnimator2D;
 
 class CComponent : public CEntity
 {
