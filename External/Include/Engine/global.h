@@ -18,8 +18,6 @@ using std::wstring;
 using std::string;
 
 
-
-
 #include <wrl.h>
 using namespace Microsoft::WRL;
 

@@ -3,11 +3,6 @@
 
 #include "GameObject.h"
 
-//class CTransform;
-//class CMeshRender;
-//class CCamera;
-//class CCollider2D;
-//class CAnimator2D;
 
 class CComponent : public CEntity
 {
