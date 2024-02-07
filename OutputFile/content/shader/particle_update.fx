@@ -3,6 +3,7 @@
 
 #include "value.fx"
 #include "struct.fx"
+#include "func.fx"
 
 StructuredBuffer<tParticleModule> g_Module : register(t20);
 RWStructuredBuffer<tParticle> g_ParticleBuffer : register(u0);
@@ -46,6 +47,8 @@ void CS_ParticleUpdate(uint3 id : SV_DispatchThreadID)
             if (AliveCount == Origin)
             {
                 Particle.Active = 1;
+                Particle.vNoiseForce = (float3) 0.f;
+                Particle.NoiseForceTime = 0.f;
                 
                 // 랜덤
                 float2 vUV = float2((1.f / (MAX_COUNT - 1)) * id.x, 0.f);
@@ -127,10 +130,15 @@ void CS_ParticleUpdate(uint3 id : SV_DispatchThreadID)
         
         // 랜덤값 추출
         float2 vUV = float2((1.f / (MAX_COUNT - 1)) * id.x, 0.f);
-        vUV.x += g_time * 0.2f;
-        vUV.y = sin(vUV.x * 20.f * PI) * 0.2f + g_time * 0.1f;
-        float4 vRand = g_NoiseTex.SampleLevel(g_sam_0, vUV, 0);
+        float3 Rand;
+        GaussianSample(g_NoiseTex, g_NoiseTexResolution, vUV.x, Rand);
         
+        //vUV.x += g_time * 0.2f;
+        //vUV.y = sin(vUV.x * 20.f * PI) * 0.2f + g_time * 0.1f;
+        //float4 vRand = g_NoiseTex.SampleLevel(g_sam_0, vUV, 0);
+        
+        
+        // 이번 프레임에서 받는 힘을 초기화
         Particle.vForce.xyz = float3(0.f, 0.f, 0.f);
         
         // Normalize Age 계산
@@ -145,14 +153,24 @@ void CS_ParticleUpdate(uint3 id : SV_DispatchThreadID)
         // Noise Force
         if (Module.arrModuleCheck[4])
         {
-            float3 vRandomForce = normalize(vRand.xyz - 0.5f);
-            Particle.vForce.xyz += Module.NoiseForceScale * vRandomForce;
+            if (Particle.NoiseForceTime == 0.f)
+            {
+                Particle.vNoiseForce = normalize(Rand.xyz * 2.f - 1.f) * Module.NoiseForceScale;
+                Particle.NoiseForceTime = g_time;
+            }
+            else if (Module.NoiseForceTerm < g_time - Particle.NoiseForceTime)
+            {
+                Particle.vNoiseForce = normalize(Rand.xyz * 2.f - 1.f) * Module.NoiseForceScale;
+                Particle.NoiseForceTime = g_time;
+            }
         }
         
         
         // Calculate Force
         if (Module.arrModuleCheck[5])
         {
+            Particle.vForce.xyz += Particle.vNoiseForce.xyz;
+            
             // Force 연산
             // F = M x A
             float3 vAccel = Particle.vForce.xyz / Particle.Mass;

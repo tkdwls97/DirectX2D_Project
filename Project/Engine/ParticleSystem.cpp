@@ -52,8 +52,8 @@ CParticleSystem::CParticleSystem()
 	m_Module.vSpawnColor = Vec4(0.2f, 0.4f, 0.9f, 1.f);
 	m_Module.vSpawnMinScale = Vec4(30.f, 30.f, 1.f, 1.f);
 	m_Module.vSpawnMaxScale = Vec4(30.f, 30.f, 1.f, 1.f);
-	m_Module.MinLife = 0.4f;
-	m_Module.MaxLife = 1.f;
+	m_Module.MinLife = 3.f;
+	m_Module.MaxLife = 5.f;
 	m_Module.MinMass = 1.f;
 	m_Module.MaxMass = 1.f;
 	m_Module.SpawnShape = 1; // 0 : Sphere, 1 : Box
@@ -76,7 +76,8 @@ CParticleSystem::CParticleSystem()
 
 	// Noise Force
 	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::NOISE_FORCE] = 1;
-	m_Module.NoiseForceScale = 100.f;
+	m_Module.NoiseForceScale = 50.f;
+	m_Module.NoiseForceTerm = 0.3f;
 
 	// Calculate Forec
 	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::CALCULATE_FORCE] = 1;

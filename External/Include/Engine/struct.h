@@ -61,6 +61,9 @@ struct tParticle
 	Vec4	vColor;			// 색상
 	Vec4	vForce;			// 입자에 적용된 누적 힘 총량
 
+	Vec3	vNoiseForce;	// NoiseForce 모듈로 인한 랜덤 힘
+	float	NoiseForceTime;	// NoiseForce 를 세팅받은 시간
+
 	float	NormalizeAge;	// Age 를 Life 기준으로 정규화한 값
 	float	Mass;			// 질량
 	float	Age;			// 현재 나이
@@ -99,6 +102,7 @@ struct tParticleModule
 
 	// Noise Force
 	float	NoiseForceScale;
+	float	NoiseForceTerm;
 
 	// Module On / Off
 	int arrModuleCheck[(UINT)PARTICLE_MODULE::END];
@@ -150,11 +154,11 @@ struct tMtrlConst
 struct tGlobalData
 {
 	Vec2	g_RenderResolution;	// 렌더링 해상도
+	Vec2	g_NoiseTexResolution;
 	float	g_dt;				// Delta Time
 	float	g_time;				// 누적 시간
 	int		g_Light2DCount;		// 2D 광원 개수
-	int		g_Light3DCount;		// 3D 광원 개수
-	Vec2	g_vPadding;
+	int		g_Light3DCount;		// 3D 광원 개수	
 };
 extern tGlobalData g_global;
 extern tTransform g_Transform;

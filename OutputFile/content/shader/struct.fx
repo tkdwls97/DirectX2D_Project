@@ -39,6 +39,8 @@ struct tParticle
     float3 vVelocity; // 속도
     float4 vColor; // 색상
     float4 vForce; // 누적 힘
+    float3 vNoiseForce; // NoiseForce 모듈로 인한 랜덤 힘
+    float NoiseForceTime; // NoiseForce 를 세팅받은 시간
 
     float NomalizedAge;
     float Mass; // 질량
@@ -77,8 +79,10 @@ struct tParticleModule
     
     // Noise Force
     float NoiseForceScale;
-    
+    float NoiseForceTerm;
         
+    
+    // Module Active Check
     int arrModuleCheck[6];
 };
 
