@@ -49,10 +49,10 @@ CParticleSystem::CParticleSystem()
 
 	m_Module.SpaceType = 1;
 	m_Module.vSpawnColor = Vec4(0.2f, 0.4f, 0.9f, 1.f);
-	m_Module.vSpawnMinScale = Vec4(10.f, 5.f, 1.f, 1.f);
-	m_Module.vSpawnMaxScale = Vec4(20.f, 10.f, 1.f, 1.f);
-	m_Module.MinLife = 3000.f;
-	m_Module.MaxLife = 3000.f;
+	m_Module.vSpawnMinScale = Vec4(50.f, 25.f, 1.f, 1.f);
+	m_Module.vSpawnMaxScale = Vec4(50.f, 25.f, 1.f, 1.f);
+	m_Module.MinLife = 5.f;
+	m_Module.MaxLife = 5.f;
 	m_Module.MinMass = 1.f;
 	m_Module.MaxMass = 1.f;
 	m_Module.SpawnShape = 1; // 0 : Sphere, 1 : Box
@@ -63,8 +63,8 @@ CParticleSystem::CParticleSystem()
 	// Add Velocity Module
 	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::ADD_VELOCITY] = 1;
 	m_Module.AddVelocityType = 0; // 0 : From Center, 1: To Center, 2: Fix Direction
-	m_Module.MinSpeed = 100;
-	m_Module.MaxSpeed = 150;
+	m_Module.MinSpeed = 500;
+	m_Module.MaxSpeed = 500;
 	m_Module.FixedDirection;
 	m_Module.FixedAngle;
 
@@ -77,16 +77,21 @@ CParticleSystem::CParticleSystem()
 	m_Module.NoiseForceScale = 10.f;
 	m_Module.NoiseForceTerm = 0.3f;
 
-	// Calculate Forec
+	// Drag Module
+	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::DRAG] = 1;
+	m_Module.DragTime = 0.5f;
+
+	// Calculate Force
 	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::CALCULATE_FORCE] = 1;
 
 	// Render 
 	m_Module.arrModuleCheck[(UINT)PARTICLE_MODULE::RENDER] = 1;
 	m_Module.VelocityAlignment = 1; // 속도에 따른 방향 정렬
-	m_Module.AlphaBasedLife = 1;
+	m_Module.AlphaBasedLife = 1; // 0 : off, 1 : NomrlizedAge, 2: Age
 	m_Module.AlphaMaxAge = 2.f;
 
-	m_ParticleTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\particle\\Sparks.png", L"texture\\particle\\Sparks.png");
+	m_ParticleTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\particle\\Sparks.png"
+		, L"texture\\particle\\ray.png");
 }
 
 CParticleSystem::~CParticleSystem()

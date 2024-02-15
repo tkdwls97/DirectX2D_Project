@@ -81,6 +81,9 @@ struct tParticleModule
     float NoiseForceScale;
     float NoiseForceTerm;
         
+    // Drag
+    float DragTime;
+        
     // Render
     int VelocityAlignment; // 1 : On, 0 : Off
     int AlphaBasedLife; // 0 : off, 1 : NomrlizedAge, 2: Age
@@ -88,6 +91,8 @@ struct tParticleModule
     
     // Module Active Check
     int arrModuleCheck[7];
+    
+    int3 modulepadding;
 };
 
 

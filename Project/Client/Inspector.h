@@ -10,6 +10,7 @@
 // Asset 정보
 //  - 각 에셋의 정보
 class ComponentUI;
+class AssetUI;
 
 class Inspector :
     public UI
@@ -30,8 +31,14 @@ public:
     CGameObject* GetTargetObject() { return m_TargetObject; }
 
 private:
+    void CreateChildUI();
+    void CreateComponentUI();
+    void CreateAssetUI();
+
+private:
     CGameObject*    m_TargetObject;
     Ptr<CAsset>     m_TargetAsset;
     ComponentUI*    m_arrComUI[(UINT)COMPONENT_TYPE::END];
+    AssetUI*        m_arrAssetUI[(UINT)ASSET_TYPE::END];
 };
 

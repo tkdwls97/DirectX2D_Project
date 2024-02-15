@@ -20,6 +20,7 @@ enum class ASSET_TYPE
 	GRAPHICS_SHADER,
 	END,
 };
+extern const char* ASSET_TYPE_STRING[(UINT)ASSET_TYPE::END];
 
 enum class COMPONENT_TYPE
 {

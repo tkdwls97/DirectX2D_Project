@@ -16,6 +16,7 @@ void CAssetMgr::Init()
 	CreateDefaultMaterial();
 }
 
+
 void CAssetMgr::CreateDefaultMesh()
 {
 	CMesh* pMesh = nullptr;
