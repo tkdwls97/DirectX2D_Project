@@ -19,7 +19,6 @@ public:
 	const wstring& GetRelativePath() { return m_RelativePath; }
 
 	int GetRefCount() { return m_RefCount; }
-
 	ASSET_TYPE GetType() { return m_Type; }
 
 private:

@@ -43,14 +43,22 @@ void Inspector::Render_Update()
 
 void Inspector::SetTargetObject(CGameObject* _Object)
 {
+	// Target 오브젝트 설정
 	m_TargetObject = _Object;
 
+	// 해당 오브젝트가 보유하고 있는 컴포넌트에 대응하는 컴포넌트UI 활성화
 	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i)
 	{
 		if (nullptr != m_arrComUI[i])
 		{
 			m_arrComUI[i]->SetTargetObject(_Object);
 		}
+	}
+
+	// AssetUI 비활성화
+	for (UINT i = 0; i < (UINT)ASSET_TYPE::END; ++i)
+	{
+		m_arrAssetUI[i]->Deactivate();
 	}
 }
 

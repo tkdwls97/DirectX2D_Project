@@ -9,6 +9,7 @@
 #include "LevelMgr.h"
 #include "Level.h"
 #include "Layer.h"
+
 #include "GarbageCollector.h"
 
 CGameObject::CGameObject()
@@ -82,6 +83,7 @@ void CGameObject::Finaltick()
 	CLayer* pCurLayer = CLevelMgr::GetInst()->GetCurrentLevel()->GetLayer(m_LayerIdx);
 	pCurLayer->RegisterGameObject(this);
 
+
 	vector<CGameObject*>::iterator iter = m_vecChild.begin();
 	for (; iter != m_vecChild.end();)
 	{
@@ -143,21 +145,14 @@ void CGameObject::AddComponent(CComponent* _Comonent)
 	}
 }
 
-void CGameObject::AddChild(CGameObject* _Child)
-{
-	if (_Child->m_Parent)
-	{
-		// 이전 부모 오브젝트랑 연결 해제
-		_Child->DisconnectWithParent();
-	}
 
-	// 부모 자식 연결
-	_Child->m_Parent = this;
-	m_vecChild.push_back(_Child);
-}
-
-void CGameObject::DisconnectWithParent()
+int CGameObject::DisconnectWithParent()
 {
+	// 부모가 없는 오브젝트에 DisconnectWithParent 함수를 호출했으면
+	if (nullptr == m_Parent)
+		return -1;
+
+	bool bSuccess = false;
 	vector<CGameObject*>::iterator iter = m_Parent->m_vecChild.begin();
 	for (; iter != m_Parent->m_vecChild.end(); ++iter)
 	{
@@ -165,28 +160,60 @@ void CGameObject::DisconnectWithParent()
 		{
 			m_Parent->m_vecChild.erase(iter);
 			m_Parent = nullptr;
-			return;
+			bSuccess = true;
+			break;
 		}
 	}
 
-	// 부모가 없는 오브젝트에 DisconnectWithParent 함수를 호출 했거나
 	// 부모는 자식을 가리키기지 않고 있는데, 자식은 부모를 가리키고 있는 경우
-	assert(nullptr);
+	if (!bSuccess)
+	{
+		assert(nullptr);
+	}
+
+	int layeridx = m_LayerIdx;
+
+	m_LayerIdx = -1;
+
+	return layeridx;
 }
 
-void CGameObject::DisconnectWithLayer()
+int CGameObject::DisconnectWithLayer()
 {
 	if (-1 == m_LayerIdx)
-		return;
+		return -1;
 
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurrentLevel();
 	CLayer* pCurLayer = pCurLevel->GetLayer(m_LayerIdx);
+
+	int LayerIdx = m_LayerIdx;
 	pCurLayer->DetachGameObject(this);
+	return LayerIdx;
+}
+
+void CGameObject::AddChild(CGameObject* _Child)
+{
+	if (_Child->m_Parent)
+	{
+		// 이전 부모 오브젝트랑 연결 해제
+		_Child->DisconnectWithParent();
+	}
+	else
+	{
+		// 자식으로 들어오는 오브젝트가 최상위 부모타입이면,
+		// 소속 레이어의 Parent 오브젝트 목록에서 제거되어야 한다.
+		// 레이어를 완전히 등지고 싶었던 것은 아니었어...
+		int LayerIdx = _Child->m_LayerIdx;
+		_Child->DisconnectWithLayer();
+		_Child->m_LayerIdx = LayerIdx;
+	}
+
+	// 부모 자식 연결
+	_Child->m_Parent = this;
+	m_vecChild.push_back(_Child);
 }
 
 void CGameObject::Destroy()
 {
 	GamePlayStatic::DestroyGameObject(this);
 }
-
-

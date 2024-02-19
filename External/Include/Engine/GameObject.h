@@ -27,8 +27,8 @@ public:
 
 public:
     void AddComponent(CComponent* _Comonent);
-    void DisconnectWithParent();
-    void DisconnectWithLayer();
+    int DisconnectWithParent();
+    int DisconnectWithLayer();
 
     void AddChild(CGameObject* _Child);
     bool IsDead() { return m_bDead; }
@@ -37,6 +37,7 @@ public:
 public:
     CComponent* GetComponent(COMPONENT_TYPE _Type) { return m_arrCom[(UINT)_Type]; }
     CGameObject* GetParent() { return m_Parent; }
+    int GetLayerIdx() { return m_LayerIdx; }
     const vector<CGameObject*>& GetChild() { return m_vecChild; }
 
     const vector<CScript*>& GetScripts() { return m_vecScript; }
