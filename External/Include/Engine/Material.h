@@ -14,6 +14,8 @@ public:
 public:
 	void UpdateData();
 	virtual CMaterial* Clone() { return new CMaterial(*this); }
+	virtual int Save(const wstring& _strRelativePath);
+	virtual int Load(const wstring& _strFilePath);
 
 public:
 	Ptr<CGraphicsShader> GetShader() { return m_GpShader; }

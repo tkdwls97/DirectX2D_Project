@@ -202,6 +202,9 @@
     <ClInclude Include="ParamUI.h">
       <Filter>02. UI\05. Module\ParamUI</Filter>
     </ClInclude>
+    <ClInclude Include="MenuUI.h">
+      <Filter>02. UI\04. MenuUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -310,6 +313,9 @@
     </ClCompile>
     <ClCompile Include="ParamUI.cpp">
       <Filter>02. UI\05. Module\ParamUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuUI.cpp">
+      <Filter>02. UI\04. MenuUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -13,6 +13,10 @@ class CAsset : public CEntity
 public:
 	CAsset(ASSET_TYPE _Type, bool _bEngineAsset = false);
 	~CAsset();
+public:
+	virtual int Save(const wstring& _strRelativePath) { return E_FAIL; }
+	virtual int Load(const wstring& _strFilePath) { return E_FAIL; }
+	virtual CAsset* Clone() { return nullptr; }
 
 public:
 	const wstring& GetKey() { return m_Key; }
@@ -38,8 +42,7 @@ private:
 		}
 	}
 
-	virtual int Load(const wstring& _strFilePath) { return E_FAIL; }
-	virtual CAsset* Clone() { return nullptr; }
+
 
 private:
 	wstring             m_Key;

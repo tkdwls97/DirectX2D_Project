@@ -139,6 +139,16 @@ enum class TASK_TYPE
 	DISCONNECT_PARENT,
 };
 
+enum class LEVEL_STATE
+{
+	PLAY,
+	PAUSE,
+	STOP,
+	NONE,
+
+};
+
+
 // Debug Object
 enum class DEBUG_SHAPE
 {

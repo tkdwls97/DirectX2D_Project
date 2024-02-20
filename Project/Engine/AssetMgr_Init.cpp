@@ -171,8 +171,8 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASKED);
 
 	// Parameter
+	pShader->AddScalarParam(INT_0, "Test Param");
 	pShader->AddTexParam(TEX_0, "Output Texture 1");
-	pShader->AddTexParam(TEX_1, "Output Texture 2");
 
 	AddAsset(L"Std2DShader", pShader.Get());
 
@@ -287,6 +287,15 @@ void CAssetMgr::CreateDefaultMaterial()
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"Std2DShader"));
 	AddAsset<CMaterial>(L"Std2DMtrl", pMtrl);
 
+	// TestMtrl
+	//pMtrl = new CMaterial(true);
+	//pMtrl->SetShader(FindAsset<CGraphicsShader>(L"Std2DShader"));
+	//pMtrl->SetTexParam(TEX_0, Load<CTexture>(L"BackgroundTex", L"texture\\Background.jpg"));
+	//pMtrl->SetScalarParam(INT_0, 10);
+	//pMtrl->Save(L"material\\testmtrl.mtrl");
+	//AddAsset<CMaterial>(L"TestMtrl", pMtrl);
+
+	
 	// BackgroundMtrl
 	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"Std2DShader"));

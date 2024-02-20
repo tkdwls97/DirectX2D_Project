@@ -5,6 +5,7 @@ class CLayer;
 class CGameObject;
 
 
+
 class CLevel : public CEntity
 {
 	friend class CLevelMgr;
