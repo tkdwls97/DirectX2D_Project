@@ -32,9 +32,9 @@ void CMaterial::UpdateData()
 	// Texture Update(Register Binding)
 	for (UINT i = 0; i < TEX_PARAM::END; ++i)
 	{
-		if (nullptr != m_TextureArr[i].Get())
+		if (nullptr != m_arrTex[i].Get())
 		{
-			m_TextureArr[i]->UpdateData(i);
+			m_arrTex[i]->UpdateData(i);
 			m_Const.bTex[i] = 1;
 		}
 		else
@@ -57,7 +57,7 @@ void CMaterial::UpdateData()
 
 void CMaterial::SetTexParam(TEX_PARAM _Param, Ptr<CTexture> _pTexture)
 {
-	m_TextureArr[_Param] = _pTexture;
+	m_arrTex[_Param] = _pTexture;
 }
 
 void* CMaterial::GetScalarParam(SCALAR_PARAM _ParamType)
