@@ -3,45 +3,17 @@
 template<typename T>
 class Ptr
 {
-public:
-	Ptr()
-		: Asset(nullptr)
-	{
-	}
-
-	Ptr(const Ptr<T>& _Other)
-		:Asset(_Other.Asset)
-	{
-		if (nullptr != Asset)
-			Asset->AddRef();
-	}
-
-	Ptr(T* _Asset)
-		: Asset(_Asset)
-	{
-		if (nullptr != Asset)
-			Asset->AddRef();
-	}
-
-
-
-	~Ptr()
-	{
-		if (Asset)
-		{
-			Asset->Release();
-		}
-	}
-
+private:
+	T* Asset;
 
 public:
 	T* Get() const { return Asset; }
 	T** GetAdressOf() const { return &Asset; }
-
+	T* operator->() const { return Asset; }
 
 
 public:
-	void operator = (const Ptr& _ptr)
+	Ptr<T>& operator = (const Ptr& _ptr)
 	{
 		if (nullptr != Asset)
 			Asset->Release();
@@ -50,9 +22,11 @@ public:
 
 		if (nullptr != Asset)
 			Asset->AddRef();
+
+		return *this;
 	}
 
-	void operator = (T* _Asset)
+	Ptr<T>& operator = (T* _Asset)
 	{
 		if (nullptr != Asset)
 			Asset->Release();
@@ -61,6 +35,8 @@ public:
 
 		if (nullptr != Asset)
 			Asset->AddRef();
+
+		return *this;
 	}
 
 	bool operator ==(const Ptr<T>& _Other)
@@ -93,10 +69,35 @@ public:
 		return !(*this == _Asset);
 	}
 
-	T* operator->() const { return Asset; }
 
-private:
-	T* Asset;
+public:
+	Ptr()
+		: Asset(nullptr)
+	{}
+
+	Ptr(const Ptr<T>& _Other)
+		:Asset(_Other.Asset)
+	{
+		if (nullptr != Asset)
+			Asset->AddRef();
+	}
+
+	Ptr(T* _Asset)
+		: Asset(_Asset)
+	{
+		if (nullptr != Asset)
+			Asset->AddRef();
+	}
+
+
+
+	~Ptr()
+	{
+		if (Asset)
+		{
+			Asset->Release();
+		}
+	}
 };
 
 template<typename T>

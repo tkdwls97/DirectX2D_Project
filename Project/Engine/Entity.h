@@ -13,6 +13,7 @@ public:
 	const wstring& GetName();
 	UINT GetID();
 
+	virtual CEntity* Clone() { return nullptr; };
 
 private:
 	static UINT	g_NextID;

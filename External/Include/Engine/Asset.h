@@ -39,6 +39,7 @@ private:
 	}
 
 	virtual int Load(const wstring& _strFilePath) { return E_FAIL; }
+	virtual CAsset* Clone() { return nullptr; }
 
 private:
 	wstring             m_Key;

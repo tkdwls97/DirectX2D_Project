@@ -17,14 +17,21 @@ public:
     virtual void Render() = 0;
 
 public:
-    Ptr<CMesh> GetMesh() { return m_Mesh; }
-    Ptr<CMaterial> GetMaterial() { return m_Material; }
+    void SetMesh(Ptr<CMesh> _Mesh) { m_Mesh = _Mesh; }
+    void SetMaterial(Ptr<CMaterial> _Mtrl);
 
-    void SetMesh(Ptr<CMesh>  _Mesh) { m_Mesh = _Mesh; }
-    void SetMaterial(Ptr<CMaterial> _Material) { m_Material = _Material; }
+    Ptr<CMesh> GetMesh() { return m_Mesh; }
+    Ptr<CMaterial> GetMaterial() { return m_CurMtrl; }
+    Ptr<CMaterial> GetSharedMaterial() { return m_SharedMtrl; }
+    Ptr<CMaterial> GetDynamicMaterial();
+
+    void RestoreMaterial();
 
 private:
     Ptr<CMesh>      m_Mesh;
     Ptr<CMaterial>  m_Material;
+    Ptr<CMaterial>  m_SharedMtrl;
+    Ptr<CMaterial>  m_DynamicMtrl;
+    Ptr<CMaterial>  m_CurMtrl;
 };
 

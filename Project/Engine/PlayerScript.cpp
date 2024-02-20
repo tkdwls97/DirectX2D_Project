@@ -5,6 +5,9 @@
 #include "MissileScript.h"
 #include "GameObject.h"
 
+#include "Material.h"
+#include "RenderComponent.h"
+
 CPlayerScript::CPlayerScript()
 	: m_Speed(500.f)
 {
@@ -129,11 +132,7 @@ void CPlayerScript::Tick()
 void CPlayerScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
 	//_OtherObj->Destroy();
-
-	CCollider2D* Collider = _Collider;
-	CGameObject* OtherObj = _OtherObj;
-	int a = 0;
-	
+	Ptr<CMaterial> pMtrl = GetOwner()->GetRenderComponent()->GetDynamicMaterial();
 }
 
 void CPlayerScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)

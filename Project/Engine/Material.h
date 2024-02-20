@@ -10,6 +10,11 @@ public:
 	CMaterial(bool _bEngine = false);
 	~CMaterial();
 
+
+public:
+	void UpdateData();
+	virtual CMaterial* Clone() { return new CMaterial(*this); }
+
 public:
 	Ptr<CGraphicsShader> GetShader() { return m_GpShader; }
 	void SetShader(Ptr<CGraphicsShader> _Shader) { m_GpShader = _Shader; }
@@ -21,9 +26,6 @@ public:
 	void* GetScalarParam(SCALAR_PARAM _ParamType);
 	Ptr<CTexture> GetTexParam(TEX_PARAM _ParamType) { return m_arrTex[(UINT)_ParamType]; }
 
-public:
-
-	void UpdateData();
 
 private:
 	tMtrlConst				m_Const;
