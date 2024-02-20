@@ -16,7 +16,6 @@ void CAssetMgr::Init()
 	CreateDefaultMaterial();
 }
 
-
 void CAssetMgr::CreateDefaultMesh()
 {
 	CMesh* pMesh = nullptr;
@@ -26,6 +25,7 @@ void CAssetMgr::CreateDefaultMesh()
 	pMesh = new CMesh;
 	pMesh->Create(&vPoint, 1, &Idx, 1);
 	AddAsset(L"PointMesh", pMesh);
+
 
 	// 전역변수에 삼각형 위치 설정
 	//   0(Red)-- 1(Blue)	     
@@ -188,6 +188,7 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 
 	AddAsset(L"EffectShader", pShader);
 
+
 	// =============
 	// TileMapShader
 	// =============
@@ -202,7 +203,6 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASKED);
 
 	AddAsset(L"TileMapShader", pShader);
-
 
 	// ====================
 	// ParticleRenderShader
@@ -256,16 +256,6 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 
 	AddAsset(L"DistortionShader", pShader);
 
-	pShader = new CGraphicsShader;
-	pShader->CreateVertexShader(L"shader\\postprocess.fx", "VS_Distortion");
-	pShader->CreatePixelShader(L"shader\\postprocess.fx", "PS_WarpDistortion");
-
-	pShader->SetRSType(RS_TYPE::CULL_NONE);
-	pShader->SetDSType(DS_TYPE::NO_TEST_NO_WRITE);
-	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_POSTPROCESS);
-
-	AddAsset(L"WarpDistortionShader", pShader);
-
 	// =================================
 	// DebugShape Shader
 	// =================================
@@ -290,45 +280,43 @@ void CAssetMgr::CreateDefaultMaterial()
 	CMaterial* pMtrl = nullptr;
 
 	// Std2DMtrl
-	pMtrl = new CMaterial;
+	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"Std2DShader"));
 	AddAsset<CMaterial>(L"Std2DMtrl", pMtrl);
 
 	// BackgroundMtrl
-	pMtrl = new CMaterial;
+	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"Std2DShader"));
 	AddAsset<CMaterial>(L"BackgroundMtrl", pMtrl);
 
 	// TileMapMtrl
-	pMtrl = new CMaterial;
+	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"TileMapShader"));
 	AddAsset<CMaterial>(L"TileMapMtrl", pMtrl);
 
 	// ParticleMtrl
-	pMtrl = new CMaterial;
+	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"ParticleRenderShader"));
 	AddAsset<CMaterial>(L"ParticleMtrl", pMtrl);
 
 	// GrayFilterMtrl
-	pMtrl = new CMaterial;
+	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"GrayFilterShader"));
 	AddAsset<CMaterial>(L"GrayFilterMtrl", pMtrl);
 
 	// DistortionMtrl
-	pMtrl = new CMaterial;
+	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"DistortionShader"));
 	AddAsset<CMaterial>(L"DistortionMtrl", pMtrl);
 
-	pMtrl = new CMaterial;
-	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"WarpDistortionShader"));
-	AddAsset<CMaterial>(L"WarpDistortionMtrl", pMtrl);
-
-
 	// DebugShapeMtrl
-	pMtrl = new CMaterial;
+	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"DebugShapeShader"));
 	AddAsset<CMaterial>(L"DebugShapeMtrl", pMtrl);
 }
+
+
+
 
 #include "SetColorShader.h"
 #include "ParticleUpdate.h"

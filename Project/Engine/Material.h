@@ -7,7 +7,7 @@
 class CMaterial : public CAsset
 {
 public:
-	CMaterial();
+	CMaterial(bool _bEngine = false);
 	~CMaterial();
 
 public:

@@ -7,8 +7,8 @@
 #include "ConstBuffer.h"
 
 
-CMaterial::CMaterial()
-	: CAsset(ASSET_TYPE::MATERIAL)
+CMaterial::CMaterial(bool _bEngine)
+	: CAsset(ASSET_TYPE::MATERIAL, _bEngine)
 	, m_Const{}
 {
 

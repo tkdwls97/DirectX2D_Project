@@ -43,6 +43,8 @@ public:
     const vector<CScript*>& GetScripts() { return m_vecScript; }
     CRenderComponent* GetRenderComponent() { return m_RenderCom; }
 
+    bool IsAncestor(CGameObject* _Other);
+
     template<typename T>
     T* GetScript()
     {

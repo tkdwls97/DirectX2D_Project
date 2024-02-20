@@ -11,12 +11,14 @@ class CAsset : public CEntity
 	friend class Ptr;
 
 public:
-	CAsset(ASSET_TYPE _Type);
+	CAsset(ASSET_TYPE _Type, bool _bEngineAsset = false);
 	~CAsset();
 
 public:
 	const wstring& GetKey() { return m_Key; }
 	const wstring& GetRelativePath() { return m_RelativePath; }
+	int GetRefCount() { return m_RefCount; }
+	ASSET_TYPE GetType() { return m_Type; }
 
 private:
 	void SetKey(const wstring& _Key) { m_Key = _Key; }
@@ -36,10 +38,6 @@ private:
 		}
 	}
 
-	int GetRefCount() { return m_RefCount; }
-
-	ASSET_TYPE GetType() { return m_Type; }
-
 	virtual int Load(const wstring& _strFilePath) { return E_FAIL; }
 
 private:
@@ -47,5 +45,6 @@ private:
 	wstring             m_RelativePath;
 	int                 m_RefCount;
 	const ASSET_TYPE    m_Type;
+	const bool          m_bEngineAsset;
 };
 
