@@ -159,7 +159,7 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	// =================================
 	// Std2DShader
 	// =================================
-	CGraphicsShader* pShader = nullptr;
+	Ptr<CGraphicsShader> pShader = nullptr;
 
 	pShader = new CGraphicsShader;
 	pShader->CreateVertexShader(L"shader\\std2d.fx", "VS_Std2D");
@@ -168,10 +168,13 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	pShader->SetRSType(RS_TYPE::CULL_NONE);
 	pShader->SetDSType(DS_TYPE::LESS);
 	pShader->SetBSType(BS_TYPE::DEFAULT);
-
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASKED);
 
-	AddAsset(L"Std2DShader", pShader);
+	// Parameter
+	pShader->AddScalarParam(INT_0, "Test Parameter");
+	pShader->AddTexParam(TEX_0, "Output Texture");
+
+	AddAsset(L"Std2DShader", pShader.Get());
 
 	// =================================
 	// EffectShader
@@ -186,7 +189,7 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_TRANSPARENT);
 
-	AddAsset(L"EffectShader", pShader);
+	AddAsset(L"EffectShader", pShader.Get());
 
 
 	// =============
@@ -202,7 +205,7 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASKED);
 
-	AddAsset(L"TileMapShader", pShader);
+	AddAsset(L"TileMapShader", pShader.Get());
 
 	// ====================
 	// ParticleRenderShader
@@ -219,7 +222,7 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_TRANSPARENT);
 
-	AddAsset(L"ParticleRenderShader", pShader);
+	AddAsset(L"ParticleRenderShader", pShader.Get());
 
 	// =================================
 	// GrayFilter Shader
@@ -237,7 +240,7 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	pShader->SetDSType(DS_TYPE::NO_TEST_NO_WRITE);
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_POSTPROCESS);
 
-	AddAsset(L"GrayFilterShader", pShader);
+	AddAsset(L"GrayFilterShader", pShader.Get());
 
 	// =================================
 	// Distortion Shader	
@@ -254,7 +257,7 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	pShader->SetDSType(DS_TYPE::NO_TEST_NO_WRITE);
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_POSTPROCESS);
 
-	AddAsset(L"DistortionShader", pShader);
+	AddAsset(L"DistortionShader", pShader.Get());
 
 	// =================================
 	// DebugShape Shader
@@ -270,7 +273,7 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_DEBUG);
 
-	AddAsset(L"DebugShapeShader", pShader);
+	AddAsset(L"DebugShapeShader", pShader.Get());
 }
 
 
@@ -314,7 +317,6 @@ void CAssetMgr::CreateDefaultMaterial()
 	pMtrl->SetShader(FindAsset<CGraphicsShader>(L"DebugShapeShader"));
 	AddAsset<CMaterial>(L"DebugShapeMtrl", pMtrl);
 }
-
 
 
 
